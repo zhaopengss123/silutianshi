@@ -1,0 +1,115 @@
+<view class='content'>
+  <view class='banner'>
+      <image src='/assets/images/indexBanner_02.jpg' mode="widthFix"></image>
+  </view>
+  <view class='push'>
+      新一期的报名活动于2019年1月1日开始
+  </view>
+  <view class='detail_main'>
+  <!-- 列表 -->
+    <view class='list'>
+        <navigator url='./videoPlay/videoPlay'>
+        <image src='http://ylbb-app-mobile01.oss-cn-beijing.aliyuncs.com/929bd495-7fe1-4de2-b0ee-de7d85138cf8.jpg'></image>
+        <view class='list_font'>
+            <view> <text>姓名：刘欣</text> <text>类目：书画</text> </view>
+            <view class='pf'> <text>现场：33.33</text><text>网络：33.33</text><text>总分：33.33</text> </view>
+        </view>
+        </navigator>
+    </view>
+  <!-- 列表 -->
+    <view class='list'>
+        <image src='http://ylbb-app-mobile01.oss-cn-beijing.aliyuncs.com/929bd495-7fe1-4de2-b0ee-de7d85138cf8.jpg'></image>
+        <view class='list_font'>
+            <view> <text>姓名：刘欣</text> <text>类目：书画</text> </view>
+            <view class='pf'> <text>现场：33.33</text><text>网络：33.33</text><text>总分：33.33</text> </view>
+        </view>
+    </view>
+  <!-- 列表 -->
+    <view class='list'>
+        <image src='http://ylbb-app-mobile01.oss-cn-beijing.aliyuncs.com/929bd495-7fe1-4de2-b0ee-de7d85138cf8.jpg'></image>
+        <view class='list_font'>
+            <view> <text>姓名：刘欣</text> <text>类目：书画</text> </view>
+            <view class='pf'> <text>现场：33.33</text><text>网络：33.33</text><text>总分：33.33</text> </view>
+        </view>
+    </view>
+  <!-- 列表 -->
+    <view class='list'>
+        <image src='http://ylbb-app-mobile01.oss-cn-beijing.aliyuncs.com/929bd495-7fe1-4de2-b0ee-de7d85138cf8.jpg'></image>
+        <view class='list_font'>
+            <view> <text>姓名：刘欣</text> <text>类目：书画</text> </view>
+            <view class='pf'> <text>现场：33.33</text><text>网络：33.33</text><text>总分：33.33</text> </view>
+        </view>
+    </view>
+  <!-- 列表 -->
+    <view class='list'>
+        <image src='http://ylbb-app-mobile01.oss-cn-beijing.aliyuncs.com/929bd495-7fe1-4de2-b0ee-de7d85138cf8.jpg'></image>
+        <view class='list_font'>
+            <view> <text>姓名：刘欣</text> <text>类目：书画</text> </view>
+            <view class='pf'> <text>现场：33.33</text><text>网络：33.33</text><text>总分：33.33</text> </view>
+        </view>
+    </view>            
+  <!-- 列表 -->
+    <view class='list'>
+        <image src='http://ylbb-app-mobile01.oss-cn-beijing.aliyuncs.com/929bd495-7fe1-4de2-b0ee-de7d85138cf8.jpg'></image>
+        <view class='list_font'>
+            <view> <text>姓名：刘欣</text> <text>类目：书画</text> </view>
+            <view class='pf'> <text>现场：33.33</text><text>网络：33.33</text><text>总分：33.33</text> </view>
+        </view>
+    </view> 
+  <!-- 列表 -->
+    <view class='list'>
+        <image src='http://ylbb-app-mobile01.oss-cn-beijing.aliyuncs.com/929bd495-7fe1-4de2-b0ee-de7d85138cf8.jpg'></image>
+        <view class='list_font'>
+            <view> <text>姓名：刘欣</text> <text>类目：书画</text> </view>
+            <view class='pf'> <text>现场：33.33</text><text>网络：33.33</text><text>总分：33.33</text> </view>
+        </view>
+    </view> 
+    <!-- 列表 -->
+    <view class='list'>
+        <image src='http://ylbb-app-mobile01.oss-cn-beijing.aliyuncs.com/929bd495-7fe1-4de2-b0ee-de7d85138cf8.jpg'></image>
+        <view class='list_font'>
+            <view> <text>姓名：刘欣</text> <text>类目：书画</text> </view>
+            <view class='pf'> <text>现场：33.33</text><text>网络：33.33</text><text>总分：33.33</text> </view>
+        </view>
+    </view>   
+  <!--列表图片 -->
+  <view class='imgh'>
+    <image src='/assets/images/list_banner.png'></image>
+  </view>  
+  <!-- 列表 -->
+    <view class='list'>
+        <image src='http://ylbb-app-mobile01.oss-cn-beijing.aliyuncs.com/929bd495-7fe1-4de2-b0ee-de7d85138cf8.jpg'></image>
+        <view class='list_font'>
+            <view> <text>姓名：刘欣</text> <text>类目：书画</text> </view>
+            <view class='pf'> <text>现场：33.33</text><text>网络：33.33</text><text>总分：33.33</text> </view>
+        </view>
+    </view> 
+  <!-- 列表 -->
+    <view class='list'>
+        <image src='http://ylbb-app-mobile01.oss-cn-beijing.aliyuncs.com/929bd495-7fe1-4de2-b0ee-de7d85138cf8.jpg'></image>
+        <view class='list_font'>
+            <view> <text>姓名：刘欣</text> <text>类目：书画</text> </view>
+            <view class='pf'> <text>现场：33.33</text><text>网络：33.33</text><text>总分：33.33</text> </view>
+        </view>
+    </view> 
+  <!-- 列表 -->
+    <view class='list'>
+        <image src='http://ylbb-app-mobile01.oss-cn-beijing.aliyuncs.com/929bd495-7fe1-4de2-b0ee-de7d85138cf8.jpg'></image>
+        <view class='list_font'>
+            <view> <text>姓名：刘欣</text> <text>类目：书画</text> </view>
+            <view class='pf'> <text>现场：33.33</text><text>网络：33.33</text><text>总分：33.33</text> </view>
+        </view>
+    </view>     
+  <!-- 列表 -->
+    <view class='list'>
+        <image src='http://ylbb-app-mobile01.oss-cn-beijing.aliyuncs.com/929bd495-7fe1-4de2-b0ee-de7d85138cf8.jpg'></image>
+        <view class='list_font'>
+            <view> <text>姓名：刘欣</text> <text>类目：书画</text> </view>
+            <view class='pf'> <text>现场：33.33</text><text>网络：33.33</text><text>总分：33.33</text> </view>
+        </view>
+    </view>             
+
+  </view>
+  
+</view>
+<view class='list_footer'>我是有底线的~</view>

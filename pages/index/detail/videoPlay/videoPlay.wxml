@@ -1,0 +1,71 @@
+<view class='content'>
+  <view class='videoPlay'>
+    <video
+    id="myVideo"
+        src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400"
+        danmu-list="{{danmuList}}"
+        enable-danmu
+        danmu-btn
+        controls
+      ></video>
+  </view>
+  <view class='operation'>
+    <view>
+        <image src='/assets/images/hearts.png' wx:if="{{ !heart }}"></image>
+        <image src='/assets/images/heart.png' wx:else></image>
+        <text>1000</text>
+    </view>
+    <view>
+        <image src='/assets/images/fabulous_n.png' wx:if="{{ !fabulous }}"></image>
+        <image src='/assets/images/fabulous.png' wx:else></image>
+        <text>1000</text>      
+    </view>
+    <view>
+        <image src='/assets/images/share.png' wx:if="{{ !shares }}"></image>
+        <image src='/assets/images/shares.png' wx:else></image>
+        <text>1000</text>    
+    </view>
+  </view>
+
+  <view class='like'>
+      <view class='likeTitle'>猜你喜欢</view>
+   
+   <!-- 列表 -->
+    <view class='list'>
+        <image src='http://ylbb-app-mobile01.oss-cn-beijing.aliyuncs.com/929bd495-7fe1-4de2-b0ee-de7d85138cf8.jpg'></image>
+        <view class='list_font'>
+            <view> <text>姓名：刘欣</text> <text>类目：书画</text> </view>
+            <view class='pf'> <text>现场：33.33</text><text>网络：33.33</text><text>总分：33.33</text> </view>
+        </view>
+    </view>
+  <!-- 列表 -->
+    <view class='list'>
+        <image src='http://ylbb-app-mobile01.oss-cn-beijing.aliyuncs.com/929bd495-7fe1-4de2-b0ee-de7d85138cf8.jpg'></image>
+        <view class='list_font'>
+            <view> <text>姓名：刘欣</text> <text>类目：书画</text> </view>
+            <view class='pf'> <text>现场：33.33</text><text>网络：33.33</text><text>总分：33.33</text> </view>
+        </view>
+    </view>
+   <!-- 列表 -->
+    <view class='list'>
+        <image src='http://ylbb-app-mobile01.oss-cn-beijing.aliyuncs.com/929bd495-7fe1-4de2-b0ee-de7d85138cf8.jpg'></image>
+        <view class='list_font'>
+            <view> <text>姓名：刘欣</text> <text>类目：书画</text> </view>
+            <view class='pf'> <text>现场：33.33</text><text>网络：33.33</text><text>总分：33.33</text> </view>
+        </view>
+    </view>
+  <!-- 列表 -->
+    <view class='list'>
+        <image src='http://ylbb-app-mobile01.oss-cn-beijing.aliyuncs.com/929bd495-7fe1-4de2-b0ee-de7d85138cf8.jpg'></image>
+        <view class='list_font'>
+            <view> <text>姓名：刘欣</text> <text>类目：书画</text> </view>
+            <view class='pf'> <text>现场：33.33</text><text>网络：33.33</text><text>总分：33.33</text> </view>
+        </view>
+    </view>
+
+  <view>  
+  </view> 
+  </view>
+
+</view>
+

@@ -1,0 +1,40 @@
+<view class='content'>
+      <view class='headimg'>
+           <open-data type="userAvatarUrl"></open-data>
+        </view>
+        <view class='userName'>
+            参赛者姓名:刘欣
+        </view>
+        <view class='list'>
+            <text>参赛者编号</text>
+            <text>bj0001</text>
+        </view>
+        <view class='list'>
+            <text>出生年月</text>
+            <text>2014-01-01</text>
+        </view>
+        <view class='list'>
+            <text>性 别</text>
+            <text>男</text>
+        </view>
+        <view class='list'>
+            <text>监护者姓名</text>
+            <text>阿里Yui</text>
+        </view>
+        <view class='list'>
+            <text>联系电话</text>
+            <text>15911112222</text>
+        </view>
+        <view class='list'>
+            <text>报名类目</text>
+            <text>舞蹈</text>
+        </view>
+        <view class='list'>
+            <text>地区选择</text>
+            <text>北京</text>
+        </view>
+        <view class='list'>
+            <text>报名机构</text>
+            <text>大宅门</text>
+        </view>                                
+</view>

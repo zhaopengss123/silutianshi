@@ -1,0 +1,10 @@
+<view class='content'>
+     <view class='detail_main'>
+        <view class='noList' >
+            <view class='noTitle'>您还没有报名参加任何比赛呢~</view>
+            <view class='noDesc'>点击立即报名去参加比赛吧！</view>
+            <view class='noBtn'>立即报名</view>
+        </view>
+
+    </view>
+</view>

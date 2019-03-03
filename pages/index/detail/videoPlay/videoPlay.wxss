@@ -1,0 +1,101 @@
+.content{
+  width: 100%;
+  overflow: hidden;
+}
+.videoPlay{
+  width: 100%;
+  overflow: hidden;
+}
+video{
+  width: 100%;
+  height: 356rpx;
+  overflow: hidden;
+}
+.operation{
+  width: 690rpx;
+  margin: 0 auto;
+  margin-top: 20rpx;
+}
+.operation view{
+  float: left;
+  line-height: 40rpx;
+  margin-left: 156rpx;
+}
+.operation view:nth-child(1){
+  margin-left: 0;
+}
+.operation view image{
+  width: 40rpx;
+  height: 40rpx;
+  float: left;
+}
+.operation view text{
+  width: auto;
+  float: left;
+  margin-left: 20rpx;
+  color: rgba(0, 0, 0, .8);
+  font-size:26rpx;
+}
+.like{
+  font-size: 26rpx;
+  clear: both;
+  width: 750rpx;
+  color: #000;
+  font-weight: bold;
+  padding-top: 44rpx;
+  padding-bottom: 30rpx;
+  overflow: hidden;
+}
+.likeTitle{
+  margin-left: 20rpx;
+}
+.list{
+  width: 338rpx;
+  box-shadow: 0px 0px 5rpx #cbcbcb;
+  border-radius: 10rpx;
+  overflow: hidden;
+  font-size: 24rpx;
+  margin-left: 20rpx;
+  margin-top: 20rpx;
+  float: left;
+  color: rgba(0, 0, 0, .8);
+
+}
+.list:nth-child(even){
+  margin-left: 39rpx;
+}
+.list image{
+  width: 338rpx;
+  height: 170rpx;
+}
+.list_font{
+  line-height: 40rpx;
+  overflow: hidden;
+}
+.list_font view:nth-child(1) text{
+  display: block;
+  width: 159rpx;
+  float: left;
+  margin-left: 5rpx;
+ 
+}
+.list_font view:nth-child(1) text:nth-child(2){
+  text-align: right;
+  margin-left: 0;
+  margin-right: 5px;
+}
+.pf{
+  font-size: 20rpx;
+}
+.pf text{
+  width: 33%;
+  float: left;
+  text-align: center;
+}
+.list_footer{
+  font-size: 26rpx;
+  color: rgba(0, 0, 0, .8);
+  text-align: center;
+  height: 100rpx;
+  line-height: 100rpx;
+}

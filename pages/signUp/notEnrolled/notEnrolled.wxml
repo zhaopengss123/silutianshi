@@ -1,0 +1,41 @@
+<view class='content'>
+    <view class='item'>
+        <text>参赛者姓名</text>
+        <input placeholder='请输入参赛者的姓名' bindinput="babyname" placeholder-style="color:#b0b0b0"></input>
+    </view>
+    <view class='item'>
+        <text>参赛者年龄</text>
+        <picker mode="date" value="{{ birthday }}" start="2000-01-01" end="2020-01-01" maxlength="20" bindchange="birthdayChange">
+          <view class='select' wx:if="{{ birthday }}">{{ birthday }}</view>
+          <view class='notSelect' wx:if="{{ !birthday }}">请选择参赛者出生年月（只接受5-15岁的小朋友报名）</view>
+        </picker>
+    </view>
+    <view class='item'>
+        <text>参赛者性别</text>
+       <picker bindchange="sexChange" value="{{sexIndex}}" range="{{sexArray}}">
+          <view class='select' wx:if="{{ sexArray[sexIndex] }}">{{ sexArray[sexIndex] }}</view>
+          <view class='notSelect' wx:if="{{ !sexArray[sexIndex] }}">您与宝宝的关系</view>
+        </picker>
+    </view>
+    <view class='item'>
+        <text>监护人姓名</text>
+        <input placeholder='请输入监护人的姓名' bindinput="babyname" placeholder-style="color:#b0b0b0"></input>
+    </view>
+    <view class='item'>
+        <text>监护人电话</text>
+        <input placeholder='请输入监护人的电话' bindinput="babyname" placeholder-style="color:#b0b0b0"></input>
+    </view>
+    <view class='item'>
+        <text>报名类目</text>
+        <input placeholder='请选择报名的类目' bindinput="babyname" placeholder-style="color:#b0b0b0"></input>
+    </view>
+    <view class='item'>
+        <text>地区选择</text>
+        <input placeholder='请选择参赛区域' bindinput="babyname" placeholder-style="color:#b0b0b0"></input>
+    </view>
+    <view class='item'>
+        <text>报名机构</text>
+        <input placeholder='请选择报名机构' bindinput="babyname" placeholder-style="color:#b0b0b0"></input>
+    </view> 
+    <view class='submit'>提交报名资料</view>                          
+</view>

@@ -1,0 +1,48 @@
+{
+  "pages": [
+      "pages/index/index",
+      "pages/index/detail/detail",
+      "pages/index/detail/videoPlay/videoPlay",
+      "pages/search/search",
+      "pages/signUp/signUp",
+      "pages/signUp/enrolled/enrolled",
+      "pages/signUp/notEnrolled/notEnrolled",
+      "pages/user/user",
+      "pages/user/collection/collection",
+      "pages/user/history/history",
+      "pages/user/follow/follow",
+      "pages/user/match/match"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#d0751d",
+    "navigationBarTitleText": "丝路天使",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+      "color": "#C2C2C3",
+      "selectedColor": "#e97a10",
+      "backgroundColor": "#fff",
+      "borderStyle": "black",
+      "list": [
+        {
+          "selectedIconPath": "assets/images/index-select.png",
+          "iconPath": "assets/images/index.png",
+          "pagePath": "pages/index/index",
+          "text": "首页"
+        },
+        {
+          "selectedIconPath": "assets/images/bm-select.png",
+          "iconPath": "assets/images/bm.png",
+          "pagePath": "pages/signUp/signUp",
+          "text": "报名"
+        },
+        {
+          "selectedIconPath": "assets/images/user-select.png",
+          "iconPath": "assets/images/user.png",
+          "pagePath": "pages/user/user",
+          "text": "我的"
+        }
+      ]
+    }
+}

@@ -1,0 +1,28 @@
+<view class='content'>
+  <view class='banner'>
+      <!-- <image src='/assets/images/indexBanner_02.jpg' mode="widthFix"></image> -->
+        <swiper indicator-dots="true" autoplay="true" interval="5000" duration="300"  indicator-active-color="#FFF" circular="true">
+        <block wx:for="{{swiperArray}}" wx:key="key">
+          <swiper-item>
+            <image src="{{item.banner}}" class="slide-image" style='width:750rpx' mode="widthFix"/>
+          </swiper-item>
+        </block>
+      </swiper>
+  </view>
+  <view class='push'>
+     {{ actives.des }}
+  </view>
+  <view class='nav'>
+      <view wx:for="{{ navList }}" wx:key="index">
+        <navigator url='./detail/detail'>
+        <image src='{{ item.pic }}' mode="widthFix"></image>
+        <text>— {{ item.type }} —</text>
+        </navigator>
+      </view>
+  </view>
+</view>
+<view class='opensetting' wx:if="{{ setTingGet }}">
+  <view>
+  <text>获取您的用户名头像等信息</text>
+  <button  open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">获取登录</button></view>
+</view>

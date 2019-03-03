@@ -1,0 +1,19 @@
+<view class='content'>
+     <view class='detail_main'>
+        <!-- 列表 -->
+          <view class='list' wx:for="{{ list }}">
+              <image src='http://ylbb-app-mobile01.oss-cn-beijing.aliyuncs.com/929bd495-7fe1-4de2-b0ee-de7d85138cf8.jpg'></image>
+              <view class='list_font'>
+                  <view> <text>姓名：刘欣</text> <text>类目：书画</text> </view>
+                  <view class='pf'> <text>现场：33.33</text><text>网络：33.33</text><text>总分：33.33</text> </view>
+              </view>
+          </view>
+
+        <view class='noList' wx:if="{{ !list.length }}">
+            <view class='noTitle'>暂时没有观看过任何的视频哦~</view>
+            <view class='noDesc'>点击观看视频去观看您喜欢的视频吧！</view>
+            <view class='noBtn'>观看视频</view>
+        </view>
+
+    </view>
+</view>
