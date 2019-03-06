@@ -14,7 +14,7 @@
   </view>
   <view class='nav'>
       <view wx:for="{{ navList }}" wx:key="index">
-        <navigator url='./detail/detail'>
+        <navigator url='./detail/detail?id={{ item.id}}'>
         <image src='{{ item.pic }}' mode="widthFix"></image>
         <text>— {{ item.type }} —</text>
         </navigator>
@@ -24,5 +24,11 @@
 <view class='opensetting' wx:if="{{ setTingGet }}">
   <view>
   <text>获取您的用户名头像等信息</text>
-  <button  open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">获取登录</button></view>
+  <button  open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button></view>
+</view>
+
+<view class='opensetting' wx:if="{{ setTingAddress }}">
+  <view>
+  <text>获取您的经纬度信息</text>
+  <button  open-type="openSetting" bindopensetting='openSetting'>获取位置信息</button></view>
 </view>

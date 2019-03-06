@@ -1,6 +1,13 @@
 <view class='content'>
   <view class='banner'>
-      <image src='/assets/images/indexBanner_02.jpg' mode="widthFix"></image>
+      <!-- <image src='/assets/images/indexBanner_02.jpg' mode="widthFix"></image> -->
+        <swiper indicator-dots="true" autoplay="true" interval="5000" duration="300"  indicator-active-color="#FFF" circular="true">
+        <block wx:for="{{swiperArray}}" wx:key="key">
+          <swiper-item>
+            <image src="{{item.banner}}" class="slide-image" style='width:750rpx' mode="widthFix"/>
+          </swiper-item>
+        </block>
+      </swiper>
   </view>
   <view class='push'>
       新一期的报名活动于2019年1月1日开始

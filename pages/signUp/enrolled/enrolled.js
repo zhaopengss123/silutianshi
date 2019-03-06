@@ -1,4 +1,5 @@
-// pages/signUp/enrolled/enrolled.js
+const app = getApp();
+const Http = require('../../../utils/request.js');
 Page({
 
   /**
@@ -14,53 +15,23 @@ Page({
   onLoad: function (options) {
 
   },
+  submits(){
+    Http.post('/Home/Silu/myinfo', {
+      name: name,
+      birthday: birthday,
+      sex: sex,
+      parents: parents,
+      pphone: pphone,
+      type: type,
+      area: app.area,
+      jigou: mechanism,
+      token: app.globalConfig.token
+    }).then(res => {
+      wx.hideLoading();
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+    }, _ => {
+      wx.hideLoading();
+    }); 
   }
+  
 })

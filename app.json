@@ -19,6 +19,7 @@
     "navigationBarTitleText": "丝路天使",
     "navigationBarTextStyle": "white"
   },
+  
   "tabBar": {
       "color": "#C2C2C3",
       "selectedColor": "#e97a10",
@@ -44,5 +45,10 @@
           "text": "我的"
         }
       ]
-    }
+    },
+      "permission": {
+        "scope.userLocation": {
+          "desc": "你的位置信息将用于小程序位置接口的效果展示"
+        }
+      }
 }

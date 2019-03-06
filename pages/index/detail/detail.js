@@ -1,66 +1,50 @@
-// pages/index/detail/detail.js
+const app = getApp();
+const Http = require('../../../utils/request.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    swiperArray:[],
+    actives:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+      this.getBanner();
+    this.getData(options.id);
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  /******** 获取banner&&获取最新活动&&获取类别 ********/
+  getBanner() {
+    let that = this;
+    Http.post('/Home/Silu/banner', {
+    }).then(res => {
+      that.setData({
+        swiperArray: res.data
+      })
+    }, _ => {
+    });
+    Http.post('/Home/Silu/activity', {
+    }).then(res => {
+      that.setData({
+        actives: res.data
+      })
+    }, _ => {
+    });
   },
+  getData(id) {
+    console.log(app.globalConfig);
+    Http.post('/Home/Silu/videos', {
+      token: app.globalConfig.token,
+      area: app.globalConfig.cityid,
+      id:id
+      }).then(res => {
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+      }, _ => {
+      });
   }
 })

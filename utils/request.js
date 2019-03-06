@@ -34,10 +34,11 @@ const Post = (url, param) => {
     wx.request({
       url: requestPath,
       method: "POST",
-      data: Serialize(param),
+      data: param,
       dataType: 'json',
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'
+        
       },
       success(res) {
         resolve(res.data);

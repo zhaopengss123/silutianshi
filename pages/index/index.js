@@ -7,55 +7,81 @@ Page({
     setTingGet:false,
     swiperArray:[],
     actives:{},
-    navList:[]
+    navList:[],
+    setTingAddress:false,
   },
   onLoad: function () {
     let that = this;
       wx.login({
         success(res){
+          console.log(res);
           that.setData({
             code: res.code
           })
         }
       });
-    wx.getSetting({
-      success(res) {
-        if (res.authSetting['scope.userInfo']) {
-            wx.getUserInfo({
-              success(res) {
-                app.userInfo = res.userInfo;
-                that.setData({
-                  userData:res
-                })
-                that.wxLogin();
-              }
-            });
-        }else{
-            that.setData({
-              setTingGet: true
-            })
-        }
-      }
-    });
+    that.wxLogin();
     that.getBanner();
 
   },
   /******** 用户登录 ********/
   wxLogin(){
     let that = this;
-    wx.showLoading({
-      title: '加载中...',
-    })
-    Http.post('/Home/Index/dologin', {
-      code: that.data.code,
-      encryptedData: that.data.userData.encryptedData,
-      iv: that.data.userData.iv
-    }).then(res => {
-      wx.hideLoading();
-      
-    }, _ => {
-      wx.hideLoading();
+    wx.getSetting({
+      success(ress) {
+        console.log(ress);
+        if (ress.authSetting['scope.userInfo']) {
+          wx.getUserInfo({
+            withCredentials: true,
+            success(res) {
+              app.userInfo = res.userInfo;
+              that.setData({
+                userData: res
+              })
+              if (ress.authSetting['scope.userLocation']) {
+                wx.getLocation({
+                  type: 'wgs84',
+                  success(res) {
+                    app.globalConfig.latitude = res.latitude;
+                    app.globalConfig.longitude = res.longitude;
+                    wx.showLoading({
+                      title: '加载中...',
+                    })
+                    Http.post('/Home/Index/dologin', {
+                      code: that.data.code,
+                      encryptedData: encodeURI(that.data.userData.encryptedData),
+                      iv: encodeURI(that.data.userData.iv),
+                      lat: app.globalConfig.latitude,
+                      lng: app.globalConfig.longitude
+
+                    }).then(res => {
+                      wx.hideLoading();
+                      app.globalConfig.token = res.data.token;
+                      app.globalConfig.cityid = res.data.cityid;
+                    }, _ => {
+                      wx.hideLoading();
+                    });
+
+                  },
+                  fail(err) {
+                  }
+                })
+              } else {
+                that.setData({
+                  setTingAddress: true
+                })
+              }
+              
+            }
+          });
+        } else {
+
+        }
+      }
     });
+
+
+
   },
   /******** 获取banner&&获取最新活动&&获取类别 ********/
   getBanner(){
@@ -99,6 +125,24 @@ Page({
     } else {
 
     }
-  }
+  },
+  openSetting(e) {
+    let that = this;
+
+    //that.getaddressIndex('0');
+    // 对用户的设置进行判断，如果没有授权，即使用户返回到保存页面，显示的也是“去授权”按钮；同意授权之后才显示保存按钮
+    if (!e.detail.authSetting['scope.userLocation']) {
+      wx.showModal({
+        title: '警告',
+        content: '若不打开授权，则无法获取门店信息！',
+        showCancel: false
+      })
+    } else {
+      that.setData({
+        setTingAddress: false
+      })
+      that.wxLogin();
+    }
+  },
  
 })
