@@ -31,7 +31,10 @@
     </view>
     <view class='item'>
         <text>地区选择</text>
-        <input placeholder='请选择参赛区域' bindinput="babyname" placeholder-style="color:#b0b0b0"></input>
+        <picker bindchange="areaChange" value="{{provinceIndex}}" range="{{provinceList}}" range-key="{{'province'}}">
+          <view class='select' wx:if="{{ provinceList[provinceIndex] }}">{{ provinceList[provinceIndex].province }}省</view>
+          <view class='notSelect' wx:if="{{ !provinceList[provinceIndex] }}">请选择省</view>
+        </picker>
     </view>
     <view class='item'>
         <text>报名机构</text>
