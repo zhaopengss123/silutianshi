@@ -1,0 +1,40 @@
+<view class='content'>
+      <view class='headimg'>
+           <open-data type="userAvatarUrl"></open-data>
+        </view>
+        <view class='userName'>
+            参赛者姓名:{{ memberDetail.name }}
+        </view>
+        <view class='list'>
+            <text>参赛者编号</text>
+            <text>{{ memberDetail.code }}</text>
+        </view>
+        <view class='list'>
+            <text>出生年月</text>
+            <text>{{ memberDetail.birthday }}</text>
+        </view>
+        <view class='list'>
+            <text>性 别</text>
+            <text>{{ memberDetail.sex ==0 ? '男':'女' }}</text>
+        </view>
+        <view class='list'>
+            <text>监护者姓名</text>
+            <text>{{ memberDetail.parents }}</text>
+        </view>
+        <view class='list'>
+            <text>联系电话</text>
+            <text>{{ memberDetail.pphone }}</text>
+        </view>
+        <view class='list'>
+            <text>报名类目</text>
+            <text>{{ memberDetail.type ?memberDetail.type:'' }}</text>
+        </view>
+        <view class='list'>
+            <text>地区选择</text>
+            <text>{{ memberDetail.city?memberDetail.city:'' }}</text>
+        </view>
+        <view class='list'>
+            <text>报名机构</text>
+            <text>{{ memberDetail.jigou ? memberDetail.jigou :''  }}</text>
+        </view>                                
+</view>

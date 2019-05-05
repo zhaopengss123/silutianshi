@@ -1,0 +1,59 @@
+.tefooter{
+  width: 750rpx;
+  height: 100rpx;
+  border-top: solid 1px rgba(0, 0, 0, 0.04);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  background: #fff;
+}
+.tete{
+  width: 100%;
+  height: 200rpx;
+}
+.tefooter view{
+  width:40rpx;
+  overflow: hidden;
+  float: left;
+  font-size: 20rpx;
+  margin: 0 42rpx;
+}
+.tefooter view image{
+  width: 40rpx;
+  height: 40rpx;
+  margin: 12rpx 0;
+}
+.tesign.tesign{
+  width:164rpx;
+  margin-top: 5rpx;
+}
+.tesign.tesign image{
+  width: 164rpx;
+  height: 66rpx;
+}
+
+.signBtn{
+  width: 750rpx;
+  position: fixed;
+  bottom: 0rpx;
+  left: 0;
+  z-index: 3;
+
+}
+.signBtns{
+  width: 100%;
+  height: 155rpx;
+  position: fixed;
+   bottom: 100rpx;
+   left: 0;
+}
+.signBtns view{
+  width: 100%;
+  height: 76rpx;
+  line-height: 76rpx;
+  text-align: center;
+  background: #fff;
+  font-size: 42rpx;
+  border-top: solid 2rpx rgba(0, 0, 0, 0.04);
+}

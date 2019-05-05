@@ -1,0 +1,38 @@
+<view class='content'>
+  <view class='banner'>
+      <!-- <image src='/assets/images/indexBanner_02.jpg' mode="widthFix"></image> -->
+        <swiper indicator-dots="true" autoplay="true" interval="5000" duration="300"  indicator-active-color="#FFF" circular="true">
+        <block wx:for="{{swiperArray}}" wx:key="key">
+          <swiper-item>
+            <image src="{{item.banner}}" class="slide-image" style='width:750rpx' mode="widthFix"/>
+          </swiper-item>
+        </block>
+      </swiper>
+  </view>
+  <view class='push'>
+     {{ actives.des }}
+  </view>
+  <view class='nav'>
+      <view wx:for="{{ navList }}" wx:key="index">
+        <navigator url='./detail/detail?id={{ item.id}}'>
+        <image src='{{ item.pic }}' mode="widthFix"></image>
+        </navigator>
+      </view>
+  </view>
+</view>
+<view class='opensetting' wx:if="{{ setTingGet }}">
+  <view>
+  <text>获取您的用户名头像等信息</text>
+  <button  open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button></view>
+</view>
+
+<view class='opensetting' wx:if="{{ setTingAddress }}">
+  <view>
+  <text>获取您的经纬度信息</text>
+  <button  open-type="openSetting" bindopensetting='openSetting'>获取位置信息</button></view>
+</view>
+<import src="/template/footer.wxml"/>
+<template is="post" data="{{id:1}}"></template>
+<template is="zzpage" wx:if="{{ hidezz }}" ></template>
+<view class='hideBtn' bindtap='showzz'></view>
+<view class='wellBg' wx:if="{{ hidezz }}" bindtap="nozz"></view>

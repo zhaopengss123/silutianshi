@@ -1,0 +1,35 @@
+{
+  "pages": [
+      "pages/index/index",
+      "pages/index/detail/detail",
+      "pages/index/detail/bannerdetail/bannerdetail",
+      "pages/index/detail/videoPlay/videoPlay",
+      "pages/index/detail/videoPlays/videoPlays",
+      "pages/search/search",
+      "pages/signUp/signUp",
+      "pages/signUp/enrolled/enrolled",
+      "pages/signUp/detailEnrolled/detailEnrolled",
+      "pages/signUp/notEnrolled/notEnrolled",
+      "pages/user/user",
+      "pages/user/collection/collection",
+      "pages/user/history/history",
+      "pages/user/follow/follow",
+      "pages/user/match/match",
+      "pages/news/news",
+      "pages/news/newsDateil/newsDateil"
+      
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#d0751d",
+    "navigationBarTitleText": "丝路天使艺术团",
+    "navigationBarTextStyle": "white",
+    "withShareTicket": true
+  },
+
+      "permission": {
+        "scope.userLocation": {
+          "desc": "您的位置信息将用于小程序位置接口的效果展示"
+        }
+      }
+}

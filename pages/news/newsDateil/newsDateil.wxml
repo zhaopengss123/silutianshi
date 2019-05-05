@@ -1,0 +1,10 @@
+<view class='content'>
+    <view class='title'>{{ newsDateil.n_title }}</view>
+    <view class='time'>{{ newsDateil.addtime }}</view>
+    <view class='main'>
+        <image src='{{ newsDateil.n_pic }}' mode="widthFix"></image>
+        <view class='text'>
+          {{ newsDateil.n_content }}
+        </view>
+    </view>
+</view>

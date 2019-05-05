@@ -1,0 +1,246 @@
+@import '/template/footer.wxss';
+page{
+  height: 100%;
+  width: 100%;
+}
+.content{
+  width: 100%;
+  height: 100%;
+}
+.searchSelect{
+  width:682rpx;
+  float: left;
+  height: 60rpx;
+  border: solid 2rpx rgba(214, 213, 214,1);
+  border-radius: 30rpx;
+  padding-left: 30rpx;
+  font-size: 24rpx;
+  color: rgba(0, 0, 0, .54);
+  background: url('http://ylbb-business.oss-cn-beijing.aliyuncs.com/searchBtn2231.png') no-repeat 640rpx 10rpx;
+  background-size: 40rpx 40rpx;
+  margin-bottom: 20rpx;
+  margin-left: 20rpx;
+}
+.searchSelect input{
+  width: 582rpx;
+  float: left;
+
+  height: 60rpx;
+  line-height: 60rpx;
+
+}
+.btn{
+  width: 100rpx;
+  height: 60rpx;
+  float: right;
+}
+.nav{
+  width: 710rpx;
+  margin: 0 auto;
+  font-size: 24rpx;
+  height:50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  background: #fefcfc;
+  margin-top: 20rpx;
+}
+.lists{
+  width: 233.6rpx;
+  float: left;
+  height: 50rpx;
+  color: rgba(0, 0, 0, .8);
+  background: url('http://ylbb-business.oss-cn-beijing.aliyuncs.com/select_112212.png') no-repeat 210rpx 15rpx;
+  background-size: 10rpx 20rpx;
+  border: solid 1rpx rgb(214, 213, 214);
+  border-right: none;
+  position: relative;
+}
+.lists:last-child{
+  border-right: solid 1rpx rgb(214, 213, 214);
+}
+.selectType{
+  width: 100%;
+    position: absolute;
+  top: 53rpx;
+  left: -1rpx; 
+}
+.selectType view{
+  width: 100%;
+  height: 50rpx;
+  color: rgba(0, 0, 0, .8);
+  background: #fefcfc;
+  border: solid 1rpx rgb(214, 213, 214);
+  border-top: none;
+}
+.list{
+  width: 338rpx;
+  box-shadow: 0px 0px 5rpx #cbcbcb;
+  border-radius: 10rpx;
+  overflow: hidden;
+  font-size: 20rpx;
+  margin-left: 20rpx;
+  margin-top: 20rpx;
+  float: left;
+  color: rgba(0, 0, 0, .8);
+  margin-bottom: 20rpx;
+
+}
+.list:nth-child(even){
+  margin-left: 39rpx;
+}
+.list image{
+  width: 338rpx;
+  height: 170rpx;
+}
+.list_font{
+  line-height: 40rpx;
+  overflow: hidden;
+
+  width: 334rpx;
+  margin: 0 auto;
+
+}
+
+.list_font view:nth-child(1) text{
+  display: block;
+
+  width: 164rpx;
+
+  float: left;
+ 
+}
+.list_font view:nth-child(1) text:nth-child(2){
+  text-align: right;
+
+}
+.sf{
+  width: 328rpx;
+  margin: 0 auto;
+}
+.pf{
+  width:328rpx;
+  margin: 0 auto;
+
+  font-size: 16rpx;
+}
+.pf text{
+  width: 33%;
+  float: left;
+  text-align: center;
+  overflow: hidden;
+}
+.pf text:nth-child(1){
+  text-align: left;
+}
+.pf text:nth-child(3){
+  text-align: right;
+}
+.list_footer{
+  font-size: 26rpx;
+  color: rgba(0, 0, 0, .8);
+  text-align: center;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+.imgh{
+  width: 750rpx;
+  height:184rpx;
+  display: block;
+  overflow: hidden;
+  padding-top: 20rpx;
+}
+.imgh image{
+  width: 750rpx;
+  height: 184rpx;
+}
+
+.areaselect{
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .6);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+}
+.item{
+  overflow: hidden;
+  font-size: 26rpx;
+  margin-top: 20rpx;
+  background: #fff;
+  width: 710rpx;
+  position: fixed;
+  top: -20rpx;
+  left: 0;
+  padding: 40rpx 30rpx 80rpx 30rpx; 
+}
+.item input,picker{
+  height: 46rpx;
+  line-height: 46rpx;
+  border: solid 2rpx rgb(229, 226, 226); 
+  border-radius: 6rpx;
+  margin-top: 10rpx;
+  width: 686rpx;
+  padding-left: 20rpx;
+  font-size: 22rpx;
+}
+.province{
+  width: 200rpx;
+  display: inline-block;
+  margin-right: 10rpx;
+}
+.noCity,.yesCity{
+  width: 150rpx;
+  height: 70rpx;
+  border-radius: 10rpx;
+  text-align: center;
+  background: #ccc;
+  color: #fff;
+  line-height: 60rpx;
+  float: left;
+  margin-left: 112.5rpx;
+  margin-top: 100rpx;
+}
+.yesCity{
+  background: #07b7f8;
+}
+.searchName{
+ width: 158rpx;
+ float: left;
+ height: 60rpx;
+ line-height: 60rpx;
+ font-size: 24rpx;
+ margin-left: 20rpx;
+ background: #ccc;
+ text-indent: 50rpx;
+ background: url('http://ylbb-business.oss-cn-beijing.aliyuncs.com/citys121421212.png') no-repeat 0rpx center;
+ background-size:40rpx  48rpx;
+}
+.searchSelect.cli{
+  width: 524rpx;
+  float: left;
+  background: url('http://ylbb-business.oss-cn-beijing.aliyuncs.com/searchBtn2231.png') no-repeat 492rpx 10rpx;
+  background-size: 40rpx 40rpx;  
+  margin-left: 0;
+}
+.searchSelect.cli input{
+  width: 424rpx;
+  float: left;
+}
+
+.hideBtn{
+  width: 200rpx;
+  height: 100rpx;
+  position: fixed;
+  bottom: 0;
+  left: 275rpx;
+  z-index: 100000;
+}
+.wellBg{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, .6);
+}

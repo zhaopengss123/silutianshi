@@ -1,0 +1,107 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"autoAudits": false
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.6.4",
+	"appid": "wx0a02a8989d006e9d",
+	"projectname": "%E4%B8%9D%E8%B7%AF%E5%A4%A9%E4%BD%BF",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 9,
+			"list": [
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/user/user",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "内容页",
+					"pathName": "pages/index/detail/detail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "视频播放",
+					"pathName": "pages/index/detail/videoPlay/videoPlay",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 3,
+					"name": "已报名",
+					"pathName": "pages/signUp/enrolled/enrolled",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 4,
+					"name": "报名",
+					"pathName": "pages/signUp/signUp",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 5,
+					"name": "未报名",
+					"pathName": "pages/signUp/notEnrolled/notEnrolled",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "收藏",
+					"pathName": "pages/user/collection/collection",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "搜索",
+					"pathName": "pages/search/search",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "新闻",
+					"pathName": "pages/news/news",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的比赛",
+					"pathName": "pages/user/match/match",
+					"scene": null
+				}
+			]
+		}
+	}
+}

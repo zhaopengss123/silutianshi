@@ -1,0 +1,26 @@
+<view class='content'>
+     <view class='detail_main' wx:if="{{!videoList.length&&loading}}">
+        <view class='noList' >
+            <view class='noTitle'>暂时没有比赛视频~</view>
+            <!-- <view class='noDesc'>点击立即报名去参加比赛吧！</view>
+            <view class='noBtn' bindtap='toSign'>立即报名</view> -->
+        </view>
+    </view>
+    <view class='matchList' wx:if="{{videoList.length}}">
+        <view  class='list' wx:for="{{ videoList }}">
+        <navigator url='/pages/index/detail/videoPlay/videoPlay?id={{ item.id }}' hover-class="none">
+          <view class='list_icon'>
+                  <image src='/assets/images/plays.png'></image>
+          </view>
+          </navigator>
+          <view class='list_images'><image src="{{ item.pic }}" mode="widthFix"></image></view>
+          <view class='list_text'>
+            <text>线下分数：{{ item.livenum ? item.livenum : 0 }}</text>
+            <text>网络得分：{{ item.linenum ? item.linenum : 0}}</text>
+            <text>综合得分：{{ item.allnum ? item.allnum : 0}}</text>
+            <button  open-type="share"  type="primary" data-item="{{ item }}" ></button>
+            <image src='/assets/images/share.png'></image>
+          </view>
+        </view>
+    </view>
+</view>

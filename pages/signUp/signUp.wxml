@@ -1,0 +1,8 @@
+<view class='content'>
+  <view class='signBtn'>
+      <view><navigator url='./notEnrolled/notEnrolled'>未报名</navigator></view>
+      <view><navigator url='./enrolled/enrolled'>已报名</navigator></view>
+  </view>
+</view>
+<import src="/template/footer.wxml"/>
+<template is="post" data="{{id:5}}"></template>
