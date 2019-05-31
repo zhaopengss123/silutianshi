@@ -12,6 +12,8 @@
 	"libVersion": "2.6.4",
 	"appid": "wx0a02a8989d006e9d",
 	"projectname": "%E4%B8%9D%E8%B7%AF%E5%A4%A9%E4%BD%BF",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
@@ -30,7 +32,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 9,
+			"current": 10,
 			"list": [
 				{
 					"id": -1,
@@ -99,6 +101,14 @@
 					"id": -1,
 					"name": "我的比赛",
 					"pathName": "pages/user/match/match",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "扫码进入",
+					"pathName": "pages/signUp/qrcode/qrcode",
+					"query": "id=3",
 					"scene": null
 				}
 			]

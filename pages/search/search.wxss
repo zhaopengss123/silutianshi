@@ -107,7 +107,10 @@ page{
   width: 164rpx;
 
   float: left;
- 
+   overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  height: 40rpx;
 }
 .list_font view:nth-child(1) text:nth-child(2){
   text-align: right;
@@ -209,12 +212,15 @@ page{
  float: left;
  height: 60rpx;
  line-height: 60rpx;
- font-size: 24rpx;
+ font-size: 20rpx;
  margin-left: 20rpx;
  background: #ccc;
  text-indent: 50rpx;
  background: url('http://ylbb-business.oss-cn-beijing.aliyuncs.com/citys121421212.png') no-repeat 0rpx center;
  background-size:40rpx  48rpx;
+ overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .searchSelect.cli{
   width: 524rpx;

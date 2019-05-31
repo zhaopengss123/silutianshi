@@ -6,39 +6,61 @@ Page({
    * 页面的初始数据
    */
   data: {
-    birthday:'',
-    sexIndex:0,
-    sex:'男',
-    sexArray:['男','女'],
-    provinceList:[],
-    provinceIndex:null,
-    provinceid : null,
-    cityList:[],
-    cityIndex:null,
-    areaIndex:0,
-    areaList:[],
-    areaid:null,
-    cityid:null,
-    jigouList:[],
-    jigouId:null,
-    jigouIndex:1000,
-    name:'',
-    parents:'',
-    pphone:'',
-    typeList:[],
-    typeInde:0,
-    jigou:null,
-    areaid:null,
-    childList:[],
-    childtype:'',
-    childtypeIndex:1000,
-    jigouName: null
+    birthday: '',
+    sexIndex: 0,
+    sex: '男',
+    sexArray: ['男', '女'],
+    provinceList: [],
+    provinceIndex: null,
+    provinceid: null,
+    cityList: [],
+    cityIndex: null,
+    areaIndex: 0,
+    areaList: [],
+    areaid: null,
+    cityid: null,
+    jigouList: [],
+    jigouId: null,
+    jigouIndex: 1000,
+    name: '',
+    parents: '',
+    pphone: '',
+    typeList: [],
+    typeInde: 0,
+    jigou: null,
+    areaid: null,
+    childList: [],
+    childtype: '',
+    childtypeIndex: 1000,
+    jgName:null
   },
 
   onLoad: function (options) {
+    let that = this;
     this.getProvince();
-    this.getJigou();
+    // this.getJigou();
     this.getkind();
+    Http.post('/Home/Silu/get_name', {
+      id: options.id
+    }).then(res => {
+      that.setData({
+        jgName: res.data,
+        jgId: options.id
+      })
+      wx.hideLoading();
+    }, _ => {
+      wx.hideLoading();
+    });
+
+    wx.login({
+      success(res) {
+        console.log(res);
+        that.setData({
+          code: res.code
+        })
+      }
+    });
+    that.wxLogin();
   },
   //获取省
   getProvince() {
@@ -57,7 +79,7 @@ Page({
       name: e.detail.value
     });
   },
-  parentsInput(e){
+  parentsInput(e) {
     this.setData({
       parents: e.detail.value
     });
@@ -67,35 +89,35 @@ Page({
       pphone: e.detail.value
     });
   },
-  getkind(){
+  getkind() {
     let that = this;
     Http.post('/Home/Silu/kind', {
     }).then(res => {
       wx.hideLoading();
       that.setData({
-        typeList :res.data
+        typeList: res.data
       })
     }, _ => {
       wx.hideLoading();
     });
   },
-  typeChange(e){
+  typeChange(e) {
     this.setData({
       typeIndex: e.detail.value,
       type: this.data.typeList[e.detail.value].id,
-      childList:[],
-      childtype:'',
+      childList: [],
+      childtype: '',
       childtypeIndex: 1000
     })
     this.getChild();
   },
-  childtypeChange(e){
+  childtypeChange(e) {
     this.setData({
       childtypeIndex: e.detail.value,
       childtype: this.data.childList[e.detail.value].id
     })
   },
-  getChild(){
+  getChild() {
     let that = this;
     wx.showLoading({
       title: '加载中',
@@ -116,7 +138,7 @@ Page({
     let that = this;
     let isMobile = /^1[3|4|5|6|7|8][0-9]\d{4,8}$/;
     if (isMobile.test(this.data.pphone) && this.data.pphone.length == 11) {
-      if (!that.data.name){
+      if (!that.data.name) {
         wx.showToast({
           icon: "none",
           title: '请输入参赛者姓名',
@@ -129,27 +151,27 @@ Page({
           title: '请输入参赛者年龄',
         })
         return false;
-      }  
+      }
       if (!that.data.parents) {
         wx.showToast({
           icon: "none",
           title: '请输入监护人姓名',
         })
         return false;
-      }    
+      }
       if (!that.data.type) {
         wx.showToast({
           icon: "none",
           title: '请选择报名类目',
         })
         return false;
-      }   
-      if (that.data.childList.length && !that.data.childtype ){
+      }
+      if (that.data.childList.length && !that.data.childtype) {
         wx.showToast({
           icon: "none",
           title: '请选择二级类目',
         })
-        return false;       
+        return false;
       }
 
       if (!that.data.provinceid) {
@@ -158,21 +180,14 @@ Page({
           title: '请选择省',
         })
         return false;
-      }   
+      }
       if (!that.data.areaid) {
         wx.showToast({
           icon: "none",
           title: '请选择区',
         })
         return false;
-      }     
-      if (!that.data.jigouName) {
-        wx.showToast({
-          icon: "none",
-          title: '请输入报名机构',
-        })
-        return false;
-      }                     
+      }
     } else {
       wx.showToast({
         icon: "none",
@@ -182,7 +197,7 @@ Page({
     }
     wx.showLoading({
       title: '加载中',
-      mask: true
+      mask:true
     })
     Http.post('/Home/Silu/baoming', {
       name: that.data.name,
@@ -194,24 +209,24 @@ Page({
       childid: that.data.childtype,
       area: that.data.areaid,
       Provinceid: that.data.provinceid,
-      jigou: that.data.jigouName,
+      jigou: that.data.jgName,
       token: app.globalConfig.token,
       provinceid: that.data.provinceid,
     }).then(res => {
       wx.hideLoading();
-      if(res.code == 200){
-       wx.showToast({
-         title: '报名成功！',
-       })
-       setTimeout(function(){
-         wx.redirectTo({
-           url: '/pages/user/user',
-         })
-       },1500);
-
-      }else{
+      if (res.code == 200) {
         wx.showToast({
-          icon:'none',
+          title: '报名成功！',
+        })
+        setTimeout(function () {
+          wx.redirectTo({
+            url: '/pages/user/user',
+          })
+        }, 1500);
+
+      } else {
+        wx.showToast({
+          icon: 'none',
           title: res.message,
         })
       }
@@ -219,42 +234,42 @@ Page({
       wx.hideLoading();
     });
   },
-// 获取机构
-getJigou(){
-  let that = this;
-  Http.post('/Home/Silu/jigou', {
-  }).then(res => {
-    wx.hideLoading();
-    that.setData({
-      jigouList: res.data
-    })
-  }, _ => {
-    wx.hideLoading();
-  });
-},
+  // 获取机构
+  // getJigou() {
+  //   let that = this;
+  //   Http.post('/Home/Silu/jigou', {
+  //   }).then(res => {
+  //     wx.hideLoading();
+  //     that.setData({
+  //       jigouList: res.data
+  //     })
+  //   }, _ => {
+  //     wx.hideLoading();
+  //   });
+  // },
 
-  provinceChange(e){
-      this.setData({
-        provinceIndex: e.detail.value,
-        provinceid: this.data.provinceList[e.detail.value].provinceid
-      })
-      
-      this.getCity();
+  provinceChange(e) {
+    this.setData({
+      provinceIndex: e.detail.value,
+      provinceid: this.data.provinceList[e.detail.value].provinceid
+    })
+
+    this.getCity();
   },
 
-  cityChange(e){
+  cityChange(e) {
     this.setData({
       cityIndex: e.detail.value,
       cityid: this.data.cityList[e.detail.value].cityid
     })
     this.getArea();
   },
-  getArea(){
+  getArea() {
     let that = this;
     wx.showLoading({
       title: '加载中……',
       mask: true
-    })    
+    })
     Http.post('/Home/Silu/qu', {
       cityid: this.data.cityid
     }).then(res => {
@@ -268,12 +283,12 @@ getJigou(){
     });
   },
 
-  getCity(){
+  getCity() {
     let that = this;
     wx.showLoading({
       title: '加载中……',
       mask: true
-    })    
+    })
     Http.post('/Home/Silu/shi', {
       provinceid: this.data.provinceid
     }).then(res => {
@@ -286,7 +301,7 @@ getJigou(){
       wx.hideLoading();
     });
   },
-  areaChange(e){
+  areaChange(e) {
     this.setData({
       areaIndex: e.detail.value,
       areaid: this.data.areaList[e.detail.value].id
@@ -298,11 +313,6 @@ getJigou(){
       jigouIndex: e.detail.value,
       jigou: this.data.jigouList[e.detail.value].id
     })
-  },
-  jigouInput(e){
-    this.setData({
-      jigouName: e.detail.value
-    });
   },
   //选择生日
   birthdayChange(e) {
@@ -316,7 +326,7 @@ getJigou(){
       sexIndex: Number(e.detail.value),
       sex: this.data.sexArray[this.data.sexIndex]
     })
-    
+
   },
   onShareAppMessage: function () {
     let arr = [
@@ -326,7 +336,6 @@ getJigou(){
       "http://ylbb-business.oss-cn-beijing.aliyuncs.com/1555502399046ylbaby.jpg"
     ];
     let imgs = arr[Math.floor(Math.random() * 3 + 1)];
-    console.log(imgs);
     return {
       title: '丝路天使少儿艺术团，等你来参加～',
       path: `/pages/index/detail/index/index`,
@@ -334,4 +343,66 @@ getJigou(){
     }
 
   },
+  /******** 用户登录 ********/
+  wxLogin() {
+    let that = this;
+    wx.getSetting({
+      success(ress) {
+        console.log(ress);
+        if (ress.authSetting['scope.userInfo']) {
+          wx.getUserInfo({
+            withCredentials: true,
+            success(res) {
+              app.userInfo = res.userInfo;
+              that.setData({
+                userData: res
+              })
+
+
+              wx.getLocation({
+                type: 'wgs84',
+                success(res) {
+                  app.globalConfig.latitude = res.latitude;
+                  app.globalConfig.longitude = res.longitude;
+                  wx.showLoading({
+                    title: '加载中...',
+                  })
+                  Http.post('/Home/Index/dologin', {
+                    code: that.data.code,
+                    encryptedData: encodeURI(that.data.userData.encryptedData),
+                    iv: encodeURI(that.data.userData.iv),
+                    lat: app.globalConfig.latitude,
+                    lng: app.globalConfig.longitude
+
+                  }).then(res => {
+                    wx.hideLoading();
+                    app.globalConfig.token = res.data.token;
+                    app.globalConfig.cityid = res.data.cityid;
+                  }, _ => {
+                    wx.hideLoading();
+                  });
+
+                },
+                fail(err) {
+                  that.setData({
+                    setTingAddress: true
+                  })
+                }
+              })
+            }
+          });
+        } else {
+          that.setData({
+            setTingGet: true
+          })
+        }
+      }
+    });
+
+  },  
+  toIndex(){
+    wx.redirectTo({
+      url: '/pages/index/index',
+    })
+  }
 })

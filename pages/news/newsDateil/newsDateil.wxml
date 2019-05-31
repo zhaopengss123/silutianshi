@@ -2,7 +2,7 @@
     <view class='title'>{{ newsDateil.n_title }}</view>
     <view class='time'>{{ newsDateil.addtime }}</view>
     <view class='main'>
-        <image src='{{ newsDateil.n_pic }}' mode="widthFix"></image>
+        <image wx:if="{{ newsDateil.n_pic }}" src='{{ newsDateil.n_pic }}' mode="widthFix"></image>
         <view class='text'>
           {{ newsDateil.n_content }}
         </view>

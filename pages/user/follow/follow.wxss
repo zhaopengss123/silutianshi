@@ -28,7 +28,10 @@
   width: 159rpx;
   float: left;
   margin-left: 5rpx;
- 
+   overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  height: 40rpx;
 }
 .list_font view:nth-child(1) text:nth-child(2){
   text-align: right;

@@ -1,0 +1,9 @@
+<view class='content'>
+    <view class='title'>{{ newsDateil.title }}</view>
+    <view class='time'>{{ newsDateil.addtime }}</view>
+    <view class='main'>
+        <image wx:if="{{ newsDateil.banner }}" src='{{ newsDateil.banner }}' mode="widthFix"></image>
+        <import src="/wxParse/wxParse.wxml"/>
+        <template is="wxParse" data="{{wxParseData:details.nodes}}"></template>
+    </view>
+</view>

@@ -58,11 +58,8 @@
     </view>
     <view class='item'>
         <text>报名机构</text>
-        <!-- <picker bindchange="jigouChange" value="{{jigouIndex}}" range="{{jigouList}}" range-key="{{'nickname'}}">
-          <view class='select' wx:if="{{ jigouList[jigouIndex] }}">{{ jigouList[jigouIndex].nickname }}</view>
-          <view class='notSelect' wx:if="{{ !jigouList[jigouIndex] }}">请选择机构</view>
-        </picker> -->
-        <input placeholder='请输入报名机构' bindinput="jigouInput" placeholder-style="color:#b0b0b0"></input>
+        <input placeholder='请输入机构' disabled="true" value="{{jgName}}" placeholder-style="color:#b0b0b0"></input>
     </view> 
-    <view class='submit' bindtap='submits'>提交报名资料</view>                          
+    <view class='submit' bindtap='submits'>提交报名资料</view>    
+    <view class='submit index' bindtap='toIndex'>回到首页</view>                       
 </view>

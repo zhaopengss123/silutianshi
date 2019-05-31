@@ -53,7 +53,10 @@ image{
 
   width: 164rpx;
   float: left;
-
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  height: 40rpx;
  
 }
 .list_font view:nth-child(1) text:nth-child(2){
@@ -63,6 +66,8 @@ image{
 .sf{
   width: 328rpx;
   margin: 0 auto;
+
+
 }
 .pf{
   width:328rpx;
