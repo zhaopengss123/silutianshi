@@ -7,7 +7,7 @@
             </view>
             <view class='font'>
                   <view class='title'>{{ item.n_title }}</view>
-                  <view class='text'>{{ item.n_content }}</view>
+                  <view class='text'>{{ item.n_des }}</view>
             </view>
         </view>
         <view class='listTime'>

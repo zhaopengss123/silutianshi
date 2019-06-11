@@ -1,3 +1,4 @@
+@import "/wxParse/wxParse.wxss";
 .content{
   width: 690rpx;
   margin: 0 auto;

@@ -54,13 +54,13 @@ Page({
 
     wx.login({
       success(res) {
-        console.log(res);
         that.setData({
           code: res.code
         })
+        that.wxLogin();
       }
     });
-    that.wxLogin();
+    
   },
   //获取省
   getProvince() {
@@ -348,7 +348,7 @@ Page({
     let that = this;
     wx.getSetting({
       success(ress) {
-        console.log(ress);
+        
         if (ress.authSetting['scope.userInfo']) {
           wx.getUserInfo({
             withCredentials: true,
@@ -357,7 +357,7 @@ Page({
               that.setData({
                 userData: res
               })
-
+              console.log(2222);
 
               wx.getLocation({
                 type: 'wgs84',
@@ -389,9 +389,12 @@ Page({
                   })
                 }
               })
+            },fail(res){
+              console.log(res);
             }
           });
         } else {
+          console.log(1111);
           that.setData({
             setTingGet: true
           })
@@ -404,5 +407,23 @@ Page({
     wx.redirectTo({
       url: '/pages/index/index',
     })
-  }
+  },
+  bindGetUserInfo(e) {
+    let that = this;
+    if (e.detail.userInfo) {
+      wx.getUserInfo({
+        success(res) {
+          console.log(res);
+          app.userInfo = res.userInfo;
+          that.setData({
+            userData: res,
+            setTingGet: false
+          });
+          that.wxLogin();
+        }
+      });
+    } else {
+
+    }
+  },
 })

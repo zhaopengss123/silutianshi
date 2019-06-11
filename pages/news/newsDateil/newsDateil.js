@@ -1,12 +1,14 @@
 const app = getApp();
 const Http = require('../../../utils/request.js');
+var wxParse = require('../../../wxParse/wxParse.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-      newsDateil:{}
+      newsDateil:{},
+      details: ''
   },
 
   /**
@@ -28,6 +30,8 @@ Page({
       id: that.data.id
     }).then(res => {
       wx.hideLoading();
+      let content = res.data.n_content ? res.data.n_content : '.';
+      wxParse.wxParse('details', 'html', content, this, 0);
 
       that.setData({
         newsDateil: res.data

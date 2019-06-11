@@ -46,3 +46,34 @@ page{
   display: inline-block;
   margin-right: 10rpx;
 }
+.opensetting{
+  width:100%;
+  height:100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+}
+.opensetting view{
+  width: 690rpx;
+  height: 300rpx;
+  margin: 0 auto;
+  margin-top: 300rpx;
+  background: #fff;
+  overflow: hidden;
+}
+.opensetting button{
+  margin-top: 50rpx;
+  display: block;
+  width: 300rpx;
+  background: #d0751d;
+  color: #fff;
+  font-size: 32rpx;
+}
+.opensetting text{
+  display: block;
+  font-size: 30rpx;
+  text-align: center;
+  padding-top: 80rpx;
+}

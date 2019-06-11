@@ -1,1 +1,29 @@
 @import "/wxParse/wxParse.wxss";
+.content{
+  width: 690rpx;
+  margin: 0 auto;
+  margin-top: 15rpx;
+  padding-bottom: 30rpx;
+}
+.title{
+  font-size: 36rpx;
+  margin-bottom: 20rpx;
+}
+.time{
+  font-size: 24rpx;
+  color: rgb(151, 150, 150);
+}
+.main{
+  margin-top: 30rpx;
+}
+.main image{
+  width: 100%;
+}
+.text{
+  margin-top: 30rpx;
+  width: 100%;
+  overflow: hidden;
+  line-height: 40rpx;
+  color: #222;
+  font-size: 28rpx;
+}

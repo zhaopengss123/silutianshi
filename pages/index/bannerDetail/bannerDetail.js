@@ -31,10 +31,10 @@ Page({
       id: that.data.id
     }).then(res => {
       wx.hideLoading();
-
+      if (res.data.content){
       let content = res.data.content;
       wxParse.wxParse('details', 'html', content, this, 0);
-
+      }
       that.setData({
         newsDateil: res.data
       })

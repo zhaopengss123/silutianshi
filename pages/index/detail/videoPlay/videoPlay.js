@@ -23,6 +23,7 @@ Page({
     this.getData(options.id);
     this.setData({ vid: options.id })
     this.getLike();
+    console.log(app);
   },
   getData(id) {
     wx.showLoading({
@@ -55,17 +56,22 @@ Page({
       token: app.globalConfig.token
     }).then(res => {
       wx.hideLoading();
-      let ss = that.data.videoDetail;
-      ss.snum = ss.snum ? Number(ss.snum) + 1 : 1;
-      that.setData({
-        heart: true,
-        videoDetail: ss
-      })
-      console.log(that.data.videoDetail);
-      wx.showToast({
-        title: '收藏成功！',
-      })
-
+      if(res.code == 200){
+        let ss = that.data.videoDetail;
+        ss.collect = ss.collect ? Number(ss.collect) + 1 : 1;
+        that.setData({
+          heart: true,
+          videoDetail: ss
+        })
+        wx.showToast({
+          title: '收藏成功！',
+        })
+      }else{
+          wx.showToast({
+            title: res.message,
+            icon:'none'
+          })
+      }
     }, _ => {
       wx.hideLoading();
     });

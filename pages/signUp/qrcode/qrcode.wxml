@@ -63,3 +63,9 @@
     <view class='submit' bindtap='submits'>提交报名资料</view>    
     <view class='submit index' bindtap='toIndex'>回到首页</view>                       
 </view>
+
+<view class='opensetting' wx:if="{{ setTingGet }}">
+  <view>
+  <text>获取您的用户名头像等信息</text>
+  <button  open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button></view>
+</view>

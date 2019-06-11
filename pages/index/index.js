@@ -50,8 +50,6 @@ Page({
               that.setData({
                 userData: res
               })
-
-
                 wx.getLocation({
                   type: 'wgs84',
                   success(res) {

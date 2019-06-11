@@ -15,7 +15,7 @@
     <view>
         <image src='/assets/images/hearts.png' bindtap='clickHeart' wx:if="{{ !heart }}"></image>
         <image src='/assets/images/heart.png' wx:else></image>
-        <text>{{ videoDetail.snum?videoDetail.snum:0 }}</text>
+        <text>{{ videoDetail.collect?videoDetail.collect:0 }}</text>
     </view>
     <view>
         <image src='/assets/images/fabulous_n.png' bindtap='clickFabulous' wx:if="{{ !fabulous }}"></image>
