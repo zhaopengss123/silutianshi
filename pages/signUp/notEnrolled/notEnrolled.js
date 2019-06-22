@@ -166,10 +166,10 @@ Page({
         })
         return false;
       }     
-      if (!that.data.jigouName) {
+      if (!that.data.jigou) {
         wx.showToast({
           icon: "none",
-          title: '请输入报名机构',
+          title: '请选择报名机构',
         })
         return false;
       }                     
@@ -194,9 +194,10 @@ Page({
       childid: that.data.childtype,
       area: that.data.areaid,
       Provinceid: that.data.provinceid,
-      jigou: that.data.jigouName,
+      jigou: that.data.jigou,
+      jigouid: that.data.jigou,
       token: app.globalConfig.token,
-      provinceid: that.data.provinceid,
+      zl:0
     }).then(res => {
       wx.hideLoading();
       if(res.code == 200){
@@ -223,6 +224,7 @@ Page({
 getJigou(){
   let that = this;
   Http.post('/Home/Silu/jigou', {
+    areaid: that.data.areaid
   }).then(res => {
     wx.hideLoading();
     that.setData({
@@ -291,13 +293,14 @@ getJigou(){
       areaIndex: e.detail.value,
       areaid: this.data.areaList[e.detail.value].id
     })
-
+    this.getJigou();
   },
   jigouChange(e) {
     this.setData({
       jigouIndex: e.detail.value,
       jigou: this.data.jigouList[e.detail.value].id
     })
+    console.log(this.data.jigouList[e.detail.value].id);
   },
   jigouInput(e){
     this.setData({

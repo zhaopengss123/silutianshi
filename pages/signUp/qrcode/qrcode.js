@@ -32,7 +32,7 @@ Page({
     childList: [],
     childtype: '',
     childtypeIndex: 1000,
-    jgName:null
+    jgName:{}
   },
 
   onLoad: function (options) {
@@ -173,21 +173,6 @@ Page({
         })
         return false;
       }
-
-      if (!that.data.provinceid) {
-        wx.showToast({
-          icon: "none",
-          title: '请选择省',
-        })
-        return false;
-      }
-      if (!that.data.areaid) {
-        wx.showToast({
-          icon: "none",
-          title: '请选择区',
-        })
-        return false;
-      }
     } else {
       wx.showToast({
         icon: "none",
@@ -208,10 +193,12 @@ Page({
       type: that.data.type,
       childid: that.data.childtype,
       area: that.data.areaid,
-      Provinceid: that.data.provinceid,
-      jigou: that.data.jgName,
+      jigou: that.data.jgName.name,
       token: app.globalConfig.token,
-      provinceid: that.data.provinceid,
+      Provinceid: that.data.jgName.Provinceid,
+      Cityid: that.data.jgName.Cityid,
+      Areaid: that.data.jgName.Areaid,
+      zl:1
     }).then(res => {
       wx.hideLoading();
       if (res.code == 200) {

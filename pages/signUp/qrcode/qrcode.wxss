@@ -41,7 +41,7 @@ page{
   margin-top: 20rpx;
   margin-bottom: 50rpx;
 }
-.province{
+.province.province{
   width: 200rpx;
   display: inline-block;
   margin-right: 10rpx;
