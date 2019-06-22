@@ -9,7 +9,8 @@ Page({
     swiperArray:[],
     actives:'',
     videoList:[],
-    ggbanner:{}
+    ggbanner:{},
+    id: null
   },
 
   /**
@@ -18,7 +19,16 @@ Page({
   onLoad: function (options) {
       this.getBanner();
       this.getData(options.id);
+      this.setData({
+        id : options.id
+      })
 
+  },
+  onShow(){
+    if( this.data.id ){
+      this.getData(this.data.id);
+    }
+    
   },
 
   /******** 获取banner&&获取最新活动&&获取类别 ********/
