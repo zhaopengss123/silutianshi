@@ -62,11 +62,15 @@ Page({
     })
   },
   getData(id) {
+    wx.showLoading({
+      title: '加载中……',
+    })
     Http.post('/Home/Silu/videos', {
       token: app.globalConfig.token,
       area: app.globalConfig.cityid,
       id:id
       }).then(res => {
+        wx.hideLoading();
        if(res.code == 200){
         let arr = [];
          res.data.map((item,index) => {
@@ -89,6 +93,8 @@ Page({
           })
         } 
       }, _ => {
+        wx.hideLoading();
+
       });
   },
   onShareAppMessage: function () {

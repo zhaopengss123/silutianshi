@@ -319,7 +319,7 @@ Page({
       mask: true
     })
     Http.post('/Home/Silu/searshow', {
-      memberName: that.data.memberName
+      name: that.data.memberName
     }).then(res => {
       wx.hideLoading();
       if (res.code == 200) {

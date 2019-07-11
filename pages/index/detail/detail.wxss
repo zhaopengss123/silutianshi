@@ -103,6 +103,7 @@ image{
 }
 .imgh image{
   width: 750rpx;
+  height:350rpx;
 }
 .lists{
   width: auto;

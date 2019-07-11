@@ -6,8 +6,6 @@
         danmu-list="{{danmuList}}"
         bindplay = "videoplay"
         bindpause="videopause"
-        enable-danmu
-        danmu-btn
         controls
       ></video>
   </view>

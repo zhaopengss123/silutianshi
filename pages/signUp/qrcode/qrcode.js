@@ -184,20 +184,21 @@ Page({
       title: '加载中',
       mask:true
     })
+    
     Http.post('/Home/Silu/baoming', {
       name: that.data.name,
       birthday: that.data.birthday,
-      sex: that.data.sex,
+      sex: that.data.sex == '男' ? 1 : 0,
       parents: that.data.parents,
       pphone: that.data.pphone,
       type: that.data.type,
       childid: that.data.childtype,
       area: that.data.areaid,
-      jigou: that.data.jgName.name,
+      jigou: that.data.jgName.jigou,
       token: app.globalConfig.token,
-      Provinceid: that.data.jgName.Provinceid,
-      Cityid: that.data.jgName.Cityid,
-      Areaid: that.data.jgName.Areaid,
+      provinceid: that.data.jgName.provinceid,
+      cityid: that.data.jgName.cityid,
+      areaid: that.data.jgName.areaid,
       zl:1
     }).then(res => {
       wx.hideLoading();
@@ -309,11 +310,13 @@ Page({
   },
   // 选择性别
   sexChange(e) {
+    
     this.setData({
       sexIndex: Number(e.detail.value),
+    })
+    this.setData({
       sex: this.data.sexArray[this.data.sexIndex]
     })
-
   },
   onShareAppMessage: function () {
     let arr = [

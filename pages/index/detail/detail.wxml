@@ -26,7 +26,7 @@
 
     </view> 
           <view class='imgh' wx:if="{{ item.skm }}">
-              <image src='{{ ggbanner.pic }}' bindtap='tobannerDetail' mode="widthFix"></image>
+              <image src='{{ ggbanner.pic }}' bindtap='tobannerDetail' ></image>
           </view  >
     </view>
 

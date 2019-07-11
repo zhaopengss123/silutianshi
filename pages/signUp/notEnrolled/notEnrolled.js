@@ -187,13 +187,13 @@ Page({
     Http.post('/Home/Silu/baoming', {
       name: that.data.name,
       birthday: that.data.birthday,
-      sex: that.data.sex,
+      sex: that.data.sex == '男'? 1 : 0,
       parents: that.data.parents,
       pphone: that.data.pphone,
       type: that.data.type,
       childid: that.data.childtype,
       area: that.data.areaid,
-      Provinceid: that.data.provinceid,
+      provinceid: that.data.provinceid,
       jigou: that.data.jigou,
       jigouid: that.data.jigou,
       token: app.globalConfig.token,
@@ -317,6 +317,8 @@ getJigou(){
   sexChange(e) {
     this.setData({
       sexIndex: Number(e.detail.value),
+    })
+    this.setData({
       sex: this.data.sexArray[this.data.sexIndex]
     })
     
