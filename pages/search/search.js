@@ -33,7 +33,7 @@ Page({
   onLoad: function (options) {
     this.getProvince();
     this.getkind();
-    this.getData();
+    //this.getData();
   },
 
   getData() {
