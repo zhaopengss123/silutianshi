@@ -5,7 +5,7 @@
                   <open-data type="userAvatarUrl"></open-data>
                 </view>
                 <view class='list_text'>
-                    <view>参赛者姓名：{{ item.name }} <text>{{ item.code }}</text></view>
+                    <view>参赛者姓名：{{ item.xuanshou }} <text>{{ item.code }}</text></view>
                     <view>参 赛 项 目：{{ item.type }} </view>
                     <view>报 名 机 构：{{ item.jigou }} </view>
                 </view>

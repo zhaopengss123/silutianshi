@@ -78,11 +78,11 @@ Page({
 
   onShareAppMessage: function (e) {
     let that = this;
-    let item = e.target.dataset.item;
+    let items = e.target.dataset.item;
     return {
-      title: item.name,
+      title: items.name,
       path: `/pages/index/detail/videoPlay/videoPlay?id=${item.vid}`,
-      imageUrl: item.pic
+      imageUrl: items.pic
     }
 
   },

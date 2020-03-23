@@ -19,7 +19,7 @@
         <navigator url='./videoPlay/videoPlay?id={{ item.id }}'>
         <image src='{{ item.pic }}'></image>
         <view class='list_font'>
-           <view class='sf'> <text>姓名：{{ item.name }}</text> <text>类目：{{ item.type }}</text> </view>
+           <view class='sf'> <text>姓名：{{ item.xuanshou }}</text> <text>类目：{{ item.type }}</text> </view>
            <view class='pf'> <text>现场：{{ item.livenum? item.livenum:0 }}</text><text>网络：{{item.linenum?item.linenum:0}}</text><text>总分：{{ item.allnum?item.allnum:0 }}</text> </view>
         </view>
         </navigator>

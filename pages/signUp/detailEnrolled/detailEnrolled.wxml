@@ -3,7 +3,7 @@
            <open-data type="userAvatarUrl"></open-data>
         </view>
         <view class='userName'>
-            参赛者姓名:{{ memberDetail.name }}
+            参赛者姓名:{{ memberDetail.xuanshou }}
         </view>
         <view class='list'>
             <text>参赛者编号</text>
