@@ -1,0 +1,150 @@
+.content{
+  width: 670rpx;
+  margin: 0 auto;
+}
+.nav{
+  margin-top: 40rpx;
+  overflow: hidden;
+  line-height: 70rpx;
+}
+.nav view{
+  color: #919BA5;
+  font-size: 28rpx;
+  float: left;
+}
+.nav view:last-child{
+  margin-left: 40rpx;
+}
+.nav view.active{
+  color: #222222;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+.share-input{
+  width: 666rpx;
+  height: 96rpx;
+  line-height: 96rpx;
+  border: solid 2rpx #EFF0F4;
+  border-radius: 50rpx;
+  margin-top: 40rpx;
+  overflow: hidden;
+  background: url("https://ylbb-wxapp.oss-cn-beijing.aliyuncs.com/branch-store/sharebg.png") no-repeat 40rpx center;
+  background-size: 40rpx 40rpx; 
+}
+.share-input input{
+  float: left;
+  height: 96rpx;
+  color: #919BA5;
+  font-size: 28rpx;
+  margin-left: 110rpx;
+}
+.share-input view{
+  width: 144rpx;
+  background: none;
+  float: right;
+  height: 96rpx;
+  line-height: 96rpx;
+  color: #373C41;
+  font-size: 32rpx;
+  text-align: center;
+}
+.purchase view image{
+  width: 70rpx;
+  height: 70rpx;
+  float: left;
+  border-radius: 50%;
+}
+.user-detail{
+  float: left;
+}
+.user-left{
+  float: left;
+  margin-left: 20rpx;
+  overflow: hidden;
+}
+.user-name{
+  color: #373C41;
+  font-size: 28rpx;
+  float: left;
+  overflow: hidden;
+}
+.user-status{
+  width: 84rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  text-align: center;
+  background:#EFF0F4;
+  border-radius:50px;
+  float: left;
+  color: #919BA5;
+  font-size: 20rpx;
+  margin-left: 20rpx;
+}
+.user-status.active{
+  background: #FD704F;
+  color: #fff;
+}
+.user-bottom{
+  color: #919BA5;
+  font-size:24rpx;
+  margin-top: 6rpx;
+  margin-left: 20rpx;
+}
+.user-right{
+  color: #C3CDD7;
+  font-size: 20rpx;
+  float: right;
+  height: 28rpx;
+  line-height: 28rpx;
+  margin-top: 8rpx;
+  text-align: right;
+}
+.user-right text{
+  display: block;
+}
+.user-man{
+  width: 578rpx;
+  float: right;
+  min-height: 70rpx;
+  line-height: 70rpx;
+  background:#FAFAFA;
+  border-radius:10rpx 50rpx 50rpx 50rpx;
+  margin-top: 20rpx;
+  color: #919BA5;
+  font-size: 24rpx;
+  text-indent: 20rpx;
+}
+.user-man text{
+  padding: 5rpx;
+  float: left;
+}
+.purchase>view{
+  margin-top: 36rpx;
+  overflow: hidden; 
+}
+.purchase-left{
+    margin-left: 20rpx;
+    float: left;
+ }
+ .purchase-left text{
+   color: #373C41;
+   font-size: 28rpx;
+   display: block;
+ }
+  .purchase-left text:nth-child(2){
+   color: #919BA5;
+   font-size: 24rpx;
+   padding-top: 6rpx;
+ }
+ .purchase-right{
+   color: #919BA5;
+   font-size: 24rpx;
+   float: right;
+ }
+  .purchase-right text{
+    display: block;
+  }
+    .purchase-right text:nth-child(2){
+    font-size: 24rpx;
+    margin-top: 12rpx;
+  }

@@ -1,0 +1,78 @@
+<!--pages/activity/drainage/record/record.wxml-->
+<view class="content">
+  <view class="nav">
+    <view class="{{ activeId == 1 ? 'active' : '' }}" bindtap="selectActive" data-id="1">购买名单记录</view>
+    <view class="{{ activeId == 2 ? 'active' : '' }}" bindtap="selectActive" data-id="2">红包领取记录</view>
+  </view>
+  <view class="share-input" wx:if="{{ activeId == 1 }}">
+    <input bindinput="phoneNumFun" placeholder="手机号码/微信昵称" />
+    <view bindtap="bindseach">查询</view>
+  </view>
+  <view class="purchase" wx:if="{{ activeId == 1 }}">
+    <view wx:for="{{ joinList }}" wx:key="index">
+      <image src="{{ item.headImg }}"></image>
+      <view class="user-detail">
+        <view class="user-left">
+          <view class="user-name">
+            {{ item.nickName }}
+          </view>
+            
+          <view class="user-status" wx:if="{{ item.cashingStatus == 0 }}">
+            未使用
+          </view>
+        </view>
+        <view class="user-bottom">
+          {{ item.phoneNum }}
+        </view>
+      </view>
+      <view class="user-right">
+        <text>分享 0 人</text>
+        <text wx:if="{{ item.shareName }}">{{ item.shareName }} 推荐</text>
+      </view>
+
+      <view class="user-man">
+        <text wx:for="{{ item.otherContent.list }}" wx:item="data" wx:key="indexs">{{ item.name }}：{{ item.value }}</text>
+      </view>
+    </view>
+
+    <!-- <view >
+      <image src="{{ url }}"></image>
+      <view class="user-detail">
+        <view class="user-left">
+          <view class="user-name">
+            小树苗
+          </view>
+          <view class="user-status">
+            未使用
+          </view>
+        </view>
+        <view class="user-bottom">
+          13800138000
+        </view>
+      </view>
+      <view class="user-right">
+        03.20 19:52
+      </view>
+
+      <view class="user-man">
+        <text>分享 0 人</text>
+        <text>{{  }} 推荐</text>
+      </view>
+    </view>-->
+
+  </view> 
+
+  <view class="purchase" wx:if="{{ activeId == 2 }}">
+    <view wx:for="{{ redPackageList }}" wx:key="index">
+      <image src="{{ item.headImg }}"></image>
+      <view class="purchase-left">
+        <text>{{ item.nickName }}</text>
+        <text>{{ item.phoneNum }}</text>
+      </view>
+      <view class="purchase-right">
+        <text>分享 {{ item.cnt }} 人</text>
+        <text>奖励 {{ item.total }} 元</text>
+      </view>
+    </view>
+  </view>
+</view>

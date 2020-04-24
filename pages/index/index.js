@@ -1,174 +1,239 @@
 const app = getApp();
 const Http = require('./../../utils/request.js');
+const getUserInfo = require('./../../utils/getUserInfo.js');
 Page({
   data: {
-    code:'',
-    userData:{},
-    setTingGet:false,
-    swiperArray:[],
-    actives:{},
-    navList:[],
-    setTingAddress:false,
-    hidezz:false
+    index: 0,
+    shopList: [],
+    buttonUserInfo: false,
+    storeId: null
   },
-  onLoad: function () {
+  onLoad: function (options) {
+    if (options.storeId){
+      this.setData({
+        storeId: options.storeId,
+        buttonUserInfo: true
+      })
+    }
+  },
+  onShow: function () {
     let that = this;
-      wx.login({
-        success(res){
-          console.log(res);
+    if (wx.getStorageSync("token")) {
+      app.token = wx.getStorageSync("token");
+
+      that.getAccountInfo();
+    } else {
+      getUserInfo().then(login => {
+        if (!login.openId || !login.nickName) {
           that.setData({
-            code: res.code
+            buttonUserInfo: true
           })
+        } else {
+          that.getShop();
+          that.getShopList();
+          that.getActivityList();
+        }
+      }).catch(err => {
+        console.log(err);
+        that.setData({
+          buttonUserInfo: true
+        })
+      })
+    }
+  },
+  getShop(){
+    let that = this;
+    wx.showLoading({ title: '加载中...', mask: true });
+      Http.get('/account/getShop').then(res => {
+        if (res.result == 1000) {
+          app.shopDetail = res.data;
+          wx.hideLoading();
+        } else {
+
+          wx.hideLoading();
         }
       });
-    that.wxLogin();
-    that.getBanner();
-
   },
-
-  showzz(){
-    this.setData({
-      hidezz:true
-    })
-  },
-  nozz(){
-    this.setData({
-      hidezz: false
-    })
-  },
-  /******** 用户登录 ********/
-  wxLogin(){
+  getAccountInfo(){
     let that = this;
-    wx.getSetting({
-      success(ress) {
-        console.log(ress);
-        if (ress.authSetting['scope.userInfo']) {
-          wx.getUserInfo({
-            withCredentials: true,
-            success(res) {
-              app.userInfo = res.userInfo;
-              that.setData({
-                userData: res
-              })
-                wx.getLocation({
-                  type: 'wgs84',
-                  success(res) {
-                    app.globalConfig.latitude = res.latitude;
-                    app.globalConfig.longitude = res.longitude;
-                    wx.showLoading({
-                      title: '加载中...',
-                    })
-                    Http.post('/Home/Index/dologin', {
-                      code: that.data.code,
-                      encryptedData: encodeURI(that.data.userData.encryptedData),
-                      iv: encodeURI(that.data.userData.iv),
-                      lat: app.globalConfig.latitude,
-                      lng: app.globalConfig.longitude
-
-                    }).then(res => {
-                      wx.hideLoading();
-                      app.globalConfig.token = res.data.token;
-                      app.globalConfig.cityid = res.data.cityid;
-                    }, _ => {
-                      wx.hideLoading();
-                    });
-
-                  },
-                  fail(err) {
-                    that.setData({
-                      setTingAddress: true
-                    })
-                  }
-                })
-          
-              
-            }
-          });
-        } else {
-            that.setData({
-              setTingGet:true
-            })
+    Http.get('/account/getAccountInfo').then(res => {
+      if (res.result == 1000) {
+        app.userInfo = res.data;
+        
+        if (res.data.nickName){
+          that.getShop();
+          that.getShopList();
+          that.getActivityList();
+        }else{
+          that.setData({
+            buttonUserInfo: true
+          })
         }
+      } else {
+        that.setData({
+          buttonUserInfo: true
+        })
+      }
+      wx.hideLoading();
+    });
+  },
+  getShopList(){
+    let that = this;
+    Http.get('/shop/listShop').then(res => {
+      if (res.result == 1000) {
+        that.setData({
+          shopList: res.data
+        })
+        wx.hideLoading();
+      } else {
+        wx.showModal({
+          title: '温馨提示',
+          showCancel: false,
+          content: res.message,
+        })
+        wx.hideLoading();
       }
     });
-
   },
-  /******** 获取banner&&获取最新活动&&获取类别 ********/
-  getBanner(){
+  bindPickerChange: function (e) {
+    this.setData({
+      index: e.detail.value
+    })
+    this.switchShop(this.data.shopList[e.detail.value].id);
+  },
+  switchShop(shopId) {
     let that = this;
-    Http.post('/Home/Silu/banner', {
+    wx.showLoading({ title: '加载中...', mask: true });
+    Http.get('/shop/switchShop',{
+      shopId
     }).then(res => {
-      that.setData({
-        swiperArray:res.data
-      })
-    }, _ => {
-    });
-    Http.post('/Home/Silu/activity', {
-    }).then(res => {
-        that.setData({
-          actives: res.data
-        })
-    }, _ => {
-    });
-    Http.post('/Home/Silu/kind', {
-    }).then(res => {
-      that.setData({
-        navList: res.data
-      })
-    }, _ => {
-    });    
+        if (res.result == 1000) {
+          that.getShop();
+          that.getActivityList();
+          wx.hideLoading();
+        } else {
+          wx.showModal({
+            title: '温馨提示',
+            showCancel: false,
+            content: res.message,
+          })
+          wx.hideLoading();
+        }
+      }); 
   },
   bindGetUserInfo(e){
     let that = this;
-    if (e.detail.userInfo) {
-        wx.getUserInfo({
-          success(res) {
-            console.log(res);
-            app.userInfo = res.userInfo;
-            that.setData({
-              userData: res,
-              setTingGet: false
-            });
-            that.wxLogin();
-          }
-        });
-    } else {
+    app.userInfo.nickName = e.detail.userInfo.nickName;
+    app.userInfo.headImg = e.detail.userInfo.avatarUrl;
+    if(e.detail){
+      wx.getUserInfo({
+        success: function (info) {
+          wx.login({
+            success(res) {
+              let jsons = JSON.stringify({
+                code: res.code,
+                encryptedData: info.encryptedData,
+                iv: info.iv,
+                paramJson: JSON.stringify({
+                  nickName: app.userInfo.nickName,
+                  headImg: app.userInfo.headImg
+                })
+              });
+              Http.post('/account/sign', {
+                code: res.code,
+                encryptedData: info.encryptedData,
+                iv: info.iv,
+                role: that.data.storeId ? 1 : 0,
+                storeId: that.data.storeId,
+                paramJson: JSON.stringify({
+                  nickName: app.userInfo.nickName,
+                  headImg: app.userInfo.headImg
+                })
+              }).then(res => {
+                //that.getAccountInfo();
+                that.setData({
+                  buttonUserInfo: false
+                })
+                getUserInfo().then(login => {})
+                wx.hideLoading();
+
+              })
+            }
+          })
+        },
+        fail(err) {
+          console.log(err);
+        }
+      })
 
     }
   },
-  openSetting(e) {
+  toUser(){
+    console.log(app.userInfo);
+    if(!app.userInfo.phone){
+      wx.navigateTo({
+          url: '/pages/login/login',
+        })
+      return false;
+    }
+    wx.navigateTo({
+      url: './user/user',
+    })
+  },
+  tostore(){
+    if (!app.userInfo.phone) {
+      wx.navigateTo({
+        url: '/pages/login/login',
+      })
+      return false;
+    }
+    wx.navigateTo({
+      url: './store/store',
+    })
+  },
+  getActivityList() {
     let that = this;
-
-    //that.getaddressIndex('0');
-    // 对用户的设置进行判断，如果没有授权，即使用户返回到保存页面，显示的也是“去授权”按钮；同意授权之后才显示保存按钮
-    if (!e.detail.authSetting['scope.userLocation']) {
-      wx.showModal({
-        title: '警告',
-        content: '若不打开授权，则无法获取信息！',
-        showCancel: false
-      })
-    } else {
-      that.setData({
-        setTingAddress: false
-      })
-      that.wxLogin();
-    }
+    Http.get('/activity/getActivityList', {
+    }).then(res => {
+          if(res.result == 1000){
+            that.setData({
+               activityList: res.data.list
+            })
+          }
+    });
   },
-  onShareAppMessage: function () {
-    let arr = [
-    "http://ylbb-business.oss-cn-beijing.aliyuncs.com/1555502382558ylbaby.jpg",
-    "http://ylbb-business.oss-cn-beijing.aliyuncs.com/1555502395131ylbaby.jpg",
-    "http://ylbb-business.oss-cn-beijing.aliyuncs.com/1555502397059ylbaby.jpg",
-    "http://ylbb-business.oss-cn-beijing.aliyuncs.com/1555502399046ylbaby.jpg"
-    ];
-    let imgs = arr[Math.floor(Math.random() *3 + 1)];
-    console.log(imgs);
-    return {
-      title: '丝路天使少儿艺术团，等你来参加～',
-      path: `/pages/index/detail/index/index`,
-      imageUrl: imgs
+  toactivity(){
+    if (!app.userInfo.phone) {
+      wx.navigateTo({
+        url: '/pages/login/login',
+      })
+      return false;
     }
-
+    if (!app.shopDetail.id){
+        wx.showToast({
+          title: '请先创建店铺',
+          icon: 'none'
+        })
+        return false;
+    }
+    wx.navigateTo({
+      url: '/pages/activity/drainage/drainage',
+    })
   },
- 
+  toactivitydetail(e){
+    let id = e.target.dataset.id;
+    if (!app.userInfo.phone) {
+      wx.navigateTo({
+        url: '/pages/login/login',
+      })
+      return false;
+
+    }
+    wx.navigateTo({
+      url: `/pages/activity/drainage/detail/detail?id=${ id }`,
+    })
+  },
+  errors(e){
+    console.log(e);
+  }
 })

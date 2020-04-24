@@ -1,0 +1,350 @@
+ <navbar navTitle="云分店"  noArrow='false' wx:if="{{ !showEdit }}" style="width:200rpx;"></navbar>
+ <navbar navTitle="云分店"  noArrow='true' wx:else style="width:200rpx;"></navbar>
+
+<view class="content">
+  <view class="mnue-list">
+    <view class="right-icon boldfont">
+      <view>教程&案例</view>
+      <view></view>
+    </view>
+  </view>
+
+  <view class="toggle-icon">
+    <view>走马灯广告文案
+      <text>打开后只允许未在本店下过单的客户购买</text>
+    </view>
+    <view>
+      <switch checked="{{ isHorseRaceLamp }}"  bindchange="switchCuePhrases" color="{{ switchColor }}" />
+    </view>
+  </view>
+
+  <view class="mnue-list">
+    <view class="textareas" wx:if="{{ isHorseRaceLamp }}">
+      <textarea placeholder="请输入广告语" value="{{ paramJson.cuePhrases	 }}" bindinput="horseRaceLamp" maxlength="100" />
+      <text>{{ paramJson.cuePhrases ? paramJson.cuePhrases.length : 0 }}/100</text>
+    </view>
+  </view>
+
+  <view class="bg-title">
+    基本设置
+  </view>
+  <view class="store_img" bindtap="selectHeaderImg" data-id="1">
+    <image src="{{ paramJson.headImg }}"></image>
+    <view class="store_img_btn">
+      替换头图
+    </view>
+  </view>
+  <view class="mnue-list">
+    <view>
+      <view>活动标题</view>
+      <view>
+        <input maxlength="30" bindinput="bindkeyHeadline" value="{{ paramJson.activityHeadline }}" placeholder="不超过30个字" />
+      </view>
+    </view>
+    <view class="selectDate">
+      <view>开始时间</view>
+      <view>
+        <picker mode="date" value="{{ paramJson.startTime	}}" bindchange="bindDateSatrt">
+          <view class="picker" wx:if="{{ paramJson.startTime	 }}">
+            {{paramJson.startTime }}
+          </view>
+          <view wx:else>请选择日期</view>
+        </picker>
+      </view>
+    </view>
+
+    <view class="selectDate">
+      <view>结束时间</view>
+      <view>
+        <picker mode="date" value="{{paramJson.endTime	}}" bindchange="bindDateEnd">
+          <view class="picker" wx:if="{{ paramJson.endTime	 }}">
+            {{paramJson.endTime }}
+          </view>
+          <view wx:else>请选择日期</view>
+        </picker>
+      </view>
+    </view>
+
+    <view class="right-icon">
+      <view>背景音乐</view>
+      <view>
+        <picker bindchange="selectmusic" value="{{musicIndex}}" range="{{musicList}}" range-key="name">
+          <view class="picker">
+            {{musicList[musicIndex].name}}
+          </view>
+          <view wx:if="{{ !musicList[musicIndex] }}">请选择</view>
+        </picker>
+      </view>
+    </view>
+
+    <view class="textbottom right-icon" style="margin-bottom:50rpx;" bindtap="showEditfun">
+      <view>
+        <view>购买必填</view>
+        <text>打开后客户购买商品时必填，</text>
+        <text style="line-height:20rpx;">填写项可选姓名、生日等信息</text>
+      </view>
+      <view class="customview" style="line-height:124rpx;">
+        <text wx:if="{{ isName }}">姓名</text><text wx:if="{{ isBirthday }}">生日</text>
+        <text wx:for="{{ customList }}" wx:key="index">{{ item.name }}</text>
+      </view>
+    </view>
+
+
+  </view>
+  <!-- <view class="toggle-icon-text">
+    <view>
+      <text>新客专享</text>
+      <text>打开后只允许未在本店下过单的客户购买</text>
+    </view>
+    <view>
+      <switch checked="true" color="{{ switchColor }}" bindchange="switch1Change" />
+    </view>
+  </view> -->
+  <view class="bg-title smsz">
+    售卖设置
+  </view>
+
+  <view class="mnue-list">
+    <view>
+      <view>商品名称</view>
+      <view>
+        <input maxlength="20" bindinput="editProductName" value="{{ paramJson.productName	 }}" placeholder="请输入售卖的商品名称" />
+      </view>
+    </view>
+
+    <view>
+      <view>商品库存</view>
+      <view>
+        <input maxlength="20" bindinput="editShortName" value="{{ paramJson.shopShortName }}" placeholder="请合理设置勿超卖" />
+      </view>
+    </view>
+
+    <view class="textbottom">
+      <view>
+        <view>原价</view>
+        <text>不填写表示没有原价</text>
+      </view>
+      <view>
+        <input maxlength="20" bindinput="editOrgPrice" value="{{ paramJson.orgPrice	 }}" placeholder="请输入商品原价" />
+      </view>
+    </view>
+
+    <view>
+      <view>活动价格</view>
+      <view>
+        <input maxlength="20" bindinput="editPromotionPrice" value="{{ paramJson.promotionPrice }}" placeholder="请输入活动价格" />
+      </view>
+    </view>
+
+    <view class="textbottom">
+      <view>
+        <view>使用门槛</view>
+        <text>不填写表示无门槛</text>
+      </view>
+      <view>
+        <input maxlength="20" bindinput="editThreshold" value="{{ paramJson.threshold }}" placeholder="不填写表示无门槛" />
+      </view>
+    </view>
+
+    <view class="textbottom">
+      <view>
+        <view>购买后有效天数</view>
+        <text>购买的商品需在有效天数内使用，</text>
+        <text style="line-height:20rpx;">0则表示不限制使用时间</text>
+      </view>
+      <view>
+        <input style="width:380rpx;" maxlength="20" bindinput="editEffectiveDays" value="{{ paramJson.effectiveDays }}" placeholder="请输入有效天数" />
+      </view>
+    </view>
+
+    <view>
+      <view>适用范围</view>
+      <view>
+        <input style="width:380rpx;" maxlength="20" bindinput="editAvailableRange" value="{{ paramJson.availableRange }}" placeholder="请输入适用范围" />
+      </view>
+    </view>
+  </view>
+
+
+  <view class="bg-title hbsz">
+    红包设置
+  </view>
+
+  <view class="mnue-list">
+
+    <!-- <view>
+      <view>红包名</view>
+      <view>
+        <input style="width:380rpx;" maxlength="20" bindinput="editredPackageName" value="{{ paramJson.redPackageName }}" placeholder="请输入红包名" />
+      </view>
+    </view> -->
+
+    <view class="right-icon">
+      <view>奖励方式</view>
+      <view>
+        <picker bindchange="selectType" value="{{ typeIndex }}" range="{{ typeList }}" range-key="text">
+          <view class="picker">
+            {{typeList[typeIndex].text}}
+          </view>
+          <view wx:if="{{ !typeList[typeIndex] }}">请选择</view>
+        </picker>
+      </view>
+    </view>
+
+    <view wx:if="{{ typeIndex == 0 }}">
+      <view>红包区间</view>
+      <view class="qj">
+        <input style="width:100rpx;" bindinput="editminValue" value="{{ paramJson.activityRedpacketRule.minValue }}" placeholder="最小金额" />
+        <text style="width:20rpx;">-</text>
+        <input style="width:100rpx;" bindinput="editmaxValue" value="{{ paramJson.activityRedpacketRule.maxValue	 }}" placeholder="最大金额" />
+        <text>元</text>
+      </view>
+    </view>
+
+    <view wx:if="{{ typeIndex == 1 }}">
+      <view>红包金额</view>
+      <input style="width:380rpx; float:right;" bindinput="editfixValue" value="{{ paramJson.activityRedpacketRule.fixValue }}" placeholder="请输入红包金额" />
+      <text>元</text>
+    </view>
+
+
+    <view class="textbottom pbottom">
+      <view>
+        <view>红包个数限制</view>
+        <text>每人最多获得多少数量的红包</text>
+        <text style="line-height:20rpx;">不输入则表示不限制</text>
+      </view>
+      <view>
+        <input style="width:380rpx;" maxlength="20" bindinput="editlimitCount" value="{{ paramJson.activityRedpacketRule.limitCount	 }}" placeholder="请输入限制数量" />
+      </view>
+    </view>
+
+    <view class="toggle-title">
+      <view>到店礼设置</view>
+      <view>
+        <switch checked="true" bindchange="ddlSwitchfun" color="{{ switchColor }}" />
+      </view>
+    </view>
+  </view>
+
+
+  <view wx:if="{{ ddlSwitch }}" class="mnue-list list-gift" wx:for="{{ paramJson.activityPrizes }}" wx:key="index">
+    <view>
+      <view>礼品{{ listName[index] }}名称</view>
+      <view>
+        <input maxlength="20" bindinput="editprizeName" value="{{ item.prizeName }}" data-index="{{ index }}" placeholder="礼品名称不超过30字" />
+      </view>
+    </view>
+
+    <view>
+      <view>礼品{{ listName[index] }}价值</view>
+      <view>
+        <input maxlength="200" bindinput="editprizeValue" value="{{ item.prizeValue }}" data-index="{{ index }}" placeholder="请输入礼品价值金额" />
+      </view>
+    </view>
+
+    <view style="height:auto; overflow:hidden;">
+      <view class="desc-text">礼品{{ listName[index] }}广告描述</view>
+      <view class="describe">
+        <textarea placeholder="礼品介绍，不填写则不显示。不超过50个字…" bindinput="editprizeIntroduction" data-index="{{ index }}" value="{{ item.prizeIntroduction }}" />
+        <text>{{ item.prizeIntroduction ? item.prizeIntroduction.length : 0 }}/50</text>
+      </view>
+    </view>
+
+    <view class="uploadcode">
+      <view class="uploadleft">
+        <view>礼品{{ listName[index] }}图片</view>
+        <view>到店礼品详细介绍图片，最多可上传1张</view>
+      </view>
+      <view class="uploadright lplist" bindtap="selectHeaderImg" data-id="2" data-index="{{ index }}">
+        <image wx:if="{{ item.prizeImg }}" src="{{ item.prizeImg  }}"></image>
+      </view>
+    </view>
+  </view>
+  <view class="addGift" wx:if="{{ ddlSwitch }}" bindtap="addGift">+ 添加礼品</view>
+  <view class="mnue-list">
+    <view class="bg-title">
+      活动规则
+    </view>
+
+    <view style="height:auto; overflow:hidden;">
+      <view class="describe rule-detail">
+        <textarea maxlength="1000" bindinput="editactivityRole" value="{{ paramJson.activityRole	 }}" placeholder="请输入活动规则，不超过1000个字…" />
+        <text>{{ paramJson.activityRole ? paramJson.activityRole.length : 0 }}/1000</text>
+      </view>
+    </view>
+
+    <view class="bg-title">
+      活动描述
+    </view>
+
+    <view style="height:auto; overflow:hidden;">
+      <view class="describe">
+        <textarea maxlength="1000" bindinput="editactivityIntroduce" placeholder="请输入活动描述，不超过1000个字…" value="{{ paramJson.activityIntroduce	 }}" />
+        <text>{{ paramJson.activityIntroduce ? paramJson.activityIntroduce.length : 0 }}/1000</text>
+      </view>
+    </view>
+
+    <view class="uploadcode">
+      <view class="uploadleft">
+        <view>活动图片（活动详细介绍图片，最多可上传9张）</view>
+        <view></view>
+      </view>
+      <view class="right-upload-main">
+        <view class="uploadright" bindtap="selectHeaderImg" wx:for="{{ paramJson.activityImgs	 }}" wx:key="index">
+          <image src="{{ item  }}"></image>
+        </view>
+        <view class="uploadright" bindtap="selectHeaderImg" data-id="3"></view>
+
+      </view>
+    </view>
+    <view class="bg-title">
+      其它设置
+    </view>
+
+  </view>
+
+  <view class="toggle-icon fsbtn">
+    <view>智能防刷
+      <text>打开后仅限距离15公里内的客户可参与，请谨慎使用</text>
+    </view>
+    <view>
+      <switch checked="{{ paramJson.locationLimit }}" bindchange="editlocationLimit" color="{{ switchColor }}" />
+    </view>
+  </view>
+
+  <view class="creat-active" bindtap="save">{{ id ? '保存' : '创建' }}活动</view>
+</view>
+
+<view class="list-input" wx:if="{{ showEdit }}">
+  <view class="list-input-main">
+    <view bindtap="toggleNameClass" class="{{ isName ? 'active' : '' }}">
+      <text></text>
+      <view>姓名</view>
+    </view>
+    <view  bindtap="toggleBirthdayClass" class="{{ isBirthday ? 'active' : '' }}">
+      <text></text>
+      <view>生日</view>
+    </view>
+    <view  class="active">
+      <text></text>
+      <view>自定义 <text bindtap="addList">添加</text> </view>
+    </view>
+    <view class="customize">
+          <view wx:for="{{ customList }}" wx:key="index">
+              <input placeholder="请输入名称" bindinput="selectCustomName" value="{{ item.name }}" data-index="{{ index }}" />
+              <image bindtap="removeList" data-index="{{ index }}" src="http://ylbb-business.oss-cn-beijing.aliyuncs.com/2020/1586853888011554.png"></image>
+                <picker bindchange="selectInput" value="{{ item.type }}" range="{{ inputList }}" range-key="name" data-index="{{ index }}">
+                  <view class="picker">
+                    {{inputList[item.type].name}}
+                  </view>
+                  <view wx:if="{{ !inputList[inputIndex] }}">请选择</view>
+                </picker>
+
+
+          </view>
+    </view>
+    
+  </view>
+  <view class="bc-list-input" bindtap="saveInputlist">保存</view>
+</view>

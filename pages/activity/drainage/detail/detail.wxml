@@ -1,0 +1,169 @@
+<view class="content">
+  <view class="nav">
+    <view class="{{ checkId == 1 ? 'active' : '' }}" bindtap="checkNav" data-id="1">今日数据</view>
+    <view class="{{ checkId == 2 ? 'active' : '' }}" bindtap="checkNav" data-id="2">总计数据</view>
+  </view>
+  <view class="active-num">
+    <view>
+      <text>浏览次数</text>
+      <text>{{ activityDetail.glanceNum }}</text>
+    </view>
+    <view>
+      <text>参与人数</text>
+      <text>{{ joinCount }}</text>
+    </view>
+    <view>
+      <text>购买人数</text>
+      <text>{{ purchaseCount }}</text>
+    </view>
+  </view>
+  <view class="title-right-icon">
+    <view>购买名单</view>
+    <view bindtap="toRecord">所有名单</view>
+  </view>
+  <view class="list-user">
+
+    <view wx:for="{{ joinRecord }}" wx:key="index">
+      <image src="{{ item.headImg }}"></image>
+      <view class="left-user-text">
+        <text>{{ item.nickName }}</text>
+        <text>{{ item.phoneNum }}</text>
+      </view>
+      <view class="right-user-text">
+        <text>分享 0 人</text>
+        <text>奖励 0.00 元</text>
+      </view>
+    </view>
+
+
+
+
+  </view>
+  <view class="update-activity">
+    <view bindtap="editActivity">编辑活动</view>
+    <view bindtap="toClistindex">预览活动</view>
+  </view>
+  <view class="bg-title">
+    基本设置
+  </view>
+  <view class="list-detail">
+    <view>活动标题</view>
+    <view>{{ activityDetail.activityHeadline }}</view>
+  </view>
+  <view class="list-detail">
+    <view>开始时间</view>
+    <view>{{ activityDetail.startTime }}</view>
+  </view>
+  <view class="list-detail">
+    <view>结束时间</view>
+    <view>{{ activityDetail.endTime }}</view>
+  </view>
+  <view class="list-detail">
+    <view>背景音乐</view>
+    <view>{{ musicName || '' }}</view>
+  </view>
+
+  <view class="list-detail">
+    <view>购买必填</view>
+    <view>
+        <text wx:for="{{ customList }}" wx:key="index">{{ item.name }} </text>
+    </view>
+  </view>
+
+  <view class="bg-title sm-setting">
+    售卖设置
+  </view>
+  <view class="list-detail">
+    <view>商品名称</view>
+    <view>{{ activityDetail.productName }}</view>
+  </view>
+  <view class="list-detail">
+    <view>商品库存</view>
+    <view>999</view>
+  </view>
+  <view class="list-detail">
+    <view>原价</view>
+    <view>{{ activityDetail.orgPrice }}元</view>
+  </view>
+  <view class="list-detail">
+    <view>活动价格</view>
+    <view>{{ activityDetail.promotionPrice }}元</view>
+  </view>
+  <view class="list-detail">
+    <view>使用门槛</view>
+    <view>{{ activityDetail.threshold || '无' }}</view>
+  </view>
+  <view class="list-detail">
+    <view>有效天数</view>
+    <view>{{ activityDetail.effectiveDays }}</view>
+  </view>
+  <view class="list-detail">
+    <view>适用范围</view>
+    <view>{{ activityDetail.availableRange }}</view>
+  </view>
+  <view class="bg-title sm-setting">
+    红包设置
+  </view>
+  <view class="list-detail">
+    <view>奖励方式</view>
+    <view>{{ activityDetail.activityRedpacketRule.sendType == 1 ? '随机红包' : '固定红包' }}</view>
+  </view>
+  <view class="list-detail" wx:if="{{ activityDetail.activityRedpacketRule.sendType == 1 }}">
+    <view>红包区间</view>
+    <view>{{ activityDetail.activityRedpacketRule.minValue }}-{{ activityDetail.activityRedpacketRule.maxValue }}元</view>
+  </view>
+    <view class="list-detail" wx:else>
+    <view>红包金额</view>
+    <view>{{ activityDetail.activityRedpacketRule.fixValue }}元</view>
+  </view>
+  <view class="list-detail">
+    <view>红包个数限制</view>
+    <view>{{ activityDetail.activityRedpacketRule.limitCount || '无' }}</view>
+  </view>
+<view class="mnue-list">
+    <view class="toggle-title">
+      <view>到店礼设置</view>
+      <view>
+        <switch checked="{{ paramJson.activityPrizes.length ? true : false }}" disabled="true"  />
+      </view>
+    </view>
+  </view>
+
+ <view  class="mnue-list list-gift" wx:for="{{ activityDetail.activityPrizes }}" wx:key="index">
+    <view>
+      <view>礼品{{ listName[index] }}名称</view>
+      <view>
+        <input maxlength="20" bindinput="selectshopShortName" disabled="true" value="{{ item.prizeName }}" placeholder="礼品名称不超过30字" />
+      </view>
+    </view>
+
+    <view>
+      <view>礼品{{ listName[index] }}价值</view>
+      <view>
+        <input maxlength="200" bindinput="selectshopShortName" disabled="true" value="{{ item.prizeValue }}" placeholder="请输入礼品价值金额" />
+      </view>
+    </view>
+
+    <view style="height:auto; overflow:hidden;">
+      <view class="desc-text">礼品{{ listName[index] }}广告描述</view>
+      <view class="describe">
+        <textarea placeholder="礼品介绍，不填写则不显示。不超过50个字…" disabled="true" value="{{ item.prizeIntroduction }}" disabled="true" />
+        <text>{{ item.prizeIntroduction.length }}/50</text>
+      </view>
+    </view>
+
+    <view class="uploadcode">
+      <view class="uploadleft">
+        <view>礼品{{ listName[index] }}图片</view>
+        <view>到店礼品详细介绍图片，最多可上传1张</view>
+      </view>
+      <view class="uploadright" bindtap="selectHeaderImg" data-id="2">
+        <image  src="{{ item.prizeImg  }}"></image>
+      </view>
+    </view>
+  </view>
+  <view class="exit" bindtap="setOut">结束活动</view>
+  <view class="help">对活动有疑问？<text>点这里获取帮助</text></view>
+</view>
+  <view class="creat" bindtap="toClistShare">分享给好友帮推</view>
+

@@ -1,0 +1,191 @@
+<view class="content">
+  <view class="line-scroll">
+    <text>{{ activityDetail.cuePhrases }}</text>
+  </view>
+  <view class="main">
+    <view class="top-font">
+      <view>推荐得红包{{ shopDetail.shopShortName }}</view>
+      <text>活动时间：{{ activityDetail.startTime }} - {{ activityDetail.startTime }}</text>
+    </view>
+        <view class="recommendman">
+        <view class="recommendman-detail">
+              <image src="https://ylbb-wxapp.oss-cn-beijing.aliyuncs.com/branch-store/hbfxtopbg.png"></image>
+              <text>Lydia 送你</text>
+              <text>泡泡塘活力东方店的专属优惠福利</text>
+        </view>
+
+           <view class="coupon">
+      <view class="coupon-left">
+        <view>{{ activityDetail.activityHeadline }}券</view>
+        <text>{{ activityDetail.availableRange }}</text>
+        <text>{{ activityDetail.threshold ? activityDetail.threshold : '无使用门槛' }}</text>
+         <text wx:if="{{ activityDetail.effectiveDays == 0 }}">永久有效</text>
+        <text wx:else>购买后有效期 {{ activityDetail.effectiveDays }} 天</text>
+      </view>
+      <view class="coupon-right">
+        <view class="price">
+          <view>
+            <text>{{ activityDetail.orgPrice }}</text> 元</view>
+          <view>
+            <text>¥</text>{{ activityDetail.promotionPrice }}</view>
+        </view>
+        <view class="stock">
+          库存999 件
+        </view>
+      </view>
+    </view>
+          <view class="card-share"></view>
+
+    </view>
+   <view class="list-tit">
+      <image src="https://ylbb-wxapp.oss-cn-beijing.aliyuncs.com/branch-store/thrbg11.png"></image>
+    </view>
+
+    <view class="welfare">
+        <view>
+              <view class="welfare-title">福利一</view>
+              <view class="welfare-detail">
+                    <view class="welfare-left">
+                        <view class="welfare-name">29.9元可体验168元游泳套餐</view>
+                        <view class="welfare-desc">即可体验游泳套餐?一次，游泳洗澡抚触早教元素，活动当天全场最</view>
+                        <view class="welfare-money">价值<text>168</text>元</view>
+                    </view>
+                    <view class="welfare-right">
+                          <image src="https://ylbb-wxapp.oss-cn-beijing.aliyuncs.com/branch-store/thrbg11.png"></image>
+                    </view>
+              </view>
+        </view> 
+             <view>
+              <view class="welfare-title">福利一</view>
+              <view class="welfare-detail">
+                    <view class="welfare-left">
+                        <view class="welfare-name">29.9元可体验168元游泳套餐</view>
+                        <view class="welfare-desc">即可体验游泳套餐?一次，游泳洗澡抚触早教元素，活动当天全场最</view>
+                        <view class="welfare-money">价值<text>168</text>元</view>
+                    </view>
+                    <view class="welfare-right">
+                          <image src="https://ylbb-wxapp.oss-cn-beijing.aliyuncs.com/branch-store/thrbg11.png"></image>
+                    </view>
+              </view>
+        </view> 
+    </view>
+
+    <view class="list-tit">
+      <image src="https://ylbb-wxapp.oss-cn-beijing.aliyuncs.com/branch-store/thrbg6.png"></image>
+    </view>
+    <view class="count-down">
+      <view class="count-tit">浏览人次：1345</view>
+      <view class="count-content">
+        <text>10</text> 天
+        <text>10</text> 时
+        <text>10</text> 分
+        <text>10</text> 秒
+      </view>
+    </view>
+    <view class="count-down participate">
+      <view class="count-tit">参与人数：1345</view>
+      <view class="participate-content">
+        <view>
+          <image src="https://ylbb-wxapp.oss-cn-beijing.aliyuncs.com/branch-store/thrbg6.png"></image>
+          <text>李鹏</text>
+        </view>
+        <view>
+          <image src="https://ylbb-wxapp.oss-cn-beijing.aliyuncs.com/branch-store/thrbg6.png"></image>
+          <text>李鹏</text>
+        </view>
+        <view>
+          <image src="https://ylbb-wxapp.oss-cn-beijing.aliyuncs.com/branch-store/thrbg6.png"></image>
+          <text>李鹏</text>
+        </view>
+        <view>
+          <image src="https://ylbb-wxapp.oss-cn-beijing.aliyuncs.com/branch-store/thrbg6.png"></image>
+          <text>李鹏</text>
+        </view>
+        <view>
+          <image src="https://ylbb-wxapp.oss-cn-beijing.aliyuncs.com/branch-store/thrbg6.png"></image>
+          <text>李鹏</text>
+        </view>
+        <view>
+          <image src="https://ylbb-wxapp.oss-cn-beijing.aliyuncs.com/branch-store/thrbg6.png"></image>
+          <text>李鹏</text>
+        </view>
+        <view>
+          <image src="https://ylbb-wxapp.oss-cn-beijing.aliyuncs.com/branch-store/thrbg6.png"></image>
+          <text>李鹏</text>
+        </view>
+        <view>
+          <image src="https://ylbb-wxapp.oss-cn-beijing.aliyuncs.com/branch-store/thrbg6.png"></image>
+          <text>李鹏</text>
+        </view>
+        <view>
+          <image src="https://ylbb-wxapp.oss-cn-beijing.aliyuncs.com/branch-store/thrbg6.png"></image>
+          <text>李鹏</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="count-down participate">
+          <view class="recommend-title" style="width:512rpx;">
+          <image  src="https://ylbb-wxapp.oss-cn-beijing.aliyuncs.com/branch-store/thrbg7.png"></image>
+        </view>
+      <view class="member-content">
+            <view>
+                <view class="member-detail">
+                    <image src="https://ylbb-wxapp.oss-cn-beijing.aliyuncs.com/branch-store/hbfxtopbg.png"></image>
+                    <view class="member-text">
+                          <text>哎呦喂</text>
+                          <text>03-26 18:00</text>
+                    </view>
+                    <view class="member-status">已购买，未到店</view>
+                </view>
+            </view>
+               <view>
+                <view class="member-detail">
+                    <image src="https://ylbb-wxapp.oss-cn-beijing.aliyuncs.com/branch-store/hbfxtopbg.png"></image>
+                    <view class="member-text">
+                          <text>哎呦喂</text>
+                          <text>03-26 18:00</text>
+                    </view>
+                    <view class="member-status">已购买，未到店</view>
+                </view>
+            </view>
+               <view>
+                <view class="member-detail">
+                    <image src="https://ylbb-wxapp.oss-cn-beijing.aliyuncs.com/branch-store/hbfxtopbg.png"></image>
+                    <view class="member-text">
+                          <text>哎呦喂</text>
+                          <text>03-26 18:00</text>
+                    </view>
+                    <view class="member-status">已购买，未到店</view>
+                </view>
+            </view>
+      </view>
+    </view>
+
+  <view class="store">
+      <image src="https://ylbb-wxapp.oss-cn-beijing.aliyuncs.com/branch-store/hbfxtopbg.png"></image>
+      <view class="store-detail">
+          <view class="store-name">泡泡塘游泳馆（活力东方店）</view>
+          <view class="store-address">北京甘露园南里25号一楼北京--这里折行25号一楼</view>
+          <view class="distance">
+              500m
+          </view>
+      </view>
+  </view>
+
+  <view class="list-tit">
+      <image src="https://ylbb-wxapp.oss-cn-beijing.aliyuncs.com/branch-store/thrbg8.png"></image>
+    </view>
+  <view class="activity-detail">
+    <text>
+    泡泡塘是一家专业从事0-12岁儿童关键期成长教育的公司，以专业科学的让孩子学会游泳为理念，引进新加坡先进的快乐教学方法和快乐教育理念,帮助中国儿童建立健康、自信、快乐、想象力丰富，善于表达的人生。
+    </text>
+    <image src="https://ylbb-wxapp.oss-cn-beijing.aliyuncs.com/branch-store/thrbg8.png" mode="widthFix"></image>
+    <image src="https://ylbb-wxapp.oss-cn-beijing.aliyuncs.com/branch-store/thrbg8.png" mode="widthFix"></image>
+    <image src="https://ylbb-wxapp.oss-cn-beijing.aliyuncs.com/branch-store/thrbg8.png" mode="widthFix"></image>
+    <image src="https://ylbb-wxapp.oss-cn-beijing.aliyuncs.com/branch-store/thrbg8.png" mode="widthFix"></image>
+  </view>
+  </view>
+
+
+</view>

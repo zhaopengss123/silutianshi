@@ -1,0 +1,92 @@
+<view class="content">
+  <view class="store_img" bindtap="selectHeaderImg" data-id="1">
+    <image  src="{{ shopDetail.shopImg || 'http://ylbb-business.oss-cn-beijing.aliyuncs.com/2020/1585211527119406.jpg' }}"></image>
+    <text>点击替换门头照</text>
+  </view>
+  <view class="mnue-list">
+    <view>
+      <view>店铺全称</view>
+      <view>
+        <view>
+        <input maxlength="20" bindinput="selectshopName" value="{{ shopDetail.shopName }}" placeholder="请输入店铺全称" />
+        </view>
+      </view>
+    </view>
+    <view>
+      <view>店铺简称</view>
+      <view>
+        <input maxlength="10" bindinput="selectshopShortName" value="{{ shopDetail.shopShortName }}" placeholder="请输入店铺简称" />
+      </view>
+    </view>
+    <view>
+      <view>所在地区</view>
+      <view>
+        <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+          <view class="picker">
+            {{region[0]}} {{region[1]}} {{region[2]}}
+          </view>
+          <view wx:if="{{ !region[0] }}">请选择省/市/区</view>
+        </picker>
+      </view>
+    </view>
+    <view>
+      <view>详细地址</view>
+      <view class="pos">
+        <input maxlength="100" bindtap="focusaddress" disabled="true"    
+        value="{{ shopDetail.address }}" placeholder="请输入详细地址" />
+      </view>
+    </view>
+    <view>
+      <view>店铺分类</view>
+      <view>
+        <picker bindchange="selectType" value="{{typeIndex}}" range="{{typeList}}" range-key="name">
+          <view class="picker">
+            {{typeList[typeIndex].name}}
+          </view>
+          <view wx:if="{{ !typeList[typeIndex] }}">请选择</view>
+        </picker>
+      </view>
+    </view>
+    <view>
+      <view>联系电话</view>
+      <view> <input maxlength="11" bindinput="bindphones" value="{{ shopDetail.shopPhone }}" placeholder="填写电话号码，方便客户联系你" /></view>
+    </view>
+    <view>
+      <view>加粉微信号</view>
+      <view> <input maxlength="20" bindinput="bindwxNumber" value="{{ shopDetail.wxNumber }}" placeholder="填写微信号，方便客户添加你" /></view>
+    </view>
+  </view>
+  <view>
+  </view>
+  <view class="uploadcode">
+      <view class="uploadleft">
+          <view>加粉微信二维码</view>
+          <view>上传微信二维码，方便客户添加你</view>
+      </view>
+      <view  class="uploadright" bindtap="selectHeaderImg" data-id="2">
+      <image wx:if="{{ shopDetail.wxQr }}" src="{{ shopDetail.wxQr  }}"></image>
+      </view>
+  </view>
+
+  <view class="submit" bindtap="submit">保存店铺信息({{ percentage }}%)</view>
+</view>
+
+<view class="showaddress" wx:if="{{ showAddress }}">
+      <input maxlength="100" bindfocus="focusaddress" focus="true"  bindinput="editaddress"   
+        value="{{ shopDetail.address }}" placeholder="请输入详细地址" ></input>
+        <view class="address_submit" bindtap="isAddress">确定</view>
+      <view class="mune-main" wx:if="{{  suggestion.length }}">
+<!--关键词输入提示列表渲染-->
+<view wx:for="{{suggestion}}" wx:key="index" class="listMune" bindtap="backfill" data-title="{{ item.title }}">
+    <!--绑定回填事件-->
+    <view>
+    <!--根据需求渲染相应数据-->
+    <!--渲染地址title-->
+    <view style="text-align:center;" >{{item.title}}</view>
+    <!--渲染详细地址-->
+    <view style="font-size:12px;color:#666;text-align:center;">{{item.addr}}</view>
+    </view>
+</view>
+</view>
+</view> 
+

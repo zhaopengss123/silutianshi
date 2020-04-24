@@ -1,0 +1,56 @@
+<official-account></official-account>
+
+<view class="content">
+  <view class="mnue-list">
+    <view>
+      <view>头像</view>
+      <view>
+        <open-data type="userAvatarUrl"></open-data>
+      </view>
+    </view>
+    <view>
+      <view>昵称</view>
+      <view>
+        <open-data type="userNickName"></open-data>
+      </view>
+    </view>
+    <view class="ask" bindtap="showFooter">
+      <view>账号遇到问题</view>
+      <view>联系客服</view>
+    </view>
+    <view class="ask" bindtap="tologin">
+
+      <view>绑定的手机号</view>
+      <view>{{ userInfo.phone }}</view>
+    </view>
+    <view class="ask">
+      <view>当前版本</view>
+      <view>V3.13.0</view>
+    </view>
+    <view>
+      <view>
+        <navigator url="./user/user" hover-class="noshadow">隐私&服务协议</navigator>
+      </view>
+      <view></view>
+    </view>
+  </view>
+</view>
+  <view class="customer-service" hidden="{{ !showPage }}">
+      <view class="hidePage" bindtap="hidePage"></view>
+      <view class="customer-main {{ showPage ? 'active' : ''  }}">
+        <view class="customer-header">
+          <view class="customer-headimg">
+              <image src="{{ services.wxImg }}"></image>
+          </view>
+          <view class="customer-right">
+              <view>策划师@{{ services.wxName }}</view>
+              <view>老板好，我是门店活动的专属策划师，加一下我的微信，可以获得免费活动策划哦~</view>
+          </view>
+          </view>
+          <view class="qrcode">
+              <image bindtap="downloadImg" src="{{ services.wxQr }}" data-url="{{ services.wxQr }}"></image>
+          </view>
+          <view class="qrcode-text">微信号{{ services.wxNumber }}</view>
+          <view class="copy-btn" bindtap="copy" data-copy="{{ services.wxNumber }}">复制微信号去添加</view>
+      </view>
+  </view>

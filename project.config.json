@@ -6,11 +6,22 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"autoAudits": false
+		"coverView": true,
+		"autoAudits": false,
+		"showShadowRootInWxmlPanel": true,
+		"scopeDataCheck": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.6.4",
-	"appid": "wx0a02a8989d006e9d",
+	"appid": "wxcd43d6c8aa6558c2",
 	"projectname": "%E4%B8%9D%E8%B7%AF%E5%A4%A9%E4%BD%BF",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
@@ -31,84 +42,95 @@
 			"current": -1,
 			"list": []
 		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
 		"miniprogram": {
-			"current": 10,
+			"current": -1,
 			"list": [
 				{
 					"id": -1,
-					"name": "我的",
-					"pathName": "pages/user/user",
+					"name": "个人中心",
+					"pathName": "pages/index/user/user",
 					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
-					"name": "内容页",
-					"pathName": "pages/index/detail/detail",
+					"name": "我的店铺",
+					"pathName": "pages/index/store/store",
 					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
-					"name": "视频播放",
-					"pathName": "pages/index/detail/videoPlay/videoPlay",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 3,
-					"name": "已报名",
-					"pathName": "pages/signUp/enrolled/enrolled",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 4,
-					"name": "报名",
-					"pathName": "pages/signUp/signUp",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 5,
-					"name": "未报名",
-					"pathName": "pages/signUp/notEnrolled/notEnrolled",
+					"name": "店铺详情",
+					"pathName": "pages/index/store/detail/detail",
 					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
-					"name": "收藏",
-					"pathName": "pages/user/collection/collection",
+					"name": "登录",
+					"pathName": "pages/login/login",
 					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
-					"name": "搜索",
-					"pathName": "pages/search/search",
+					"name": "店员",
+					"pathName": "pages/index/store/staff/staff",
 					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
-					"name": "新闻",
-					"pathName": "pages/news/news",
+					"name": "门店首页",
+					"pathName": "pages/index/store/index/index",
 					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
-					"name": "我的比赛",
-					"pathName": "pages/user/match/match",
+					"name": "门店引流",
+					"pathName": "pages/activity/drainage/drainage",
 					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
-					"name": "扫码进入",
-					"pathName": "pages/signUp/qrcode/qrcode",
-					"query": "id=3",
+					"name": "红包裂变详情",
+					"pathName": "pages/activity/drainage/detail/detail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "红包记录",
+					"pathName": "pages/activity/drainage/record/record",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "推荐人页面",
+					"pathName": "pages/activity/drainage/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "被推荐人",
+					"pathName": "pages/activity/drainage/recommend/recommend",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 11,
+					"name": "被邀请店员",
+					"pathName": "pages/index/index",
+					"query": "storeId=4",
 					"scene": null
 				}
 			]

@@ -1,0 +1,149 @@
+/* pages/index/user/user.wxss */
+page{
+  width: 100%;
+  height: 100%;
+}
+.mnue-list{
+  width: 670rpx;
+  margin: 0 auto;
+  padding: 0 35rpx;
+  background: #fff;
+}
+.mnue-list>view{
+  height: 120rpx;
+  line-height: 120rpx;
+  font-size: 28rpx;
+  border-bottom: solid 1px #f0f0f0;
+  color: #222222;
+}
+.mnue-list>view view{
+  float: left;
+}
+.mnue-list>view view:last-child{
+  float: right;
+  color: #919BA5;
+  font-size: 24rpx;
+}
+.mnue-list>view:first-child view:last-child{
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-top: 25rpx;
+}
+.mnue-list>view:last-child{
+  border: none;
+}
+.exit-app{
+  width: 680rpx;
+  position: fixed;
+  bottom: 100rpx;
+  left: 35rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  font-size: 30rpx;
+  background: #fff;
+  box-shadow:3px 3px 3px #ccc;
+}
+.ask{
+  background: url(https://ylbb-wxapp.oss-cn-beijing.aliyuncs.com/store/icon-right-o.png) no-repeat right center;
+  background-size: 15.2rpx 27.2rpx;
+  padding-right: 35rpx;
+}
+.customer-service{
+  width: 100%;
+  height: 100%;
+  background:rgba(0,0,0,0.25);
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.customer-main{
+  width: 750rpx;
+  height: 686rpx;
+  background: #fff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+.customer-header{
+  width: 670rpx;
+  margin: 0 auto;
+  margin-top: 40rpx;
+  overflow: hidden;
+}
+.customer-headimg{
+  width: 90rpx;
+  height: 90rpx;
+  overflow: hidden;
+  border-radius: 50%;
+  float: left;
+}
+.customer-headimg image{
+  width: 100%;
+  height: 100%;
+}
+.customer-right{
+  width: 558rpx;
+  float: left;
+  margin-left: 22rpx;
+}
+.customer-right view:nth-child(1){
+  color: #373C41;
+  font-size: 24rpx;
+}
+.customer-right view:nth-child(2){
+  width: 508rpx;
+  height: 92rpx;
+  color: #373C41;
+  font-size: 26rpx;
+  background:rgba(245,245,245,1);
+  border-radius:0rpx 40rpx 40rpx 40rpx;
+  padding:  18rpx 32rpx 0 18rpx;
+  margin-top: 10rpx;
+}
+.qrcode{
+  width: 190rpx;
+  height: 190rpx;
+  margin: 0 auto;
+  margin-top: 40rpx;
+}
+.qrcode image{
+  width: 100%;
+  height: 100%;
+}
+.qrcode-text{
+  color: #919BA5;
+  font-size: 24rpx;
+  text-align: center;
+  margin-top: 20rpx;
+}
+.copy-btn{
+  width: 630rpx;
+  height: 110rpx;
+  line-height: 110rpx;
+  text-align: center;
+  color: #373C41;
+  font-size: 32rpx;
+  background: #FFC41F;
+  border-radius:55rpx;
+  margin: 0 auto;
+  margin-top: 48rpx;
+}
+.customer-main.active{
+  animation: showpage 1s ease-out forwards;
+  -webkit-animation: showpage 1s ease-out forwards;
+}
+@keyframes showpage{
+  0%{ transform: translateY(686rpx); }
+  100%{ transform: translateY(0rpx); }
+}
+@-webkit-keyframes showpage{
+  0%{ -webkit-transform: translateY(686rpx); }
+  100%{ -webkit-transform: translateY(0rpx); }
+}
+.hidePage{
+  width: 100%;
+  height: 100%;
+}

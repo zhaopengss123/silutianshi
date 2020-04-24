@@ -1,38 +1,53 @@
-<view class='content'>
-  <view class='banner'>
-      <!-- <image src='/assets/images/indexBanner_02.jpg' mode="widthFix"></image> -->
-        <swiper indicator-dots="true" autoplay="true" interval="5000" duration="300"  indicator-active-color="#FFF" circular="true">
-        <block wx:for="{{swiperArray}}" wx:key="key">
-          <swiper-item>
-            <navigator url="./bannerDetail/bannerDetail?id={{item.id}}"><image src="{{item.banner}}" class="slide-image" style='width:750rpx' mode="widthFix"/></navigator>
-          </swiper-item>
-        </block>
-      </swiper>
-  </view>
-  <view class='push'>
-     {{ actives.des }}
-  </view>
-  <view class='nav'>
-      <view wx:for="{{ navList }}" wx:key="index">
-        <navigator url='./detail/detail?id={{ item.id}}'>
-        <image src='{{ item.pic }}' mode="widthFix"></image>
-        </navigator>
-      </view>
-  </view>
-</view>
-<view class='opensetting' wx:if="{{ setTingGet }}">
-  <view>
-  <text>获取您的用户名头像等信息</text>
-  <button  open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button></view>
-</view>
+<official-account binderror="errors"></official-account>
 
-<view class='opensetting' wx:if="{{ setTingAddress }}">
-  <view>
-  <text>获取您的经纬度信息</text>
-  <button  open-type="openSetting" bindopensetting='openSetting'>获取位置信息</button></view>
+<view class="content">
+
+  <view class="linemune">
+    <view bindtap="toUser">
+      个人中心
+    </view>
+    <view bindtap="tostore">
+      店铺管理
+    </view>
+    <view bindtap="toactivity">
+      创建活动
+    </view>
+  </view>
+
+  <view class="storeListmnue">
+    <view>
+      <open-data type="userAvatarUrl"></open-data>
+    </view>
+    <view>
+      <open-data type="userNickName"></open-data>的店铺</view>
+  </view>
+
 </view>
-<import src="/template/footer.wxml"/>
-<template is="post" data="{{id:1}}"></template>
-<template is="zzpage" wx:if="{{ hidezz }}" ></template>
-<view class='hideBtn' bindtap='showzz'></view>
-<view class='wellBg' wx:if="{{ hidezz }}" bindtap="nozz"></view>
+  <view class="shopName">
+    <picker bindchange="bindPickerChange" value="{{index}}" range="{{ shopList }}" range-key="shop_name">
+      <view class="picker">
+        当前店铺：{{shopList[index].shop_name}}
+      </view>
+      <view>切换</view>
+    </picker>
+  <view class="showBtn" wx:if="{{ buttonUserInfo }}">
+    <view class="showBtnMain">
+      <text>请授权获取您的头像，用户名等信息</text>
+      <button  open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
+
+    </view>  
+  </view>
+
+  <view class="activity">
+    <view class="activityTitle">
+        我的活动
+    </view>
+    <view class="activitylist">
+        <view wx:for="{{ activityList }}" wx:key="index" bindtap="toactivitydetail" data-id="{{ item.id }}">
+              {{ item.activityHeadline }}
+        </view>  
+    
+    </view>
+</view>
+  </view>
+

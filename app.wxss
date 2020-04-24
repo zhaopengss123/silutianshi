@@ -1,3 +1,6 @@
 view {
   font-family: 'Microsoft Yahei'
 }
+.noshadow{
+  hover-class:none;
+}

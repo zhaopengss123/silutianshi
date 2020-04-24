@@ -1,0 +1,19 @@
+<view class="content">
+  <view class="memberList">
+
+    <view wx:for="{{ allAccount }}" wx:key="index">
+      <view class="member_left">
+        <view class="member_name">{{ item.nickName }}</view>
+        <view class="member_tel">{{ item.phone }}</view>
+      </view>
+      <view class="member_right">
+          <switch checked="{{ item.status == 0 }}" color="{{ switchColor }}" bindchange="statusChange" data-item="{{ item }}"/>
+      </view>
+    </view>
+
+
+  </view>
+  <view class="warning">* 停止启用后，店员将无法继续管理您的店铺</view>
+  <!-- <view class="addmember" bindtap="addmember">邀请店员</view> -->
+  <button class="addmember" open-type="share" bindtap="onShareAppMessage" >邀请店员</button>
+</view>
