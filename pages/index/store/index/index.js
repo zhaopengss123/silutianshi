@@ -8,7 +8,8 @@ Page({
   data: {
     latitude: null,
     longitude: null,
-    distance: 0
+    distance: 0,
+    activityList: []
   },
 
   /**
@@ -19,6 +20,7 @@ Page({
     this.setData({
       shopDetail: app.shopDetail
     });
+    this.getActivityList();
     wx.getLocation({
       type: 'wgs84',
       success: function(res) {
@@ -55,7 +57,32 @@ Page({
         wx.hideLoading();
       }
     });
-  }
+  },
+  getActivityList() {
+    let that = this;
+    Http.get('/activity/getActivityList', {
+    }).then(res => {
+      if (res.result == 1000) {
+        that.setData({
+          activityList: res.data.list
+        })
+      }
+    });
+  },
+  toClistindex(e) {
+    let that = this;
+    let id = e.currentTarget.dataset.id;
+  let path = `/pages/drainage/index/index?id=${id}&openId=${app.userInfo.openId}&nickName=${app.userInfo.nickName}&headImg=${app.userInfo.headImg}`;
+    wx.navigateToMiniProgram({
+      appId: 'wx1f1e136159cc94b5', // 要跳转的小程序的appid
+      path: path, // 跳转的目标页面
+      envVersion: "develop",
+      extarData: {
+        open: 'auth'
+      },
+      success(res) {}
+    })
+  },
 
 
 })

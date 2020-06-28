@@ -1,0 +1,46 @@
+.content{
+  width: 680rpx;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.content>view{
+  width: 100%;
+  overflow: hidden;
+  padding: 30rpx 0;
+}
+.name{
+  font-size: 30rpx;
+  color: #333;
+}
+.detail>view{
+  width: 25%;
+  float: left;
+  font-size: 24rpx;
+}
+.detail>view>text{
+  display: block;
+}
+.details{
+  color: #999;
+  font-size: 26rpx;
+  margin-top: 20rpx;
+}
+.details view{
+  float: left;
+}
+.details view:last-child{
+  float: right;
+}
+.toggle{
+  width: 100%;
+  overflow: hidden;
+}
+.toggle text{
+  width: 50%;
+  float: left;
+  text-align: center;
+  font-size: 30rpx;
+} 
+.activtyList{
+  margin-top: 50rpx;
+}

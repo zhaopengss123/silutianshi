@@ -1,53 +1,119 @@
 <official-account binderror="errors"></official-account>
-
 <view class="content">
+  <view class="header">
+    <view class="header-main">
+      <view class="header-user">
+        <view>
+          <open-data type="userAvatarUrl"></open-data>
+        </view>
+        <view>
 
-  <view class="linemune">
-    <view bindtap="toUser">
-      个人中心
-    </view>
-    <view bindtap="tostore">
-      店铺管理
-    </view>
-    <view bindtap="toactivity">
-      创建活动
-    </view>
-  </view>
+          <picker bindchange="bindPickerChange" value="{{index}}" range="{{ shopList }}" range-key="shop_name" disabled="{{ !shopList.length }}">
+              <view class="picker">
+                <view wx:if="{{ shopList[index] }}">当前店铺：{{shopList[index].shop_name }}</view>
+                <view wx:else><open-data type="userNickName"></open-data>的店铺</view>
+              </view>
+              <view wx:if="{{ !shopList[index].shop_name }}">  </view>
+            </picker>
 
-  <view class="storeListmnue">
-    <view>
-      <open-data type="userAvatarUrl"></open-data>
-    </view>
-    <view>
-      <open-data type="userNickName"></open-data>的店铺</view>
-  </view>
-
-</view>
-  <view class="shopName">
-    <picker bindchange="bindPickerChange" value="{{index}}" range="{{ shopList }}" range-key="shop_name">
-      <view class="picker">
-        当前店铺：{{shopList[index].shop_name}}
+          </view>
       </view>
-      <view>切换</view>
-    </picker>
-  <view class="showBtn" wx:if="{{ buttonUserInfo }}">
-    <view class="showBtnMain">
-      <text>请授权获取您的头像，用户名等信息</text>
-      <button  open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
+      <view class="header-icon" bindtap="toUser">
+        <image src="https://ylbb-business.oss-cn-beijing.aliyuncs.com/2020/1588214137094872.png"></image>
+      </view>
+    </view>
+    <view class="user-number">
+      <view>
+        <text>总客户数</text>
+        <text>100</text>
+      </view>
+      <view>
+        <text>本月销售(元)</text>
+        <text>83.00</text>
+      </view>
+      <view>
+        <text>可提现金额(元)</text>
+        <text>{{ dataMoney.toWithdrawedMoney || 0 }}</text>
+      </view>
+    </view>
+    <!-- <view class="nav">
+      <view>
+        <image src="https://ylbb-business.oss-cn-beijing.aliyuncs.com/2020/1588215108856158.png"></image>
+        <text>扫码核销</text>
+      </view>
+      <view>
+        <image src="https://ylbb-business.oss-cn-beijing.aliyuncs.com/2020/1588215229532335.png"></image>
+        <text>邀请开店</text>
+      </view>
+      <view bindtap="tostore">
+        <image src="https://ylbb-business.oss-cn-beijing.aliyuncs.com/2020/1588215129009551.png"></image>
+        <text>店铺管理</text>
+      </view>
+      <view>
+        <image src="https://ylbb-business.oss-cn-beijing.aliyuncs.com/2020/1588215246820612.png"></image>
+        <text>VIP旗舰版</text>
+      </view>
+    </view> -->
+  </view>
+  <view class="acrivity" wx:if="{{ activityList.length }}">
+    <view class="bg-title">
+      <view>我的活动</view>
+      <view>所有活动</view>
+    </view>
+    <view class="activity-list" wx:for="{{ activityList }}" wx:key="index" catchtap="toactivitydetail" data-id="{{ item.id }}">
+      <view>
+        <image src="{{ item.headImg }}"></image>
+        <view class="activity-text">
+          <view>{{ item.activityHeadline }}</view>
+          <view>红包裂变</view>
+          <view>
+            <text>今日参与 0</text>
+            <text>总参与 10</text>
+            <text bindtap="toRecord" data-id="{{ item.id }}">购买名单</text>
+          </view>
+        </view>
+      </view>
+    </view>
 
-    </view>  
   </view>
 
-  <view class="activity">
-    <view class="activityTitle">
-        我的活动
+  <view class="creatList">
+    <view class="bg-title">
+      <view>营销玩法</view>
+      <view></view>
+        <view class="creatTime">
+          <image src="https://ylbb-business.oss-cn-beijing.aliyuncs.com/2020/1590753128456469.jpeg"></image>
+          <text>李亚均 40分钟前创建了活动</text>
+        </view>
     </view>
-    <view class="activitylist">
-        <view wx:for="{{ activityList }}" wx:key="index" bindtap="toactivitydetail" data-id="{{ item.id }}">
-              {{ item.activityHeadline }}
-        </view>  
-    
+
+    <view class="creatList-activity">
+        <view class="left">
+            <image src="https://ylbb-business.oss-cn-beijing.aliyuncs.com/2020/15907510939387.png"></image>
+            <view>少儿游泳馆红包裂变</view>
+            <view>引流拓客≈283人</view>
+            <view>192商家在用</view>
+            <view bindtap="toactivity">创建同款活动</view>
+        </view>
+        <view class="right">
+            <text>【适用】门店开业、促销引流拓新客。</text> <text>【效果】现金红包刺激用户裂，使售卖的商品、体验卡等传播更广带来大量新客户。</text> <text>【建议】到店礼品的选购需要高于客户预期。</text>
+        </view>
     </view>
+
+    <view class="creatList-activity">
+        <view class="left">
+            <image src="https://ylbb-business.oss-cn-beijing.aliyuncs.com/2020/159075117721993.png"></image>
+            <view>托育机构红包裂变</view>
+            <view>引流拓客≈471人</view>
+            <view>112商家在用</view>
+            <view bindtap="toactivity">创建同款活动</view>
+        </view>
+        <view class="right">
+            <text>【适用】门店开业、促销引流拓新客。</text> <text>【效果】现金红包刺激用户裂，使售卖的商品、体验卡等传播更广带来大量新客户。</text> <text>【建议】到店礼品的选购需要高于客户预期。</text>
+        </view>
+    </view>
+
+  </view>
 </view>
-  </view>
 
+<button wx:if="{{ buttonUserInfo }}" class="userinfo" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>

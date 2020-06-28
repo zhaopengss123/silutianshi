@@ -481,6 +481,7 @@ textarea {
 .list-gift{
   width: 670rpx;
   overflow: hidden;
+  border-top: solid 2rpx #eff0f4;
 }
 .qj{
   width:250rpx;
@@ -509,6 +510,7 @@ textarea {
   width: 670rpx;
   margin: 0 auto;
   overflow: hidden;
+  padding-top: 100rpx;
 }
 .list-input-main>view{
   height: 120rpx;
@@ -596,4 +598,12 @@ color: #373C41;
 }
 .customview text{
   padding-right: 10rpx;
+}
+
+.prizes-bg view:nth-child(1){
+  font-weight: bolder;
+  font-size: 33rpx;
+}
+.prizes-bg view:nth-child(2){
+  color: #5A93F7;
 }

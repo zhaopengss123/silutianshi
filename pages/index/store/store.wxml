@@ -1,29 +1,32 @@
 <view class="content">
   <view class="store_img">
-    <image  src="{{ storeDetail.storeimg || 'http://ylbb-business.oss-cn-beijing.aliyuncs.com/2020/1585211527119406.jpg' }}"></image>
+    <image src="{{ storeDetail.storeimg || 'http://ylbb-business.oss-cn-beijing.aliyuncs.com/2020/1585211527119406.jpg' }}"></image>
   </view>
   <view class="mnue-list">
     <view>
-    <navigator hover-class="noshadow" url="./detail/detail">
-      <view>店铺资料</view>
-      <view></view>
+      <navigator hover-class="noshadow" url="./detail/detail">
+        <view>店铺资料</view>
+        <view></view>
+      </navigator>
+    </view>
+
+    <view>
+      <navigator url="./staff/staff" hover-class="noshadow">
+        <view>店员管理</view>
+        <view></view>
       </navigator>
     </view>
     <view>
-    <navigator url="./staff/staff" hover-class="noshadow">
-      <view>店员管理</view>
-      <view></view>
-    </navigator>
-    </view>
-    <view>
-    <navigator url="./index/index" hover-class="noshadow">
-      <view>预览店铺首页</view>
-      <view></view>
+      <navigator url="./index/index" hover-class="noshadow">
+        <view>预览店铺首页</view>
+        <view></view>
       </navigator>
     </view>
     <view>
       <view>邀请好友开店</view>
-      <view>奖励 <text>657元</text></view>
+      <view>奖励
+        <text>657元</text>
+      </view>
     </view>
     <view bindtap="showFooter">
       <view>我的专属策划师</view>
@@ -31,26 +34,31 @@
     </view>
   </view>
   <view class="openvip">
-      <view class="vip_left">
-          <view wx:if="{{ !storeDetail.shopShortName }}"><open-data type="userNickName"></open-data>的店铺 <text>旗舰版</text></view>
-          <view wx:else>{{ storeDetail.shopShortName }}的店铺<text>旗舰版</text></view>
-          <view>店铺未开通旗舰版</view>
+    <view class="vip_left">
+      <view wx:if="{{ !storeDetail.shopShortName }}">
+        <open-data type="userNickName"></open-data>的店铺
+        <text>旗舰版</text>
       </view>
+      <view wx:else>{{ storeDetail.shopShortName }}的店铺
+        <text>旗舰版</text>
+      </view>
+      <view>店铺未开通旗舰版</view>
+    </view>
   </view>
 </view>
 
-  <view class="customer-service" hidden="{{ !showPage }}">
-      <view class="hidePage" bindtap="hidePage"></view>
-      <view class="customer-main {{ showPage ? 'active' : ''  }}">
-        <view class="customer-header">
-              <view>老板你好</view>
-              <text>我是云分店官方客服，随时为您服务</text>
-          </view>
-          <view class="qrcode">
-              <image bindtap="downloadImg" src="{{ services.wxImg }}" data-url="{{ services.wxImg }}"></image>
-          </view>
-          <view class="qrcode-text">微信号{{ services.wxNumber }}</view>
-          <view class="download" bindtap="downloadImg" data-url="{{ services.wxImg }}">保存二维码到相册</view>
-          <view class="copy-btn" bindtap="copy" data-copy="{{ services.wxNumber }}">复制微信号去添加</view>
-      </view>
+<view class="customer-service" hidden="{{ !showPage }}">
+  <view class="hidePage" bindtap="hidePage"></view>
+  <view class="customer-main {{ showPage ? 'active' : ''  }}">
+    <view class="customer-header">
+      <view>老板你好</view>
+      <text>我是云分店官方客服，随时为您服务</text>
+    </view>
+    <view class="qrcode">
+      <image bindtap="downloadImg" src="{{ services.wxImg }}" data-url="{{ services.wxImg }}"></image>
+    </view>
+    <view class="qrcode-text">微信号{{ services.wxNumber }}</view>
+    <view class="download" bindtap="downloadImg" data-url="{{ services.wxImg }}">保存二维码到相册</view>
+    <view class="copy-btn" bindtap="copy" data-copy="{{ services.wxNumber }}">复制微信号去添加</view>
   </view>
+</view>

@@ -124,7 +124,7 @@
     <view class="toggle-title">
       <view>到店礼设置</view>
       <view>
-        <switch checked="{{ paramJson.activityPrizes.length ? true : false }}" disabled="true"  />
+       
       </view>
     </view>
   </view>

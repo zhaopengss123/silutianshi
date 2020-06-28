@@ -1,6 +1,6 @@
 const app = getApp();
-const Http = require('../../../../utils/request.js');
-const getUserInfo = require('../../../../utils/getUserInfo.js');
+const Http = require('../../utils/request.js');
+const getUserInfo = require('../../utils/getUserInfo.js');
 
 Page({
 
@@ -20,9 +20,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      id: options.id
-    })
+
     this.getJoinList();
 
     let that = this;
@@ -33,9 +31,9 @@ Page({
       getUserInfo().then(login => {
         that.getJoinList();
       }).catch(err => {
-          wx.redirectTo({
-            url: '/pages/index/index',
-          })
+        wx.redirectTo({
+          url: '/pages/index/index',
+        })
       })
     }
 
@@ -48,7 +46,7 @@ Page({
 
   },
 
-  selectActive(e){
+  selectActive(e) {
     let index = e.target.dataset.id;
     this.setData({
       activeId: index
@@ -59,20 +57,20 @@ Page({
       this.getRedPackage();
     }
   },
-  bindseach(){
-    if (this.data.activeId == 1){
+  bindseach() {
+    if (this.data.activeId == 1) {
       this.getJoinList();
-    }else{
+    } else {
       this.getRedPackage();
     }
   },
-  getRedPackage(){
+  getRedPackage() {
     let that = this;
     Http.post('/activity/selectSharerAndRedPackage', {
       activityId: this.data.id,
     }).then(res => {
       if (res.result == 1000) {
-        res.data.map(item=>{
+        res.data.map(item => {
           item.nickName = unescape(item.nickName);
           item.total = item.total;
         })
@@ -90,14 +88,14 @@ Page({
       }
     });
   },
-  getJoinList(){
+  getJoinList() {
     let that = this;
     let paramJson = {
       activityId: this.data.id,
       payStatus: 1,
       phoneNum: this.data.phoneNum
     }
-    if (!paramJson.phoneNum){
+    if (!paramJson.phoneNum) {
       delete paramJson.phoneNum;
     }
     Http.post('/activity/getJoinData', {
@@ -106,7 +104,7 @@ Page({
       pageSize: 10000
     }).then(res => {
       if (res.result == 1000 && res.data.list) {
-        res.data.list.map(item=>{
+        res.data.list.map(item => {
           item.otherContent = item.otherContent ? JSON.parse(item.otherContent) : []
         })
         that.setData({
@@ -122,36 +120,10 @@ Page({
       }
     });
   },
-  phoneNumFun(e){
+  phoneNumFun(e) {
     let val = e.detail.value;
     this.setData({
       phoneNum: val
-    })
-  },
-  bindVerification(e){
-    const openId = e.currentTarget.dataset.openid;
-    const activityId = this.data.id;
-    const that = this;
-    wx.showModal({
-      title: '提示',
-      content: '您确定要对改购买记录进行核销吗？',
-      success(res){
-        if (res.confirm){
-          wx.showLoading({
-            title: '加载中',
-          })
-          Http.post('/activity/updateActivityParticipatorGetStatus', {
-            openId,
-            activityId
-          }).then(res => {
-            if (res.result == 1000) {
-              that.getJoinList();
-              wx.hideLoading();
-            }
-          });
-
-        }
-      }
     })
   }
 })

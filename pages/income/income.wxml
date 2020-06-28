@@ -1,0 +1,54 @@
+<view class="content">
+  <view class="income-header">
+    <view class="left">
+      <text>可提现金额(元)</text>
+      <text>{{ dataMoney.toWithdrawedMoney }}</text>
+    </view>
+    <view class="right" bindtap="tocash">
+      我要提现
+    </view>
+  </view>
+  <view class="income-num">
+    <view>
+      <text>累计收益金额(元)</text>
+      <text>￥{{ dataMoney.totalMoney }}</text>
+    </view>
+    <view>
+      <text>待入账金额(元)</text>
+      <text>￥{{ dataMoney.runningActivityMoney	 }}</text>
+    </view>
+  </view>
+  <view class="income-list">
+    <view class="nav">
+      <view>收入</view>
+      <view>支出</view>
+      <view>共计(元)</view>
+      <view>状态</view>
+    </view>
+    <view class="list">
+      <view wx:for="{{ memberList }}" wx:key="index">
+        <view class="list-tit">
+          <text>{{ item.activity_headline }}</text>
+          <text bindtap="todetail" data-id="{{ item.activity_id }}" data-income="{{ item.income }}" data-s="{{ item.s}}">收支明细</text>
+        </view>
+        <view class="list-detail" >
+          <view>
+            <text>订单: {{ item.income_count	 }}笔 </text>
+            <text>收入: {{ item.income }}元</text>
+          </view>
+          <view>
+            <text>红包: {{ item.pay_count	 }}笔 </text>
+            <text>支出: {{ pay }}元</text>
+          </view>
+          <view>
+            <text>￥{{ item.income - item.pay }}</text>
+          </view>
+          <view>
+            <text>{{ item.status == 0 ? '待提现' : item.status == 1 ? '已提现': '提现中' }}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+</view>

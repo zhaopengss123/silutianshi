@@ -1,0 +1,70 @@
+page{
+  background: #FAFAFA;
+}
+.content{
+  overflow: hidden;
+  background: #fff;
+  padding-bottom: 108rpx;
+}
+image{
+  width: 100%;
+  height: 100%;
+}
+.top-icon{
+  width: 100rpx;
+  height: 100rpx;
+  margin: 0 auto;
+  margin-top: 88rpx;
+}
+.top-text{
+  text-align: center;
+  color: #222222;
+  font-size: 28rpx;
+  margin-top: 40rpx;
+  font-weight:500;
+}
+.pirce{
+  color: #222222;
+  font-size: 80rpx;
+  font-weight: bolder;
+  text-align: center;
+  margin-top: 30rpx;
+} 
+.sx{
+  color: #919BA5;
+  font-size: 24rpx;
+  margin-top: 30rpx;
+  text-align: center;
+}
+.submitTx{
+  width: 400rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  background: #FFC41F;
+  color: #101010;
+  margin: 0 auto;
+  border-radius:55rpx;
+  font-size: 28rpx;
+  margin-top: 40rpx;
+}
+.tx-list{
+  text-align: center;
+  color: #373C41;
+  font-size: 28rpx;
+  margin-top: 36rpx;
+  text-decoration: underline;
+}
+.rule{
+  width: 670rpx;
+  margin: 0 auto;
+  margin-top: 38rpx;
+  color: #919BA5;
+  font-size: 24rpx;
+}
+.rule view{
+  padding-bottom: 30rpx;
+}
+.rule text{
+  display: block;
+}

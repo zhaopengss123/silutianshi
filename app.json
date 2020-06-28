@@ -5,7 +5,7 @@
     "pages/index/store/store",
     "pages/index/store/detail/detail",
     "pages/index/store/staff/staff",
-    "pages/index/store/index/index",    
+    "pages/index/store/index/index",
     "pages/login/login",
     "pages/activity/activity",
     "pages/activity/drainage/drainage",
@@ -13,8 +13,14 @@
     "pages/activity/drainage/index/index",
     "pages/activity/drainage/record/record",
     "pages/activity/drainage/recommend/recommend",
-    "pages/components/navbar/navbar"
-    
+    "pages/components/navbar/navbar",
+    "pages/income/income",
+    "pages/income/detail/detail",
+    "pages/income/cash/cash",
+    "pages/income/cash/list/list",
+    "pages/income/activity-deatil/activity-deatil",
+    "pages/member/member",
+    "pages/client/client"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -30,5 +36,26 @@
   "sitemapLocation": "sitemap.json",
   "navigateToMiniProgramAppIdList": [
     "wx1f1e136159cc94b5"
-  ]
+  ],
+  "tabBar": {
+    "color": "#ccc",
+    "selectedColor": "#FD9A47",
+    "borderStyle": "black",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "iconPath": "assets/images/tab-1.png",
+        "selectedIconPath": "assets/images/tab-1-s.png",
+        "pagePath": "pages/index/index",
+        "text": "云分店"
+      },
+      {
+        "iconPath": "assets/images/tab-2.png",
+        "selectedIconPath": "assets/images/tab-2-s.png",
+        "pagePath": "pages/income/income",
+        "text": "门店收益"
+      }
+
+    ]
+  }
 }

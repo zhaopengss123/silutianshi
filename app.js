@@ -9,8 +9,8 @@ App({
   },
   shopDetail: {},
   token: null,
-  //domain: 'http://39.107.232.95:6086/cloudstore',
-  domain: "https://cloudstore.haochengzhang.com/cloudstore",
+  domain: 'http://39.107.232.95:6086/cloudstore',
+  //domain: "https://cloudstore.haochengzhang.com/cloudstore",
   onLaunch: function () {
     // 获取屏幕参数
     try {
@@ -47,7 +47,7 @@ App({
         // tab主页视窗高度
         this.globalData.winHeightTab = res.windowHeight - navHeight - 12 - 32
       }
-      console.log(wx.getSystemInfoSync(), this.globalData.winHeightTab)
+      // console.log(wx.getSystemInfoSync(), this.globalData.winHeightTab)
     } catch (e) {
       console.log(e)
     }
@@ -65,3 +65,10 @@ App({
   }
 })
 // 收藏 
+
+        // {
+        //   "iconPath": "assets/images/tab-3.png",
+        //   "selectedIconPath": "assets/images/tab-3-s.png",
+        //   "pagePath": "pages/member/member",
+        //   "text": "我的客户"
+        // }

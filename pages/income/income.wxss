@@ -1,0 +1,123 @@
+.income-header{
+  width: 670rpx;
+  margin: 0 auto;
+  margin-top: 40rpx;
+  overflow: hidden;
+}
+.left{
+  float: left;
+  color: #373C41;
+  font-size: 24rpx;
+  font-weight:500;
+}
+.left text{
+  display: block;
+  clear: both;
+}
+.left text:nth-child(2){
+  font-size: 60rpx;
+}
+.right{
+  width: 160rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  float: right;
+  border: solid 2rpx #919BA5;
+  color: #373C41;
+  font-size: 28rpx;
+  border-radius:50rpx;
+  margin-top: 30rpx;
+}
+.income-num{
+  width: 670rpx;
+  margin: 0 auto;
+  height: 158rpx;
+  background:linear-gradient(137deg,rgba(255,228,74,1) 0%,rgba(255,203,34,1) 100%);
+    border-radius:40rpx;
+    margin-top: 40rpx;
+}
+.income-num>view{
+  width: 50%;
+  float: left;
+  text-align: center;
+  color: #373C41;
+  font-size: 24rpx;
+  margin-top: 30rpx;
+}
+.income-num>view>text{
+  display: block;
+}
+.income-num>view>text:last-child{
+  font-size: 32rpx;
+  margin-top: 8rpx;
+  font-weight: bold;
+}
+.nav{
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  color: #4A4A4A;
+  font-size: 24rpx;
+  background: #FAFAFA;
+  margin-top: 40rpx;
+  font-weight: bold;
+}
+.nav>view{
+  float: left;
+}
+.nav>view:nth-child(1){
+  margin-left: 42rpx;
+  width: 218rpx;
+}
+.nav>view:nth-child(2){
+  width: 208rpx;
+}
+.nav>view:nth-child(3){
+  width: 156rpx;
+}
+.list-tit{
+  width: 710rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  color: #373C41;
+  font-size: 28rpx;
+  margin: 0 auto;
+  background: #F6FBFF;
+  margin-top: 20rpx;
+}
+.list-tit text{
+  float: left;
+}
+.list-tit text:nth-child(1){
+  margin-left: 20rpx;
+}
+.list-tit text:nth-child(2){
+  float: right;
+  margin-right: 20rpx;
+  color: #508CFF;
+  text-decoration: underline;
+}
+.list-detail>view{
+  color: #373C41;
+  font-size: 24rpx;
+  float: left;
+}
+.list-detail>view:nth-child(1){
+  margin-left: 42rpx;
+  width: 218rpx;
+}
+.list-detail>view:nth-child(2){
+  width: 208rpx;
+}
+.list-detail>view:nth-child(3){
+  width: 156rpx;
+}
+.list-detail text{
+  display: block;
+}
+.list-detail{
+  padding: 28rpx 0;
+  border-bottom: solid 2rpx #EFF0F4;
+  overflow: hidden;
+}

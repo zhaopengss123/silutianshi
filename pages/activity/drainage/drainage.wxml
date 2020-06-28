@@ -229,22 +229,27 @@
 
 
   <view wx:if="{{ ddlSwitch }}" class="mnue-list list-gift" wx:for="{{ paramJson.activityPrizes }}" wx:key="index">
+      <view class="prizes-bg">
+      <view>礼品{{ listName[index] }}</view>
+      <view bindtap="removeGift" data-index="{{ index }}">删除</view>
+    </view>
+
     <view>
-      <view>礼品{{ listName[index] }}名称</view>
+      <view>礼品名称</view>
       <view>
         <input maxlength="20" bindinput="editprizeName" value="{{ item.prizeName }}" data-index="{{ index }}" placeholder="礼品名称不超过30字" />
       </view>
     </view>
 
     <view>
-      <view>礼品{{ listName[index] }}价值</view>
+      <view>礼品价值</view>
       <view>
         <input maxlength="200" bindinput="editprizeValue" value="{{ item.prizeValue }}" data-index="{{ index }}" placeholder="请输入礼品价值金额" />
       </view>
     </view>
 
     <view style="height:auto; overflow:hidden;">
-      <view class="desc-text">礼品{{ listName[index] }}广告描述</view>
+      <view class="desc-text">礼品广告描述</view>
       <view class="describe">
         <textarea placeholder="礼品介绍，不填写则不显示。不超过50个字…" bindinput="editprizeIntroduction" data-index="{{ index }}" value="{{ item.prizeIntroduction }}" />
         <text>{{ item.prizeIntroduction ? item.prizeIntroduction.length : 0 }}/50</text>
@@ -253,7 +258,7 @@
 
     <view class="uploadcode">
       <view class="uploadleft">
-        <view>礼品{{ listName[index] }}图片</view>
+        <view>礼品图片</view>
         <view>到店礼品详细介绍图片，最多可上传1张</view>
       </view>
       <view class="uploadright lplist" bindtap="selectHeaderImg" data-id="2" data-index="{{ index }}">

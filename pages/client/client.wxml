@@ -1,0 +1,67 @@
+<view class="content">
+ 
+  <view class="share-input" wx:if="{{ activeId == 1 }}">
+    <input bindinput="phoneNumFun" placeholder="手机号码/微信昵称" />
+    <view bindtap="bindseach">查询</view>
+  </view>
+  <view class="th-top">
+      <text>客户信息</text>
+      <text>消费金额</text>
+  </view>
+  <view class="purchase" >
+    <view wx:for="{{ joinList }}" wx:key="index">
+      <image src="{{ item.headImg }}"></image>
+      <view class="user-detail">
+        <view class="user-left">
+          <view class="user-name">
+            {{ item.nickName }}
+          </view>
+        </view>
+        <view class="user-bottom">
+          {{ item.phoneNum }}
+        </view>
+      </view>
+      <view class="user-right">
+        <text>￥115.26</text>
+      </view>
+    </view>
+        <view wx:for="{{ joinList }}" wx:key="index">
+      <image src="{{ item.headImg }}"></image>
+      <view class="user-detail">
+        <view class="user-left">
+          <view class="user-name">
+            {{ item.nickName }}
+          </view>
+        </view>
+        <view class="user-bottom">
+          {{ item.phoneNum }}
+        </view>
+      </view>
+      <view class="user-right">
+        <text>￥115.26</text>
+      </view>
+    </view>
+        <view wx:for="{{ joinList }}" wx:key="index">
+      <image src="{{ item.headImg }}"></image>
+      <view class="user-detail">
+        <view class="user-left">
+          <view class="user-name">
+            {{ item.nickName }}
+          </view>
+        </view>
+        <view class="user-bottom">
+          {{ item.phoneNum }}
+        </view>
+      </view>
+      <view class="user-right">
+        <text>￥115.26</text>
+      </view>
+    </view>
+
+  </view> 
+
+
+
+
+
+</view>

@@ -15,6 +15,11 @@ Page({
         buttonUserInfo: true
       })
     }
+    wx.login({
+      success(res) {
+        console.log(res.code);
+      }
+    })
   },
   onShow: function () {
     let that = this;
@@ -45,6 +50,7 @@ Page({
     let that = this;
     wx.showLoading({ title: '加载中...', mask: true });
       Http.get('/account/getShop').then(res => {
+        that.getPrice();
         if (res.result == 1000) {
           app.shopDetail = res.data;
           wx.hideLoading();
@@ -123,6 +129,7 @@ Page({
   },
   bindGetUserInfo(e){
     let that = this;
+    if(!e.detail){ return false; }
     app.userInfo.nickName = e.detail.userInfo.nickName;
     app.userInfo.headImg = e.detail.userInfo.avatarUrl;
     if(e.detail){
@@ -143,11 +150,11 @@ Page({
                 code: res.code,
                 encryptedData: info.encryptedData,
                 iv: info.iv,
-                role: that.data.storeId ? 1 : 0,
-                storeId: that.data.storeId,
                 paramJson: JSON.stringify({
                   nickName: app.userInfo.nickName,
-                  headImg: app.userInfo.headImg
+                  headImg: app.userInfo.headImg,
+                  role: that.data.storeId ? 1 : 0,
+                  storeId: that.data.storeId
                 })
               }).then(res => {
                 //that.getAccountInfo();
@@ -167,6 +174,12 @@ Page({
       })
 
     }
+  },
+  toRecord(e){
+    const id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: `../activity/drainage/record/record?id=${ id }`,
+    })
   },
   toUser(){
     console.log(app.userInfo);
@@ -195,7 +208,7 @@ Page({
     let that = this;
     Http.get('/activity/getActivityList', {
     }).then(res => {
-          if(res.result == 1000){
+      if (res.result == 1000 && res.data){
             that.setData({
                activityList: res.data.list
             })
@@ -221,7 +234,7 @@ Page({
     })
   },
   toactivitydetail(e){
-    let id = e.target.dataset.id;
+    let id = e.currentTarget.dataset.id;
     if (!app.userInfo.phone) {
       wx.navigateTo({
         url: '/pages/login/login',
@@ -234,6 +247,30 @@ Page({
     })
   },
   errors(e){
-    console.log(e);
-  }
+    // console.log(e);
+  },
+  tocode(){
+    wx.scanCode({
+      success(res) {
+        console.log(res)
+      },
+      fail(err){
+        console.log(err);
+      }
+    })
+  },
+  getPrice() {
+
+    let that = this;
+    Http.get('/withdraw/getStatistics').then(res => {
+      if (res.result == 1000) {
+        that.setData({
+          dataMoney: res.data
+        })
+      }
+      wx.hideLoading();
+    });
+
+
+  },
 })

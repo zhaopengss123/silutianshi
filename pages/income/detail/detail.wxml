@@ -1,0 +1,40 @@
+<view class="content">
+  <view>
+    <view class="name">29.9五一活动</view>
+    <view class="details">
+        <view>结束时间：2020.05.01</view>
+        <view>收入总计：￥115.26</view>
+    </view>
+  </view>
+
+  <view class="slist">
+      <view class="toggle">
+          <text>收入(4)</text>
+          <text>支出(2)</text>
+      </view>
+
+
+  <view class="activtyList">
+    <view>
+      <view class="detail">
+        <view>
+          <text>订单：4笔</text>
+          <text>收入：119.60元</text>
+        </view>
+        <view>
+          <text>红包：2笔</text>
+          <text>支出：4.34元</text>
+        </view>
+        <view>
+          <text> ￥115.26</text>
+        </view>
+        <view>
+          <text>待入账</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  </view> 
+
+  </view>

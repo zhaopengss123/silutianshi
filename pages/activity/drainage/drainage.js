@@ -32,7 +32,7 @@ Page({
       text: '固定红包',
       id: 2
     }],
-    typeIndex: 0,
+    typeIndex: 1,
     musicList: [],
     musicIndex: 0,
     id: null,
@@ -72,6 +72,9 @@ Page({
       this.setData({
         "paramJson.effectiveDays": 30,
         "paramJson.cuePhrases": "转发朋友圈，朋友下单，您即可获得2.88 - 6.66元大红包奖励，多推多得，上不封顶！",
+        "paramJson.activityRole": "1.获得红包奖励条件：被推荐人通过推荐人的推荐链接购买商品。\n2.达到活动条件后自动发红包到账户内，凭券到店使用。消费时出示使用即可。\n3. 本次活动数量有限，先到先得。\n4. 活动以平台展示结果为准。\n5. 此次活动由店铺发起与云分店平台无关，活动解释权归本店铺所有。",
+        "paramJson.threshold": '无使用门槛' ,
+        "paramJson.availableRange" : '全国适用',
         "paramJson.activityRedpacketRule":{
           maxValue: 6.66,
           minValue: 2.22,
@@ -99,7 +102,6 @@ Page({
     this.setData({
       "paramJson.startTime": e.detail.value
     })
-    console.log(e);
   },
   bindDateEnd(e) {
     this.setData({
@@ -108,11 +110,19 @@ Page({
   },
 
   addGift() {
-    let giftList = this.data.giftList;
+    let giftList = this.data.paramJson.activityPrizes || [];
     let json = {};
     giftList.push(json);
     this.setData({
       "paramJson.activityPrizes": giftList
+    })
+  },
+  removeGift(e){
+    let index = e.currentTarget.dataset.index;
+    let list = this.data.paramJson.activityPrizes;
+    list.splice(index,1);
+    this.setData({
+      "paramJson.activityPrizes": list
     })
   },
   horseRaceLamp(e) {
@@ -197,7 +207,6 @@ Page({
                   'paramJson.activityImgs': arr
                 })
               }
-              console.log(that.data.paramJson);
               console.log(url + '/' + fileKey);
               wx.hideLoading();
             }, fail(err) {
@@ -391,7 +400,8 @@ Page({
     if (typeof (paramJson.otherContent) == 'string'){
       paramJson.otherContent = JSON.parse(paramJson.otherContent);
     }
-    if (this.data.isHorseRaceLamp) { paramJson.cuePhrases = '';   }
+    console.log(paramJson.otherContent);
+    if (!this.data.isHorseRaceLamp) { paramJson.cuePhrases = '';   }
 
     paramJson.otherContent = paramJson.otherContent ? paramJson.otherContent : { list: [] }
     paramJson.otherContent.list = paramJson.otherContent.list ? paramJson.otherContent.list : [];
@@ -427,14 +437,13 @@ Page({
     paramJson.activityPrizes.map((item, index) => {
       if (!this.check(item.prizeName, '礼品' + this.data.listName[index] + '名称不能为空')) { return false; }
       if (!this.check(item.prizeValue, '礼品' + this.data.listName[index] + '礼品价值不能为空')) { return false; }
-      if (!this.check(item.prizeIntroduction, '礼品' + this.data.listName[index] + '广告描述不能为空')) { return false; }
+      // if (!this.check(item.prizeIntroduction, '礼品' + this.data.listName[index] + '广告描述不能为空')) { return false; }
       if (!this.check(item.prizeImg, '礼品' + this.data.listName[index] + '图片不能为空')) { return false; }
     })
     if (!this.check(paramJson.activityHeadline, '活动标题不能为空')) { return false; }
     if (!this.check(paramJson.startTime, '开始时间不能为空')) { return false; }
     if (!this.check(paramJson.endTime, '结束时间不能为空')) { return false; }
     if (!this.check(paramJson.productName, '商品名称不能为空')) { return false; }
-    if (!this.check(paramJson.orgPrice, '商品原价不能为空')) { return false; }
     if (!this.check(paramJson.promotionPrice, '活动价格不能为空')) { return false; }
     if (!this.check(paramJson.availableRange, '适用范围不能为空')) { return false; }
     
@@ -448,6 +457,13 @@ Page({
         })
         return false;
       }
+      if (Number(paramJson.activityRedpacketRule.minValue) < 1 || Number(paramJson.activityRedpacketRule.maxValue) < 1){
+        wx.showToast({
+          title: '红包金额不能小于1元',
+          icon: 'none'
+        })
+        return false;
+      }
     } else {
       if (!this.check(paramJson.activityRedpacketRule.fixValue, '红包金额不能为空')) { return false; }
       if (Number(paramJson.promotionPrice) < Number(paramJson.activityRedpacketRule.fixValue)) {
@@ -457,10 +473,18 @@ Page({
         })
         return false;
       }
+      if (Number(paramJson.activityRedpacketRule.fixValue) < 1) {
+        wx.showToast({
+          title: '红包金额不能小于1元',
+          icon: 'none'
+        })
+        return false;
+      }
     }
 
     if (!this.check(paramJson.activityRole, '活动规则不能为空')) { return false; }
     if (!this.check(paramJson.activityIntroduce, '活动描述不能为空')) { return false; }
+    if (!this.check(paramJson.activityImgs, '请上传活动图片')) { return false; }
     if (!this.check(paramJson.activityImgs.length, '请上传活动图片')) { return false; }
     paramJson.activityImgs = paramJson.activityImgs ? paramJson.activityImgs.join(',') : '';
     paramJson.locationLimit = paramJson.locationLimit ? 1 : 0;
@@ -573,8 +597,8 @@ Page({
           })
         }
         that.setData({
-          isName: otherContent.isName,
-          isBirthday: otherContent.isBirthday,
+          isName: otherContent.isName || false,
+          isBirthday: otherContent.isBirthday || false,
           customList: otherContent.list,
           paramJson: res.data.activity,
           typeIndex: res.data.activity.activityRedpacketRule.sendType - 1

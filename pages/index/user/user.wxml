@@ -14,6 +14,10 @@
         <open-data type="userNickName"></open-data>
       </view>
     </view>
+    <view class="ask" bindtap="toStore">
+      <view>店铺管理</view>
+      <view></view>
+    </view>
     <view class="ask" bindtap="showFooter">
       <view>账号遇到问题</view>
       <view>联系客服</view>

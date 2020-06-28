@@ -127,3 +127,60 @@
 .list-img image:nth-child(3n){
   margin-right: 0;
 }
+.activeList{
+  width: 670rpx;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.activeList>view{
+  overflow: hidden;
+  padding: 40rpx 0;
+}
+.activeList>view>image{
+  width: 160rpx;
+  float: left;
+  height: 100rpx;
+  border-radius: 10rpx;
+}
+.active-text{
+  float: left;
+  margin-left: 20rpx;
+}
+.active-text>text{
+  display: block;
+  color: #373C41;
+  font-size: 28rpx;
+  width: 340rpx;
+  height: 40rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.active-text>view{
+  margin-top: 6rpx;
+}
+.active-text>view>text{
+  color: #FF3F00;
+  font-size: 32rpx;
+  font-weight: bolder;
+}
+.active-text>view>text:nth-child(2){
+  font-size: 42rpx;
+}
+.active-text>view>text:nth-child(3){
+  font-size: 22rpx;
+  color: #919BA5;
+  font-weight: normal;
+  text-decoration: line-through;
+}
+.active-btn{
+  width: 152rpx;
+  height: 60rpx;
+  float: right;
+  border-radius: 55rpx;
+  line-height: 60rpx;
+  text-align: center;
+  color: #373C41;
+  font-size: 28rpx;
+  background: #FFC41F;
+}

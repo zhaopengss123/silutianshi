@@ -28,6 +28,11 @@ Page({
   onReady: function () {
 
   },
+  toStore(){
+    wx.navigateTo({
+      url: '../store/store',
+    })
+  },
   showFooter(){
     this.setData({
       showPage: true

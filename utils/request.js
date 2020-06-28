@@ -26,12 +26,8 @@ const Get = (url, param) => {
       success(res) {
         if (res.data.result == 7777) {
           getUserInfo().then(userInfo => {});
-          wx.showToast({
-            title: '登录过期，请重新操作',
-            icon: 'none'
-          })
           setTimeout(res => {
-            wx.redirectTo({
+            wx.switchTab({
               url: '/pages/index/index',
             })
           }, 1500);

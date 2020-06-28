@@ -17,7 +17,24 @@
   </view>
   <view class="listmain activity">
       <view class="tit-name">我的活动</view>
-      <view class="nolist">我们暂时没活动，欢迎到店~</view>
+      <view class="activeList" wx:if="{{ activityList.length }}">
+          <view wx:for="{{ activityList }}" wx:item = "item" wx:key = "index">
+              <image src="{{ item.headImg }}"></image>
+              <view class="active-text">
+                    <text>{{ item.activityHeadline }}</text>
+                    <view>
+                        <text>￥</text>
+                        <text>{{ item.promotionPrice }}</text>
+                        <text> ¥{{ item.orgPrice }}</text>
+                    </view>
+              </view>
+              <view class="active-btn" bindtap="toClistindex" data-id="{{ item.id }}" >
+                  立即查看
+              </view>
+          </view>
+          
+      </view>
+      <view class="nolist" wx:else>我们暂时没活动，欢迎到店~</view>
   </view>
     <view class="listmain use">
       <view class="tit-name">如何用劵</view>

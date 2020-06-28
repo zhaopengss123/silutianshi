@@ -91,11 +91,11 @@
   margin-left: 20rpx;
 }
 .user-right{
-  color: #C3CDD7;
-  font-size: 20rpx;
+  color: #373C41;
+  font-size: 28rpx;
   float: right;
-  height: 28rpx;
-  line-height: 28rpx;
+  height: 70rpx;
+  line-height: 70rpx;
   margin-top: 8rpx;
   text-align: right;
 }
@@ -103,8 +103,8 @@
   display: block;
 }
 .user-man{
-  width: 444rpx;
-  float: left;
+  width: 578rpx;
+  float: right;
   min-height: 70rpx;
   line-height: 70rpx;
   background:#FAFAFA;
@@ -113,7 +113,6 @@
   color: #919BA5;
   font-size: 24rpx;
   text-indent: 20rpx;
-  margin-left: 92rpx;
 }
 .user-man text{
   padding: 5rpx;
@@ -149,15 +148,14 @@
     font-size: 24rpx;
     margin-top: 12rpx;
   }
-  .verification{
-    width: 120rpx;
-    height: 52rpx;
-    line-height: 52rpx;
-    background: #55ACEE;
-    border-radius: 8rpx;
+  .th-top{
+    width: 670rpx;
+    height: 100rpx;
+    line-height: 100rpx;
+    color: #919BA5;
+    font-size: 28rpx;
+    border-bottom: solid 2rpx #EFF0F4;
+  }
+  .th-top text:nth-child(2){
     float: right;
-    color: #fff;
-    font-size: 24rpx;
-    margin-top: 32rpx;
-    text-align: center;
   }

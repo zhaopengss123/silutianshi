@@ -1,97 +1,310 @@
-.linemune{
-  width: 680rpx;
+image{
+  width: 100%;
+  height: 100%;
+}
+.header{
+  background: url('https://ylbb-business.oss-cn-beijing.aliyuncs.com/2020/158821338380991.png') no-repeat;
+  background-size: 100% auto; 
+  width: 100%;
+  overflow: hidden;
+  padding-top: 40rpx;
+
+}
+.header-main{
+  width: 670rpx;
   margin: 0 auto;
+  overflow: hidden;
 }
-.linemune view{
-  height: 80rpx;
-  line-height: 80rpx;
-  font-size: 30rpx;
-  border-bottom: solid 1px #ccc;
+.header-user{
+  float: left;
 }
-.storeListmnue view:first-child{
-  width: 80rpx;
-  height: 80rpx;
+.header-user>view:nth-child(1){
+  width: 70rpx;
+  height: 70rpx;
   border-radius: 50%;
   overflow: hidden;
   float: left;
 }
-.storeListmnue view:last-child{
-  height: 80rpx;
-  font-size: 30rpx;
-  line-height: 80rpx;
-  margin-left: 30rpx;
+.header-user>view:nth-child(2){
+  line-height: 70rpx;
   float: left;
+  color: #fff;
+  font-size: 32rpx;
+  margin-left: 20rpx;
+  padding-right: 50rpx;
+  background: url('https://ylbb-business.oss-cn-beijing.aliyuncs.com/2020/1588214284861557.png') no-repeat right center;
+  background-size: 28rpx 16rpx; 
 }
-.storeListmnue{
-  width: 680rpx;
+.header-icon{
+  width: 38rpx;
+  height: 38rpx;
+  float: right;
+  margin-top: 16rpx;
+}
+.user-number{
+  width: 669rpx;
+  height: 160rpx;
+  background: #fff;
+  border-radius:20rpx;
   margin: 0 auto;
   margin-top: 50rpx;
+  box-shadow:0px -8rpx 40rpx 0px rgba(37,38,94,0.1);
+  margin-bottom: 30rpx;
 }
-.shopName{
+.user-number>view{
+  width: 223rpx;
+  float: left;
+  text-align: center;
+  color: #666666;
+  font-size: 24rpx;
+  margin-top: 32rpx;
+}
+.user-number>view>text{
+  display: block;
+}
+.user-number>view>text:nth-child(2){
+  color: #666666;
+  font-size: 42rpx;
+  font-weight: bolder;
+  margin-top: 4rpx;
+}
+.user-number>view:nth-child(3)>text:nth-child(2){
+  color: #2FB6FF;
+}
+.nav{
+  width: 670rpx;
+  padding: 0 40rpx;
+  border-bottom: solid 20rpx #FAFAFA;
+  padding-bottom: 30rpx;
+  overflow: hidden;
+}
+.nav>view{
+  text-align: center;
+  color: #000000;
+  font-size: 24rpx;
+  width: 167.5rpx;
+  float: left;
+}
+.nav>view image{
+  width: 88rpx;
+  height: 88rpx;
+  margin: 0 auto;
+}
+.nav>view text{
+  display: block;
   clear: both;
-  font-size: 30rpx;
+  margin-top: 8rpx;
+}
+/* https: //ylbb-wxapp.oss-cn-beijing.aliyuncs.com/branch-store/tit-icon-dsju6984730i.png */
+.acrivity{
   width: 680rpx;
   margin: 0 auto;
-  margin-top: 20rpx;
+  overflow: hidden;
 }
-.showBtn{
+.bg-title {
+margin: 0 auto;
+color: #222;
+font-size: 32rpx;
+font-weight: bold;
+text-indent: 52rpx;
+background: url('https://ylbb-wxapp.oss-cn-beijing.aliyuncs.com/branch-store/tit-icon-dsju6984730i.png') no-repeat center left;
+background-size: 38rpx 38rpx;
+height: 124rpx;
+line-height: 124rpx;
+position: relative;
+}
+.bg-title view{
+  float: left;
+}
+.bg-title view:last-child{
+  float: right;
+  padding-right: 32rpx;
+  background: url(https://ylbb-wxapp.oss-cn-beijing.aliyuncs.com/store/icon-right-o.png) no-repeat right center;
+background-size: 15.2rpx 27.2rpx;
+color: #666666;
+font-size: 28rpx;
+font-weight: normal;
+}
+.activity-list{
+  padding-bottom:36rpx; 
+  margin-bottom: 36rpx;
+  overflow: hidden;
+  border-bottom: solid 2rpx #EFF0F4;
+}
+.activity-list:last-child{
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+.activity-list image{
+  width: 232rpx;
+  height: 146rpx;
+  float: left;
+  border-radius:15rpx;
+}
+.activity-text{
+  margin-left: 20rpx;
+  float: left;
+}
+.activity-text>view:nth-child(1){
+  color: #373C41;
+  font-size: 32rpx;
+  font-weight:500;
+  width: 400rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.activity-text>view:nth-child(2){
+  color: #373C41;
+  font-size: 24rpx;
+  margin-top: 14rpx;
+}
+.activity-text>view:nth-child(3){
+  margin-top: 14rpx;
+  font-size: 24rpx;
+  overflow: hidden;
+  width: 430rpx;
+}
+.activity-text>view:nth-child(3) text{
+  color: #FF7C28;
+  background: rgba(255, 124, 40, .3);
+  height: 34rpx;
+  display: block;
+  float: left;
+  padding: 0 10rpx;
+  margin-top: 14rpx;
+}
+
+.activity-text>view:nth-child(3) text:nth-child(2){
+  color: rgba(85, 172, 238, 1);
+  background: rgba(85, 172, 238, .3);
+  margin-left: 20rpx;
+}
+.activity-text>view:nth-child(3) text:nth-child(3){
+   background: #FD704F;
+  width: 120rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  color: #fff;
+  float: right;
+  border-radius: 15rpx;
+  margin-top: 0;
+}
+.creatList .bg-title{
+  width: 680rpx;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.creatList-activity{
+  width: 694rpx;
+  margin: 0 auto;
+  margin-bottom: 36rpx;
+  overflow: hidden;
+}
+.left{
+  width: 334rpx;
+  height: 480rpx;
+  border: solid 3rpx #EFF0F4;
+  border-radius: 20rpx;
+  overflow: hidden;
+  float: left;
+}
+.left image{
+  width: 334rpx;
+  height: 234rpx;
+}
+.left view{
+    width: 290rpx;
+  margin: 0 auto;
+}
+.left view:nth-child(2){
+  color: #373C41;
+  font-size: 28rpx;
+  font-weight:500;
+  width: 290rpx;
+  margin: 0 auto;
+  height: 40rpx;
+  line-height: 40rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.left view:nth-child(3){
+  color: #55ACEE;
+  font-size: 24rpx;
+  margin-top: 10rpx;
+}
+.left view:nth-child(4){
+  color: #FF7C28;
+  font-size: 20rpx;
+  background: rgba(255, 124, 40, .3);
+  margin-top: 10rpx;
+  width: auto;
+  float: left;
+  margin-left: 23rpx;
+  padding:  0 10rpx;
+  overflow: hidden;
+  margin-bottom: 20rpx;
+}
+.left view:nth-child(5){
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 28rpx;
+  background: #55ACEE;
+  clear: both;
+  border-radius: 16rpx;
+}
+.right{
+  width: 350rpx;
+  height: 380rpx;
+  float: left;
+  background: #FAFAFA;
+  border: solid 3rpx #EFF0F4;
+  border-left: none;
+  color: #9B9B9B;
+  font-size: 28rpx;
+  border-radius:0px 20rpx 14rpx 0px;
+  margin-top: 76rpx;
+}
+.right text{
+  display: block;
+  width: 308rpx;
+  margin: 0 auto;
+}
+.right text:nth-child(1){
+  margin-top: 34rpx;
+}
+.userinfo{
   width: 100%;
   height: 100%;
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 10;
-  background: rgba(0, 0, 0, .5);
+  opacity: 0;
 }
-.showBtnMain{
-  width: 650rpx;  
-  height: 400rpx;
-  position: fixed;
-  top: 50%;
-  margin-top: -200rpx;
-  margin-left: 50rpx;
-  background:#fff;
-  border: solid 1rpx #ccc;
-  border-radius: 5rpx;
+.creatTime.creatTime.creatTime{
+  width: auto;
+  height: 124rpx;
+  line-height: 124rpx;
+  position: absolute;
+  top: 0;
+  right: 0;
+  text-align: right;
+  color: #919BA5;
+  font-size: 24rpx;
+  background: none;
 }
-.showBtnMain text{
-  display: block;
-  margin: 0 auto;
-  font-size: 30rpx;
-  text-align: center;
-  color: #666;
-  margin-top: 110rpx;
+.creatTime image{
+  width: 36rpx;
+  height: 36rpx;
+  margin-top:44rpx;
+  border-radius: 50%;
+  float: left;
 }
-.showBtnMain button{
-  width: 350rpx;
-  margin-top: 50rpx;
-  background: rgb(64, 158, 255);
-  color: #fff;
-}
-.activity{
-  width: 670rpx;
-  margin: 0 auto;
-  overflow: hidden;
-}
-.activityTitle{
-  height: 120rpx;
-  line-height: 120rpx;
-  font-weight: bold;
-}
-.activitylist{
-  overflow: hidden;
-}
-.activitylist>view{
-  height: 100rpx;
-  line-height: 100rpx;
-  border-bottom: solid 2rpx #ccc;
-}
-.topback{
-  width: 200rpx;
-  height: 200rpx;
-  position: fixed;
-  top: -100rpx;
-  left: 0;
-  background: #ccc;
-  z-index: 999999;
+.creatTime text{
+  float: left;
+  text-indent: 20rpx;
 }

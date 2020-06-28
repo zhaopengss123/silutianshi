@@ -44,8 +44,8 @@ Page({
         res.data.activity.endTime = that.format(res.data.activity.endTime);
         let otherContent = JSON.parse(res.data.activity.otherContent);
         that.setData({
-          isName: otherContent.isName,
-          isBirthday: otherContent.isBirthday,
+          isName: otherContent.isName || false,
+          isBirthday: otherContent.isBirthday || false,
           customList: otherContent.list,
             activityDetail: res.data.activity
           })

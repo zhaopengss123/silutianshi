@@ -1,7 +1,7 @@
 {
 	"description": "项目配置文件。",
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -131,6 +131,34 @@
 					"name": "被邀请店员",
 					"pathName": "pages/index/index",
 					"query": "storeId=4",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "订单收益",
+					"pathName": "pages/income/income",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 13,
+					"name": "我要提现",
+					"pathName": "pages/income/cash/cash",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "提现记录",
+					"pathName": "pages/income/cash/list/list",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "收支明细",
+					"pathName": "pages/income/activity-deatil/activity-deatil",
+					"query": "",
 					"scene": null
 				}
 			]
