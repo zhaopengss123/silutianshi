@@ -20,8 +20,4 @@
       <text>{{ item.status == 1 ? '已成功' : '支付中'  }}</text>
     </view>
   </view>
-
-
-
-
 </view>

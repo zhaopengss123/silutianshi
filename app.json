@@ -1,25 +1,22 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/index/user/user",
+    "pages/user/user",
+    "pages/user/bindphone/bindphone",
     "pages/index/store/store",
     "pages/index/store/detail/detail",
     "pages/index/store/staff/staff",
     "pages/index/store/index/index",
-    "pages/login/login",
-    "pages/activity/activity",
     "pages/activity/drainage/drainage",
     "pages/activity/drainage/detail/detail",
     "pages/activity/drainage/index/index",
     "pages/activity/drainage/record/record",
-    "pages/activity/drainage/recommend/recommend",
     "pages/components/navbar/navbar",
     "pages/income/income",
     "pages/income/detail/detail",
     "pages/income/cash/cash",
     "pages/income/cash/list/list",
     "pages/income/activity-deatil/activity-deatil",
-    "pages/member/member",
     "pages/client/client"
   ],
   "window": {
@@ -54,8 +51,13 @@
         "selectedIconPath": "assets/images/tab-2-s.png",
         "pagePath": "pages/income/income",
         "text": "门店收益"
+      },
+      {
+        "iconPath": "assets/images/tab-3.png",
+        "selectedIconPath": "assets/images/tab-3-s.png",
+        "pagePath": "pages/user/user",
+        "text": "我的"
       }
-
     ]
   }
 }

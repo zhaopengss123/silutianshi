@@ -64,11 +64,3 @@ App({
     screenHeight: 812
   }
 })
-// 收藏 
-
-        // {
-        //   "iconPath": "assets/images/tab-3.png",
-        //   "selectedIconPath": "assets/images/tab-3-s.png",
-        //   "pagePath": "pages/member/member",
-        //   "text": "我的客户"
-        // }

@@ -94,7 +94,7 @@ image{
   display: block;
   clear: both;
   margin-top: 8rpx;
-}
+} 
 /* https: //ylbb-wxapp.oss-cn-beijing.aliyuncs.com/branch-store/tit-icon-dsju6984730i.png */
 .acrivity{
   width: 680rpx;
@@ -116,7 +116,7 @@ position: relative;
 .bg-title view{
   float: left;
 }
-.bg-title view:last-child{
+.bg-title view:nth-child(2){
   float: right;
   padding-right: 32rpx;
   background: url(https://ylbb-wxapp.oss-cn-beijing.aliyuncs.com/store/icon-right-o.png) no-repeat right center;
@@ -137,13 +137,13 @@ font-weight: normal;
   padding: 0;
 }
 .activity-list image{
-  width: 232rpx;
+  width: 230rpx;
   height: 146rpx;
   float: left;
   border-radius:15rpx;
 }
 .activity-text{
-  margin-left: 20rpx;
+  margin-left: 15rpx;
   float: left;
 }
 .activity-text>view:nth-child(1){
@@ -202,6 +202,15 @@ font-weight: normal;
   margin: 0 auto;
   margin-bottom: 36rpx;
   overflow: hidden;
+  position: relative;
+}
+.creat-btn{
+  position: absolute;
+  right: 0;
+  top: 20rpx;
+  color: #55ACEE;
+  font-size: 28rpx;
+  text-decoration: underline;
 }
 .left{
   width: 334rpx;
@@ -221,7 +230,7 @@ font-weight: normal;
 }
 .left view:nth-child(2){
   color: #373C41;
-  font-size: 28rpx;
+  font-size: 32rpx;
   font-weight:500;
   width: 290rpx;
   margin: 0 auto;
@@ -229,13 +238,10 @@ font-weight: normal;
   line-height: 40rpx;
   white-space: nowrap;
   text-overflow: ellipsis;
+  margin-top: 30rpx;
 }
+
 .left view:nth-child(3){
-  color: #55ACEE;
-  font-size: 24rpx;
-  margin-top: 10rpx;
-}
-.left view:nth-child(4){
   color: #FF7C28;
   font-size: 20rpx;
   background: rgba(255, 124, 40, .3);
@@ -243,11 +249,11 @@ font-weight: normal;
   width: auto;
   float: left;
   margin-left: 23rpx;
-  padding:  0 10rpx;
+  padding:  0 20rpx;
   overflow: hidden;
-  margin-bottom: 20rpx;
+  margin: 22rpx;
 }
-.left view:nth-child(5){
+.left view:nth-child(4){
   height: 60rpx;
   line-height: 60rpx;
   text-align: center;
@@ -256,6 +262,8 @@ font-weight: normal;
   background: #55ACEE;
   clear: both;
   border-radius: 16rpx;
+  margin-top: 10rpx;
+  box-sizing: content-box;
 }
 .right{
   width: 350rpx;
@@ -268,6 +276,8 @@ font-weight: normal;
   font-size: 28rpx;
   border-radius:0px 20rpx 14rpx 0px;
   margin-top: 76rpx;
+  word-break: break-all;
+  overflow: auto;
 }
 .right text{
   display: block;
@@ -277,34 +287,194 @@ font-weight: normal;
 .right text:nth-child(1){
   margin-top: 34rpx;
 }
-.userinfo{
+.getUserInfo{
   width: 100%;
   height: 100%;
   position: fixed;
   top: 0;
   left: 0;
-  opacity: 0;
+  background: rgba(0, 0, 0, .6);
+    text-align: center;
+    z-index: 100000;
+
+}
+.getUserInfo view{
+  width: 600rpx;
+  height: 150px;
+  background: #fff;
+  margin: 0 auto;
+  border-radius: 10rpx;
+  margin-top: 400rpx;
+}
+.getUserInfo text{
+  display: block;
+  font-size: 30rpx;
+  padding-top: 50rpx;
+  color: #666;
+}
+.userinfo{
+  width: 300rpx;
+  margin: 0 auto;
+  display: block;
+  margin-top: 50rpx;
+  background: #2FB6FF;
+  color: #fff;
 }
 .creatTime.creatTime.creatTime{
-  width: auto;
-  height: 124rpx;
-  line-height: 124rpx;
+  width: 450rpx;
+  height: 80rpx;
+  line-height: 80rpx;
   position: absolute;
-  top: 0;
+  top: 22rpx;
   right: 0;
-  text-align: right;
   color: #919BA5;
   font-size: 24rpx;
   background: none;
+  overflow: hidden;
+    background: none;
+      padding: 0;
+
+
 }
+.creatTime.creatTime.creatTime>view{
+  clear: both;
+  height: 496rpx;
+  background: none;
+  float: right;
+  width: 450rpx;
+  padding: 0;
+  animation:  topscroll 8s linear infinite;
+  -webkit-animation:  topscroll 8s linear infinite;
+}
+.creatTime.creatTime.creatTime>view>view{
+  height: 80rpx;
+  background: none;
+  background: none;
+  margin: 0;
+  padding: 0;
+  float: right;
+}
+@keyframes topscroll{
+  0%{ transform: translateY(0) }
+  10%{ transform: translateY(-80rpx) }
+  30%{ transform: translateY(-80rpx) }
+  40%{ transform: translateY(-160rpx) }
+  60%{ transform: translateY(-160rpx) }
+  70%{ transform: translateY(-240rpx) }
+  99.999999%{ transform: translateY(-240rpx) }
+  100%{ transform: translateY(0) }
+}
+@-webkit-keyframes topscroll{
+  0%{ -webkit-transform: translateY(0) }
+  10%{ -webkit-transform: translateY(-80rpx) }
+  30%{ -webkit-transform: translateY(-80rpx) }
+  40%{ -webkit-transform: translateY(-160rpx) }
+  60%{ -webkit-transform: translateY(-160rpx) }
+  70%{ -webkit-transform: translateY(-240rpx) }
+  99.999999%{ -webkit-transform: translateY(-240rpx) }
+  100%{ -webkit-transform: translateY(0) }
+}
+
+
 .creatTime image{
   width: 36rpx;
   height: 36rpx;
-  margin-top:44rpx;
+  margin-top:22rpx;
   border-radius: 50%;
-  float: left;
+  float: right;
 }
 .creatTime text{
-  float: left;
+  float: right;
   text-indent: 20rpx;
 }
+
+
+.customer-service{
+  width: 100%;
+  height: 100%;
+  background:rgba(0,0,0,0.25);
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.customer-main{
+  width: 750rpx;
+  height: 664rpx;
+  background: #fff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+.customer-header{
+  width: 670rpx;
+  margin: 0 auto;
+  margin-top: 40rpx;
+  overflow: hidden;
+}
+.customer-header view{
+  color: #373C41;
+  font-size: 36rpx;
+  text-align: center;
+  font-weight: bold;
+}
+.customer-header text{
+  color: #373C41;
+  font-size: 26rpx;
+  text-align: center;
+  display: block;
+  width: 100%;
+  margin-top: 10rpx;
+}
+.download{
+  color: #5EA3FE;
+  font-size: 24rpx;
+  text-align: center;
+  text-decoration: underline;
+  margin-top: 10rpx;
+}
+
+.qrcode{
+  width: 190rpx;
+  height: 190rpx;
+  margin: 0 auto;
+  margin-top: 40rpx;
+}
+.qrcode image{
+  width: 100%;
+  height: 100%;
+}
+.qrcode-text{
+  color: #919BA5;
+  font-size: 24rpx;
+  text-align: center;
+  margin-top: 20rpx;
+}
+.copy-btn{
+  width: 630rpx;
+  height: 110rpx;
+  line-height: 110rpx;
+  text-align: center;
+  color: #373C41;
+  font-size: 32rpx;
+  background: #FFC41F;
+  border-radius:55rpx;
+  margin: 0 auto;
+  margin-top: 48rpx;
+}
+.customer-main.active{
+  animation: showpage 0.5 ease-out forwards;
+  -webkit-animation: showpage 0.5s ease-out forwards;
+}
+@keyframes showpage{
+  0%{ transform: translateY(686rpx); }
+  100%{ transform: translateY(0rpx); }
+}
+@-webkit-keyframes showpage{
+  0%{ -webkit-transform: translateY(686rpx); }
+  100%{ -webkit-transform: translateY(0rpx); }
+}
+.hidePage{
+  width: 100%;
+  height: 100%;
+}
+

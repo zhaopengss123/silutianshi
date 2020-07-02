@@ -1,6 +1,7 @@
 const app = getApp();
-const Http = require('../../../utils/request.js');
-const getUserInfo = require('../../../utils/getUserInfo.js');
+const Http = require('./../../utils/request.js');
+const getUserInfo = require('./../../utils/getUserInfo.js');
+import { getPhone, getUserStatus } from '../../utils/getUserStatus.js'
 Page({
 
   /**
@@ -8,7 +9,7 @@ Page({
    */
   data: {
     showPage: false,
-    services:{},
+    services: {},
     userInfo: {}
   },
 
@@ -16,33 +17,51 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getTechService();
-    this.setData({
-      userInfo : app.userInfo
+  
+  },
+  onShow(){
+    getUserStatus().then(() => {
+      getPhone().then(() => {
+        this.getTechService();
+        this.setData({
+          userInfo: app.userInfo
+        })
+      })
     })
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
 
   },
-  toStore(){
+    /**
+   * 去店铺详情
+   */
+  toStore() {
     wx.navigateTo({
-      url: '../store/store',
+      url: '/pages/index/store/store',
     })
   },
-  showFooter(){
+    /**
+   * 显示策划师二维码
+   */
+  showFooter() {
     this.setData({
       showPage: true
     })
   },
-  hidePage(){
+      /**
+   * 关闭策划师二维码
+   */
+  hidePage() {
     this.setData({
       showPage: false
     })
   },
+   /**
+   * 下载二维码
+   */
   downloadImg: function (e) {　　　　　　　　　　　　　　　　//触发函数
     wx.downloadFile({
       url: e.currentTarget.dataset.url,　　　　　　　//需要下载的图片url
@@ -60,11 +79,15 @@ Page({
             if (err.errMsg === "saveImageToPhotosAlbum:fail auth deny") {
               wx.openSetting({
                 success(settingdata) {
-                  console.log(settingdata)
                   if (settingdata.authSetting['scope.writePhotosAlbum']) {
-                    console.log('获取权限成功，给出再次点击图片保存到相册的提示。')
+                    wx.showToast({
+                      title: '授权成功，请重新点击保存二维码',
+                    })
                   } else {
-                    console.log('获取权限失败，给出不给权限就无法正常使用的提示')
+                    wx.showToast({
+                      title: '授权失败，请重新设置',
+                      icon: 'none'
+                    })
                   }
                 }
               })
@@ -90,7 +113,7 @@ Page({
       }
     })
   },
-  getTechService(){
+  getTechService() {
     let that = this;
     Http.get('/cs/getTechService').then(res => {
       if (res.result == 1000) {
@@ -98,11 +121,11 @@ Page({
           services: res.data
         })
       }
-    }); 
+    });
   },
-  tologin(){
+  tologin() {
     wx.navigateTo({
-      url: '/pages/login/login?status=1',
+      url: '/pages/user/bindphone/bindphone?status=1',
     })
   }
 })

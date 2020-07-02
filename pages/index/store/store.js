@@ -33,8 +33,8 @@ Page({
   onShow: function () {
     this.getTechService();
     this.setData({
-      "storeDetail.storeimg": app.shopDetail.shopImg,
-      "storeDetail.shopShortName": app.shopDetail.shopShortName
+      "storeDetail.storeimg": (app.shopDetail && app.shopDetail.shopImg) || null,
+      "storeDetail.shopShortName": (app.shopDetail && app.shopDetail.shopShortName) || null
     })
   },
 
@@ -45,6 +45,30 @@ Page({
 
   },
 
+  toStaff(){
+    const shopDetail = app.shopDetail;
+    if (!shopDetail){
+      wx.showToast({
+        title: '请先设置店铺资料',
+      })
+      return;
+    }
+    wx.navigateTo({
+      url: './staff/staff',
+    })
+  },
+  toShopIndex(){
+    const shopDetail = app.shopDetail;
+    if (!shopDetail) {
+      wx.showToast({
+        title: '请先设置店铺资料',
+      })
+      return;
+    }
+    wx.navigateTo({
+      url: './index/index',
+    })
+  },
   /**
    * 生命周期函数--监听页面卸载
    */

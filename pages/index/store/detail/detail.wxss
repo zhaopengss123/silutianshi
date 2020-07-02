@@ -12,6 +12,10 @@ page{
   height: 380rpx;
   position: relative;
 }
+.swiper-item,swiper{
+  width: 750rpx;
+  height: 380rpx;
+}
 /* .store_img>view {
   width: 748rpx;
   height: 290rpx;
@@ -180,10 +184,10 @@ picker view{
 .listMune.listMune,.listMune.listMune view{
   display: block;
   clear: both;
-  text-align: center;
   width: 100%;
   height: auto;
   line-height: normal;
+  text-indent: 50rpx;
 }
 .showaddress{
   width: 100%;

@@ -25,13 +25,12 @@ const Get = (url, param) => {
       },
       success(res) {
         if (res.data.result == 7777) {
-          getUserInfo().then(userInfo => {});
-          setTimeout(res => {
-            wx.switchTab({
-              url: '/pages/index/index',
-            })
-          }, 1500);
-
+          getUserInfo(true);
+          // setTimeout(res => {
+          //   wx.switchTab({
+          //     url: '/pages/index/index',
+          //   })
+          // }, 1500);
         } else {
           resolve(res.data);
         }

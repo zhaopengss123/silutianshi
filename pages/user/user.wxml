@@ -25,18 +25,13 @@
     <view class="ask" bindtap="tologin">
 
       <view>绑定的手机号</view>
-      <view>{{ userInfo.phone }}</view>
+      <view>{{ userInfo.phone || '' }}</view>
     </view>
     <view class="ask">
       <view>当前版本</view>
       <view>V3.13.0</view>
     </view>
-    <view>
-      <view>
-        <navigator url="./user/user" hover-class="noshadow">隐私&服务协议</navigator>
-      </view>
-      <view></view>
-    </view>
+
   </view>
 </view>
   <view class="customer-service" hidden="{{ !showPage }}">

@@ -23,131 +23,74 @@ const app = getApp();
  *
  * ---------------------------------------------------------------
  */
-const Login = () => {
-  return new Promise( (resolve, reject) => { 
-    wx.login({
-      success(res) {
-        wx.request({
-          url: `${app.domain}/account/login`,
-          method: "get",
-          data: {
-            code: res.code
-          },
-          dataType: 'json',
-          header: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-          },
-          success(res) {
-            if (res.data.result == 1000) {
-              wx.setStorageSync('token', res.data.data);
-              app.token = res.data.data;
-              wx.request({
-                url: `${app.domain}/account/getAccountInfo`,
-                method: "GET",
-                dataType: 'json',
-                header: {
-                  'Content-Type': 'application/x-www-form-urlencoded',
-                  'token': app.token
-                },
-                success(res) {
-
-                  if (res.data.result == 1000) {
-                    resolve(res.data.data);
-                    app.userInfo = res.data.data;
-                    
-                  } else {
-                    console.log(3333);
-                    reject(null);
-                  }
-                },
-                fail(err) {
-                  reject(err);
-                }
-              })
-              
-            } else {
-     
-              reject(null);
-            }
-          },
-          fail(err) {
-            reject(err);
-          }
-        })
-      }
-    })
-  })
-}
-
-const Source = (userInfo) => {
-  /* --------- 判断是否绑定过信息 未绑定则跳转到绑定信息页 --------- */
-  return new Promise( (resolve, reject) => {
-    if (!userInfo.openId) {
-      reject(false);
+const Login = (getToken) => {
+  return new Promise((resolve, reject) => {
+    let userInfo = wx.getStorageSync('userInfo');
+    let token = wx.getStorageSync('token');
+    userInfo = userInfo ? JSON.parse(userInfo) : {};
+    if (userInfo.openId && token && !getToken) {
+      app.userInfo = userInfo;
+      app.token = token;      
+      resolve(userInfo);
     } else {
-      resolve(true)
-    }
-  })
-}
-
-const GetUserInfo = (gobind, latest) => {
-  return new Promise( (resolve, reject) => {
-    Login().then(res => {
-      if (gobind != false) {
-        Source(res).then(success => { resolve(res); console.log(success); }).catch(err => { console.log(1);  reject(null) });
-      } else {
-        resolve(res)
-      }
-    }).catch(err => {
-      console.log(2);
-      reject(null)
-    })
-    return false;
-    if (latest) {
-    
-    } else if (app.userInfo.openid) {
-      if (gobind != false) { 
-        Source(app.userInfo).then(success => { resolve(app.userInfo) }).catch(err => { console.log(3);reject(null)}); 
-      } else {
-        resolve(app.userInfo); 
-      }
-    } else {
-      wx.checkSession({
+      wx.login({
         success(res) {
-          try {
-            let userInfo = wx.getStorageSync('userInfo');
-            app.userInfo = JSON.parse(userInfo);
-            // if (gobind != false) { 
-            //   Source(app.userInfo).then(success => { resolve(app.userInfo)}).catch(err => { reject(null)}); 
-            // } else {
-            
-            // }      
-            resolve(app.userInfo);
-          } catch (e) {
-            Login().then(res => {
-              if (gobind != false) { 
-                Source(res).then( success => { resolve(res)}).catch(err => { reject(null)}); 
+          wx.request({
+            url: `${app.domain}/account/login`,
+            method: "get",
+            data: {
+              code: res.code
+            },
+            dataType: 'json',
+            header: {
+              'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            success(res) {
+              if (res.data.result == 1000) {
+                wx.setStorageSync('token', res.data.data);
+                app.token = res.data.data;
+                wx.request({
+                  url: `${app.domain}/account/getAccountInfo`,
+                  method: "GET",
+                  dataType: 'json',
+                  header: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'token': app.token
+                  },
+                  success(res) {
+                    if (res.data.result == 1000) {
+                      resolve(res.data.data);
+                      app.userInfo = res.data.data;
+                      wx.setStorageSync('userInfo', JSON.stringify(res.data.data))
+                    } else {
+                      reject(null);
+                    }
+                  },
+                  fail(err) {
+                    reject(err);
+                  }
+                })
+
               } else {
-                resolve(res)
+                reject(null);
               }
-            }).catch(err => { 
-              reject(null)
-            })
-          }
-        },
-        fail() {
-          Login().then(res => {
-            if (gobind != false) { 
-              Source(res).then( success => { resolve(res)}).catch(err => { reject(null)}); 
-            } else {
-              resolve(res)
             }
-          }).catch(err => {
-            reject(null)
           })
         }
-      });
+      })
     }
+  })
+
+}
+
+const GetUserInfo = (getToken) => {
+  return new Promise((resolve, reject) => {
+    Login(getToken).then(res => {
+      resolve(res)
+    }).catch(err => {
+      reject(null)
+    })
+
 
   })
 }

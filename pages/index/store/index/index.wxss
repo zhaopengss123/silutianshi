@@ -8,6 +8,10 @@
   width: 100%;
   height: 100%;
 }
+.swiper-item,swiper{
+  width: 750rpx;
+  height: 380rpx;
+}
 .bannerShare{
   width: 120rpx;
   height: 60rpx;
@@ -150,7 +154,6 @@
   display: block;
   color: #373C41;
   font-size: 28rpx;
-  width: 340rpx;
   height: 40rpx;
   overflow: hidden;
   text-overflow:ellipsis;

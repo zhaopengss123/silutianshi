@@ -23,17 +23,17 @@
   <view wx:if="{{ toggleIndex == 0 }}">
   <view class="detail" wx:for="{{ listIncome }}" wx:key="index" >
     <view>
-      <text>{{ item.payment_time }}</text>
+      <text>{{ item.payment_time || '--' }}</text>
     </view>
     <view>
-      <text>{{ item.nick_name }}</text>
-      <text>{{ item.phone_num }}</text>
+      <text>{{ item.nick_name || '--' }}</text>
+      <text>{{ item.phone_num || '--' }}</text>
     </view>
     <view>
       <text>订单</text>
     </view>
     <view>
-      <text>+{{ item.actual_amount }}</text>
+      <text>+{{ item.actual_amount || '--' }}</text>
     </view>
   </view>
   </view>
@@ -41,17 +41,17 @@
   <view wx:if="{{ toggleIndex == 1 }}">
   <view class="detail" wx:for="{{ payList }}" wx:key="index">
     <view>
-      <text>{{ item.payment_time }}</text>
+      <text>{{ item.send_time|| '--' }}</text>
     </view>
     <view>
-      <text>{{ item.nick_name }}</text>
-      <text>{{ item.phone_num }}</text>
+      <text>{{ item.nick_name || '--' }}</text>
+      <text>{{ item.phone_num || '--'}}</text>
     </view>
     <view>
       <text>订单</text>
     </view>
     <view>
-      <text>-{{ item.actual_amount }}</text>
+      <text>-{{ item.bonus_amount ? item.bonus_amount/100 : '--' }}</text>
     </view>
   </view>
 </view>

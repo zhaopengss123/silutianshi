@@ -208,22 +208,37 @@ Page({
     })
   },
   setOut(){
-    let that = this;
-    Http.get('/activity/setSoldOut', {
-      id: this.data.id
-    }).then(res => {
-      if (res.result == 1000) {
-          wx.redirectTo({
-            url: '/pages/index/index',
-          })
-      } else {
-        wx.showModal({
-          title: '温馨提示',
-          showCancel: false,
-          content: res.message,
-        })
-        wx.hideLoading();
+    const id = this.data.id;
+    wx.showModal({
+      title: '提示',
+      content: '确认结束该活动吗',
+      success(res) {
+        if (res.confirm) {
+          Http.get('/activity/setSoldOut', {
+            id
+          }).then(res => {
+            if (res.result == 1000) {
+              wx.showToast({
+                title: res.message,
+              })
+              setTimeout(() => {
+                wx.switchTab({
+                  url: '/pages/index/index',
+                })
+              }, 1500)
+
+            } else {
+              wx.showModal({
+                title: '温馨提示',
+                showCancel: false,
+                content: res.message,
+              })
+              wx.hideLoading();
+            }
+          });
+        }
       }
-    });
+    })
+
   }
 })

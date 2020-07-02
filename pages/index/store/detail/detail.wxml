@@ -2,6 +2,17 @@
   <view class="store_img" bindtap="selectHeaderImg" data-id="1">
     <image  src="{{ shopDetail.shopImg || 'http://ylbb-business.oss-cn-beijing.aliyuncs.com/2020/1585211527119406.jpg' }}"></image>
     <text>点击替换门头照</text>
+
+<!-- 
+   <swiper indicator-dots="true">
+        <block wx:for="{{ shopDetail.shopImgList }}" wx:key="*this">
+          <swiper-item>
+            <view class="swiper-item">
+              <image src="{{ item }}"></image>
+            </view>
+          </swiper-item>
+        </block>
+      </swiper> -->
   </view>
   <view class="mnue-list">
     <view>
@@ -82,9 +93,9 @@
     <view>
     <!--根据需求渲染相应数据-->
     <!--渲染地址title-->
-    <view style="text-align:center;" >{{item.title}}</view>
+    <view  >{{item.title}}</view>
     <!--渲染详细地址-->
-    <view style="font-size:12px;color:#666;text-align:center;">{{item.addr}}</view>
+    <view style="font-size:12px;color:#666;">{{item.addr}}</view>
     </view>
 </view>
 </view>

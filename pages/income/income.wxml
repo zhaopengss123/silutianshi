@@ -2,7 +2,7 @@
   <view class="income-header">
     <view class="left">
       <text>可提现金额(元)</text>
-      <text>{{ dataMoney.toWithdrawedMoney }}</text>
+      <text>{{ dataMoney.toWithdrawedMoney || 0 }}</text>
     </view>
     <view class="right" bindtap="tocash">
       我要提现
@@ -11,11 +11,11 @@
   <view class="income-num">
     <view>
       <text>累计收益金额(元)</text>
-      <text>￥{{ dataMoney.totalMoney }}</text>
+      <text>￥{{ dataMoney.totalMoney || 0 }}</text>
     </view>
     <view>
       <text>待入账金额(元)</text>
-      <text>￥{{ dataMoney.runningActivityMoney	 }}</text>
+      <text>￥{{ dataMoney.runningActivityMoney || 0	 }}</text>
     </view>
   </view>
   <view class="income-list">
@@ -41,7 +41,7 @@
             <text>支出: {{ pay }}元</text>
           </view>
           <view>
-            <text>￥{{ item.income - item.pay }}</text>
+            <text>￥{{ item.nowCount }}</text>
           </view>
           <view>
             <text>{{ item.status == 0 ? '待提现' : item.status == 1 ? '已提现': '提现中' }}</text>

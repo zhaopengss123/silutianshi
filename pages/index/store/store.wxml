@@ -10,17 +10,13 @@
       </navigator>
     </view>
 
-    <view>
-      <navigator url="./staff/staff" hover-class="noshadow">
+    <view bindtap="toStaff">
         <view>店员管理</view>
         <view></view>
-      </navigator>
     </view>
-    <view>
-      <navigator url="./index/index" hover-class="noshadow">
+    <view bindtap="toShopIndex">
         <view>预览店铺首页</view>
         <view></view>
-      </navigator>
     </view>
     <view>
       <view>邀请好友开店</view>

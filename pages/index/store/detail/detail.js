@@ -37,8 +37,10 @@ Page({
       // key: 'VYHBZ-BEEC4-XW3UX-XW77L-RDSUK-ROF55' //这里自己的secret秘钥进行填充
       key: 'LU4BZ-LAVLW-KLYRB-OASEY-CBH42-DRB4H'
     });
+    let shopDetail = JSON.parse(JSON.stringify(app.shopDetail)) || {};
+    shopDetail.shopImgList = shopDetail.shopImg.split(',');
     this.setData({
-      shopDetail: JSON.parse(JSON.stringify(app.shopDetail)),
+      shopDetail: JSON.parse(JSON.stringify(app.shopDetail)) || {},
     });
     if (app.shopDetail.province && app.shopDetail.city && app.shopDetail.district) {
       this.setData({
@@ -54,18 +56,20 @@ Page({
     })
     this.getPercentage();
   },
-
+  /** 选择省市区 **/
   bindRegionChange: function (e) {
     this.setData({
       region: e.detail.value
     })
     this.getPercentage();
   },
+   /** 点击详细地址 **/
   focusaddress(){
     this.setData({
       selectmune: true
     })
   },
+     /** 判断百分比 **/
   getPercentage(){
     let datas = this.data.shopDetail;
     let percentage = 0;
@@ -91,6 +95,7 @@ Page({
       percentage
     })
   },
+       /** 上传图片 **/
   selectHeaderImg(e) {
     let that = this
     let id = e.currentTarget.dataset.id;
@@ -148,6 +153,7 @@ Page({
               } else {
                 shopDetail.wxQr = url + '/' + fileKey;
               }
+              console.log(url + '/' + fileKey);
               that.setData({ shopDetail });
               that.getPercentage();
               wx.hideLoading();
@@ -186,6 +192,7 @@ Page({
       }
     })
   },
+    //选择店铺分类
   selectType(e) {
     let index = e.detail.value;
     let shopDetail = JSON.parse(JSON.stringify(this.data.shopDetail));
@@ -196,6 +203,7 @@ Page({
     })
     this.getPercentage();    
   },
+  //保存店铺信息
   submit() {
     let that = this;
     if (this.data.percentage != 100){
@@ -205,7 +213,7 @@ Page({
       })
       return false;
     }
-    let shopDetail = JSON.parse(JSON.stringify(this.data.shopDetail));
+    let shopDetail = this.data.shopDetail ? JSON.parse(JSON.stringify(this.data.shopDetail)) : {};
     let region = this.data.region;
     shopDetail.id = shopDetail.id ? shopDetail.id : null;
     shopDetail.province = region[0];

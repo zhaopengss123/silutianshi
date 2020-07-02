@@ -64,13 +64,13 @@
 }
 
 .mnue-list>view {
-  height: 124rpx;
-  line-height: 124rpx;
+  height: 108rpx;
+  line-height: 108rpx;
   font-size: 28rpx;
   color: #222;
 }
 
-.mnue-list>view view {
+.mnue-list>view view{
   float: left;
 }
 
@@ -121,8 +121,8 @@
 
 .mnue-list input, picker {
   width: 450rpx;
-  height: 124rpx;
-  font-size: 25rpx;
+  height: 108rpx;
+  font-size: 27rpx;
   text-align: right;
 }
 
@@ -327,8 +327,8 @@ textarea {
   text-indent: 52rpx;
   background: url('https://ylbb-wxapp.oss-cn-beijing.aliyuncs.com/branch-store/tit-icon-dsju6984730i.png') no-repeat center left;
   background-size: 38rpx 38rpx;
-  height: 124rpx;
-  line-height: 124rpx;
+  height: 108rpx;
+  line-height: 108rpx;
 }
 
 .smsz {
@@ -591,7 +591,7 @@ color: #373C41;
 .customview{
   width: 300rpx;
   overflow: hidden;
-  height: 124rpx;
+  height: 108rpx;
   white-space: normal;
   text-overflow: ellipsis;
   text-align: right;

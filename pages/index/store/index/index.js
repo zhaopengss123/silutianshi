@@ -15,23 +15,26 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     let that = this;
+    let shopDetail = app.shopDetail;
+    shopDetail.shopImgList = shopDetail.shopImg.split(',');
     this.setData({
-      shopDetail: app.shopDetail
+      shopDetail: shopDetail
     });
     this.getActivityList();
     wx.getLocation({
       type: 'wgs84',
-      success: function(res) {
+      success: function (res) {
         that.getDistance(res.latitude, res.longitude);
       },
-      fail: function(res) {
+      fail: function (res) {
         console.log(res);
       }
     })
 
   },
+  //获取距离门店距离
   getDistance(latitude, longitude) {
     let that = this;
     wx.showLoading({
@@ -58,6 +61,7 @@ Page({
       }
     });
   },
+  // 查看门店活动列表
   getActivityList() {
     let that = this;
     Http.get('/activity/getActivityList', {
@@ -69,10 +73,11 @@ Page({
       }
     });
   },
+  // 查看我的活动
   toClistindex(e) {
     let that = this;
     let id = e.currentTarget.dataset.id;
-  let path = `/pages/drainage/index/index?id=${id}&openId=${app.userInfo.openId}&nickName=${app.userInfo.nickName}&headImg=${app.userInfo.headImg}`;
+    let path = `/pages/drainage/index/index?id=${id}&openId=${app.userInfo.openId}&nickName=${app.userInfo.nickName}&headImg=${app.userInfo.headImg}`;
     wx.navigateToMiniProgram({
       appId: 'wx1f1e136159cc94b5', // 要跳转的小程序的appid
       path: path, // 跳转的目标页面
@@ -80,7 +85,7 @@ Page({
       extarData: {
         open: 'auth'
       },
-      success(res) {}
+      success(res) { }
     })
   },
 

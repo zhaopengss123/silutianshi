@@ -705,15 +705,6 @@ Page({
   },
   showEditfun(){
     let customList = JSON.parse(JSON.stringify(this.data.customList));
-    // customList.map((item,index)=>{
-    //   console.log(item.name);
-    //   if (item.name == '手机号' || item.name == '生日' || item.name == '姓名' ){
-        
-    //     customList.splice(index,1);
-    //   }
-    // })
-    console.log(customList);
-
     this.setData({
       showEdit: true,
       customList

@@ -1,7 +1,6 @@
 
 
 <view class='logo'>
-   <!-- <image src='http://ylbb-wxapp.oss-cn-beijing.aliyuncs.com/store/logo-large.png' mode='widthFix'></image>  -->
    {{ unphone ? '更换' : '绑定' }}手机
 </view>
 

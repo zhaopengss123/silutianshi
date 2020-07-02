@@ -1,13 +1,16 @@
 const app = getApp();
 const Http = require('./../../utils/request.js');
+import { numSub } from '../../utils/calculation.js'
+import { getPhone, getUserStatus } from '../../utils/getUserStatus.js'
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-      dataMoney:{},
-      memberList: []
+    dataMoney: {},
+    memberList: []
   },
 
   /**
@@ -15,10 +18,14 @@ Page({
    */
   onLoad: function (options) {
   },
-  onShow(){
-    this.getData();
+  onShow() {
+    getUserStatus().then(() => {
+      getPhone().then(() => {
+        this.getData();
+      })
+    })
   },
-  getData(){
+  getData() {
     this.setData({
       memberList: []
     })
@@ -36,48 +43,46 @@ Page({
     Http.get('/withdraw/selectRunningAcitivtyBilling').then(res => {
       if (res.result == 1000) {
         const list = that.data.memberList.concat();
-        res.data.map(item=>{
+        res.data.map(item => {
           item.s = 1;
+          item.nowCount = numSub(item.income, item.pay)
         })
         that.setData({
           memberList: list.concat(res.data)
         })
+        console.log(this.memberList);
         // 结束后的活动
         Http.get('/withdraw/selectEndAcitivtyBilling').then(res => {
           if (res.result == 1000) {
             const lists = that.data.memberList.concat();
             res.data.map(item => {
-              item.s = 0;
+              item.s = 0
+              item.nowCount = numSub(item.income, item.pay)
             })
             that.setData({
               memberList: lists.concat(res.data)
             })
-            console.log(that.data.memberList);
           }
           wx.hideLoading();
         });
 
       }
       wx.hideLoading();
-    });    
+    });
 
   },
-  todetail(){
+
+  tocash() {
     wx.navigateTo({
-      url: './detail/detail',
+      url: `./cash/cash?toWithdrawedMoney=${this.data.dataMoney.toWithdrawedMoney}`,
     })
   },
-  tocash(){
-    wx.navigateTo({
-      url: `./cash/cash?toWithdrawedMoney=${this.data.dataMoney.toWithdrawedMoney }`,
-    })
-  },
-  todetail(e){
+  todetail(e) {
     const id = e.currentTarget.dataset.id;
     const income = e.currentTarget.dataset.income;
     const s = e.currentTarget.dataset.s;
     wx.navigateTo({
-      url: `./activity-deatil/activity-deatil?id=${id}&income=${income}&s=${ s }`,
+      url: `./activity-deatil/activity-deatil?id=${id}&income=${income}&s=${s}`,
     })
   }
 })

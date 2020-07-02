@@ -34,10 +34,6 @@
         <text>奖励 0.00 元</text>
       </view>
     </view>
-
-
-
-
   </view>
   <view class="update-activity">
     <view bindtap="editActivity">编辑活动</view>

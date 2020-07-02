@@ -26,14 +26,14 @@
         </view>
       </view>
       <view class="user-right">
-        <text>分享 0 人</text>
+        <text>分享 {{ item.realNumber || 0 }}人</text>
         <text wx:if="{{ item.shareName }}">{{ item.shareName }} 推荐</text>
       </view>
 
       <view class="user-man">
         <text wx:for="{{ item.otherContent.list }}" wx:item="data" wx:key="indexs">{{ item.name }}：{{ item.value }}</text>
       </view>
-      <view class="verification" bindtap="bindVerification" data-openid="{{ item.openid }}">到店核销</view>
+      <view class="verification" wx:if="{{ item.cashingStatus == 0 }}" bindtap="bindVerification" data-openid="{{ item.openid }}">到店核销</view>
     </view>
 
 

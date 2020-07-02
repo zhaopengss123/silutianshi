@@ -1,4 +1,4 @@
-const Http = require('./../../utils/request.js');
+const Http = require('../../../utils/request.js');
 const app = getApp();
 Page({
   data: {
@@ -102,16 +102,16 @@ Page({
       phone: that.data.phone,
       code: that.data.code
     }).then(result => {
-      if (result.result == 1000 || 1) {
-            Http.get('/account/updatePhone', {
-                phone: that.data.phone,
-            }).then(res => {
-              that.getAccountInfo();
-              wx.navigateBack();
-              wx.hideLoading();
+      if (result.result == 1000) {
+        Http.get('/account/updatePhone', {
+          phone: that.data.phone,
+        }).then(res => {
+          that.getAccountInfo();
+          wx.navigateBack();
+          wx.hideLoading();
 
-            })
-   
+        })
+
       } else {
         wx.showToast({
           icon: "none",

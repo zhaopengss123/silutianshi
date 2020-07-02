@@ -15,7 +15,7 @@ Page({
   onLoad: function (options) {
     const { toWithdrawedMoney } = options;
     this.setData({
-      toWithdrawedMoney
+      toWithdrawedMoney: Number(toWithdrawedMoney) || 0
     })
   },
   sureWithdraw(){ 
@@ -46,6 +46,11 @@ Page({
         wx.showToast({
           title: res.message,
         })
+        setTimeout(()=>{
+        wx.switchTab({
+          url: '/pages/income/income',
+        })
+        }, 1500)
       }
       wx.hideLoading();
     });
