@@ -210,7 +210,7 @@ picker view{
   border-top: solid 2rpx #EFF0F4;
 }
 .address_submit{
-  width: 132rpx;
+  width: 130rpx;
   height: 90rpx;
   line-height: 90rpx;
   text-align: center;

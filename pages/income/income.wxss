@@ -49,7 +49,7 @@
   display: block;
 }
 .income-num>view>text:last-child{
-  font-size: 32rpx;
+  font-size: 38rpx;
   margin-top: 8rpx;
   font-weight: bold;
 }

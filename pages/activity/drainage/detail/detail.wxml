@@ -158,8 +158,9 @@
       </view>
     </view>
   </view>
-  <view class="exit" bindtap="setOut">结束活动</view>
+  <view class="exit" wx:if="{{ activityDetail.runningStatus !=1 }}" bindtap="setOut">结束活动</view>
+  <view class="exit isexit" wx:if="{{ activityDetail.runningStatus ==1 }}">活动已结束</view>
   <view class="help">对活动有疑问？<text>点这里获取帮助</text></view>
 </view>
-  <view class="creat" bindtap="toClistShare">分享给好友帮推</view>
+  <view class="creat" wx:if="{{ activityDetail.runningStatus !=1 }}" bindtap="toClistShare">分享给好友帮推</view>
 

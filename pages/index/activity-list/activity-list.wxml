@@ -1,0 +1,36 @@
+<view class="content">
+     
+      <view class="activity-list" wx:for="{{ activityList }}" wx:key="index" catchtap="toactivitydetail" data-id="{{ item.id }}">
+      <view>
+        <image src="{{ item.headImg }}"></image>
+        <view class="activity-text">
+          <view>{{ item.activityHeadline }}</view>
+          <view>红包裂变</view>
+          <view>
+            <text>今日参与 {{ item.customPage }}</text>
+            <text>总参与 {{ item.ruCount }}</text>
+            <text >进行中</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="end-text"><i></i><span>已结束活动</span><i></i></view>
+
+  <view class="endActivity">
+          <view class="activity-list" wx:for="{{ endActivityList }}" wx:key="index" catchtap="toactivitydetail" data-id="{{ item.id }}">
+      <view>
+        <image src="{{ item.headImg }}"></image>
+        <view class="activity-text">
+          <view>{{ item.activityHeadline }}</view>
+          <view>红包裂变</view>
+          <view>
+            <text>今日参与 {{ item.customPage }}</text>
+            <text>总参与 {{ item.ruCount }}</text>
+            <text  class="ending">已结束</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    </view>
+</view>

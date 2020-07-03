@@ -1,7 +1,10 @@
 const app = getApp();
 const Http = require('./../../utils/request.js');
 const getUserInfo = require('./../../utils/getUserInfo.js');
-import { getPhone } from '../../utils/getUserStatus.js'
+import {
+  getPhone,
+  getUserStatus
+} from '../../utils/getUserStatus.js'
 Page({
   data: {
     index: 0,
@@ -10,10 +13,12 @@ Page({
     storeId: null,
     customerNumber: 0,
     monthNumber: 0,
-    services:{},
-    templateList:[],
-    pageSize:10,
-    pageNum:1
+    services: {},
+    templateList: [],
+    pageSize: 10,
+    pageNum: 1,
+    pageIndex: 1,
+    activityList: []
   },
   onLoad: function(options) {
     // 判断有没有storeId，有的话重新注册成为店员
@@ -26,30 +31,30 @@ Page({
   },
   onShow: function() {
     /* 判断当前是否有登录信息，没有显示授权登录按钮  */
-      getUserInfo().then(login => {
-        if (!login.openId || !login.nickName) {
-          this.setData({
-            buttonUserInfo: true
-          })
-        } else {
-          this.getActiveTemplate();
-          this.getShop();
-          this.getShopList();
-          this.getActivityList();
-        }
-      }).catch(err => {
+    getUserInfo().then(login => {
+      if (!login.openId || !login.nickName) {
         this.setData({
           buttonUserInfo: true
         })
+      } else {
+        this.getActiveTemplate();
+        this.getShop();
+        this.getShopList();
+        this.getActivityList();
+      }
+    }).catch(err => {
+      this.setData({
+        buttonUserInfo: true
       })
+    })
   },
- /* 显示添加二维码弹窗  */
+  /* 显示添加二维码弹窗  */
   showFooter() {
     this.setData({
       showPage: true
     })
   },
-   /* 隐藏添加二维码弹窗  */
+  /* 隐藏添加二维码弹窗  */
   hidePage() {
     this.setData({
       showPage: false
@@ -73,8 +78,8 @@ Page({
     });
   },
   /* 获取门店到期信息  */
-  getStatus(id){
-    return new Promise((resolve,reject)=>{
+  getStatus(id) {
+    return new Promise((resolve, reject) => {
       Http.get(`/shop/${ id }`).then(res => {
         if (res.result == 1000) {
           resolve(res.data);
@@ -82,7 +87,7 @@ Page({
       });
     })
   },
-    /* 登录后获取用户信息  */
+  /* 登录后获取用户信息  */
   getAccountInfo() {
     Http.get('/account/getAccountInfo').then(res => {
       console.log(res);
@@ -209,9 +214,11 @@ Page({
       url: `../activity/drainage/record/record?id=${ id }`,
     })
   },
-   /* 获取参与过的活动列表 */
+  /* 获取参与过的活动列表 */
   getActivityList() {
-    Http.get('/activity/getActivityList', {}).then(res => {
+    Http.get('/activity/getActivityList', {
+      runningStatus: 0
+    }).then(res => {
       if (res.result == 1000 && res.data) {
         this.setData({
           activityList: res.data.list
@@ -221,47 +228,50 @@ Page({
   },
   /* 创建活动 */
   toactivity() {
-    getPhone().then(() => {
-    if (!app.shopDetail || !app.shopDetail.id) {
-      wx.showToast({
-        title: '请先创建店铺',
-        icon: 'none'
+    getUserStatus(true).then(() => {
+      getPhone().then(() => {
+        if (!app.shopDetail || !app.shopDetail.id) {
+          wx.showToast({
+            title: '请先创建店铺',
+            icon: 'none'
+          })
+          setTimeout(() => {
+            wx.navigateTo({
+              url: '/pages/index/store/detail/detail',
+            }, 1500)
+          })
+          return false;
+        }
+        this.getStatus(app.shopDetail.id).then(res => {
+          app.shopDetail.expireDate = res.expireDate || null;
+          const nowDate = new Date().getTime();
+          const expireDate = (res && res.expireDate && new Date(res.expireDate).getTime()) || null;
+          if (!expireDate || nowDate > expireDate) {
+            this.showFooter();
+            return false;
+          }
+          wx.navigateTo({
+            url: '/pages/activity/drainage/drainage',
+          })
+        });
       })
-      setTimeout(()=>{
-        wx.navigateTo({
-          url: '/pages/index/store/detail/detail',
-        },1500)
-      })
-      return false;
-    }
-    this.getStatus(app.shopDetail.id).then(res=>{
-      const nowDate = new Date().getTime();
-      const expireDate = (res && res.expireDate && new Date(res.expireDate).getTime()) || null;
-      if (!expireDate || nowDate > expireDate) {
-        this.showFooter();
-        return false;
-      }
-      wx.navigateTo({
-        url: '/pages/activity/drainage/drainage',
-      })
-    });
     })
 
   },
-    /* 去活动详情 */
+  /* 去活动详情 */
 
   toactivitydetail(e) {
     let id = e.currentTarget.dataset.id;
     getPhone().then(() => {
-    wx.navigateTo({
-      url: `/pages/activity/drainage/detail/detail?id=${ id }`,
-    })
+      wx.navigateTo({
+        url: `/pages/activity/drainage/detail/detail?id=${ id }`,
+      })
     })
   },
   errors(e) {
     // console.log(e);
   },
- 
+
   getPrice() {
     //获取可提现金额
     Http.get('/withdraw/getStatistics').then(res => {
@@ -302,11 +312,12 @@ Page({
     });
   },
   /* 下载客服二维码 */
-  downloadImg: function (e) {　　　　　　　　　　　　　　　　//触发函数
+  downloadImg: function(e) {　　　　　　　　　　　　　　　　 //触发函数
     wx.downloadFile({
-      url: e.currentTarget.dataset.url,　　　　　　　//需要下载的图片url
-      success: function (res) {　　　　　　　　　　　　//成功后的回调函数
-        wx.saveImageToPhotosAlbum({　　　　　　　　　//保存到本地
+      url: e.currentTarget.dataset.url,
+      　　　　　　　 //需要下载的图片url
+      success: function(res) {　　　　　　　　　　　　 //成功后的回调函数
+        wx.saveImageToPhotosAlbum({　　　　　　　　　 //保存到本地
           filePath: res.tempFilePath,
           success(res) {
             wx.showToast({
@@ -315,7 +326,7 @@ Page({
               duration: 2000
             })
           },
-          fail: function (err) {
+          fail: function(err) {
             if (err.errMsg === "saveImageToPhotosAlbum:fail auth deny") {
               wx.openSetting({
                 success(settingdata) {
@@ -337,17 +348,17 @@ Page({
       }
     });
   },
-    /* 复制客服微信 */
-  copy: function (e) {
+  /* 复制客服微信 */
+  copy: function(e) {
     var code = e.currentTarget.dataset.copy;
     wx.setClipboardData({
       data: code,
-      success: function (res) {
+      success: function(res) {
         wx.showToast({
           title: '复制成功',
         });
       },
-      fail: function (res) {
+      fail: function(res) {
         wx.showToast({
           title: '复制失败',
         });
@@ -355,17 +366,27 @@ Page({
     })
   },
   //获取模板列表
-  getActiveTemplate(){
-    Http.post('/activity/queryActivityTemplate',{
+  getActiveTemplate() {
+    Http.post('/activity/queryActivityTemplate', {
       pageNum: this.data.pageNum,
       pageSize: this.data.pageSize
     }).then(res => {
       if (res.result == 1000) {
         this.setData({
-          templateList: (res.data && res.data.list) || []
+          templateList: [...this.data.templateList, ...res.data.list],
+          pageIndex: (res.data && res.data.list && res.data.list.length) ? this.data.pageIndex + 1 : this.data.pageIndex
         })
       }
       wx.hideLoading();
     });
+  },
+  /*滑动到底部翻页 */
+  onReachBottom() {
+    if (this.data.pageNum < this.data.pageIndex) {
+      this.setData({
+        pageNum: this.data.pageNum + 1
+      })
+      this.getActiveTemplate();
+    }
   }
 })

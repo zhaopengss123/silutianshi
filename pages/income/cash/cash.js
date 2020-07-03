@@ -44,7 +44,7 @@ Page({
     }).then(res => {
       if(res.result == 1000){
         wx.showToast({
-          title: res.message,
+          title: res.message || '操作成功',
         })
         setTimeout(()=>{
         wx.switchTab({

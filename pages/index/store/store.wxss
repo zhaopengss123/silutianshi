@@ -70,8 +70,8 @@ navigator{
   background: #fff;
   box-shadow:0px 4rpx 14rpx 0rpx rgba(239,240,244,1);
   border-radius:40rpx;
-  background: url(https://ylbb-wxapp.oss-cn-beijing.aliyuncs.com/store/icon-right-o.png) no-repeat 625rpx center #fff;
-  background-size: 15.2rpx 27.2rpx;
+  /* background: url(https://ylbb-wxapp.oss-cn-beijing.aliyuncs.com/store/icon-right-o.png) no-repeat 625rpx center #fff;
+  background-size: 15.2rpx 27.2rpx; */
 }
 .vip_left{
   float: left;

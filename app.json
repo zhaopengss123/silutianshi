@@ -4,6 +4,7 @@
     "pages/user/user",
     "pages/user/bindphone/bindphone",
     "pages/index/store/store",
+    "pages/index/activity-list/activity-list",
     "pages/index/store/detail/detail",
     "pages/index/store/staff/staff",
     "pages/index/store/index/index",

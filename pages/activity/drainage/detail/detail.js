@@ -183,7 +183,7 @@ Page({
     wx.navigateToMiniProgram({
       appId: 'wx1f1e136159cc94b5', // 要跳转的小程序的appid
       path: path, // 跳转的目标页面
-      envVersion: "develop",
+      envVersion: app.envVersion,
       extarData: {
         open: 'auth'
       },
@@ -194,11 +194,11 @@ Page({
   },
   toClistShare() {
     let that = this;
-    let path = `/pages/drainage/share/share?id=${that.data.id}&openId=${app.userInfo.openId}&nickName=${app.userInfo.nickName}&headImg=${app.userInfo.headImg}`;
+    let path = `/pages/drainage/index/index?id=${that.data.id}&openId=${app.userInfo.openId}&nickName=${app.userInfo.nickName}&headImg=${app.userInfo.headImg}`;
     wx.navigateToMiniProgram({
       appId: 'wx1f1e136159cc94b5', // 要跳转的小程序的appid
       path: path, // 跳转的目标页面
-      envVersion: "develop",
+      envVersion: app.envVersion,
       extarData: {
         open: 'auth'
       },

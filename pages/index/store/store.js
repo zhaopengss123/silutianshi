@@ -17,7 +17,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let status = 1, expireDate = app.shopDetail.expireDate, dates = new Date().getTime();
+    let expireDateTime = new Date(expireDate).getTime();
 
+    if (!expireDate || (expireDateTime < dates)){
+      status = 0;
+    }
+    this.setData({
+      expireDate,
+      status
+    })
   },
 
   /**
@@ -87,7 +96,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    
   },
 
   /**

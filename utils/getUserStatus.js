@@ -7,11 +7,11 @@
  * 
  */
 const app = getApp();
-export const getPhone = (()=>{
-  return new Promise((resolve,reject)=>{
-    if (app.userInfo && app.userInfo.phone){
+export const getPhone = (() => {
+  return new Promise((resolve, reject) => {
+    if (app.userInfo && app.userInfo.phone) {
       resolve(true)
-    }else{
+    } else {
       wx.navigateTo({
         url: '/pages/user/bindphone/bindphone',
       })
@@ -19,21 +19,23 @@ export const getPhone = (()=>{
     }
   })
 })
-export const getUserStatus = (()=>{
-  return new Promise((resolve,reject)=>{
-    if (app.userInfo.openId && app.userInfo.nickName){
+export const getUserStatus = ((status = false) => {
+  return new Promise((resolve, reject) => {
+    if (app.userInfo.openId && app.userInfo.nickName) {
       resolve(true)
-    }else{
+    } else {
       reject(false)
       wx.showToast({
-        title: '请先授权获取您的用户名头像',
+        title: '请点击右上角登录后再进行操作',
         icon: 'none'
       })
-      setTimeout(()=>{
-        wx.switchTab({
-          url: '/pages/index/index',
-        })
-      },1500)
+      if (!status) {
+        setTimeout(() => {
+          wx.switchTab({
+            url: '/pages/index/index',
+          })
+        }, 1500)
+      }
     }
   })
 })

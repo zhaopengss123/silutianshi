@@ -234,7 +234,7 @@ textarea {
   padding: 20rpx 15rpx;
   border-radius: 30rpx;
   line-height: normal;
-  height: 290rpx;
+  height: 120rpx;
   overflow: hidden;
   position: relative;
   width: 640rpx;
@@ -243,7 +243,7 @@ textarea {
 }
 
 .textareas.textareas textarea {
-  height: 290rpx;
+  height: 120rpx;
 }
 
 .textareas text {
@@ -252,6 +252,7 @@ textarea {
   right: 40rpx;
   color: #c3cdd7;
   line-height: normal;
+  font-size: 24rpx;
 }
 
 .selectDate picker {
@@ -376,7 +377,7 @@ textarea {
 }
 .describe{
     border: solid 1px #f0f0f0;
-  padding: 34rpx 40rpx;
+  padding: 34rpx 36rpx;
   border-radius: 30rpx;
   line-height: normal;
   height: 210rpx;
@@ -481,7 +482,6 @@ textarea {
 .list-gift{
   width: 670rpx;
   overflow: hidden;
-  border-top: solid 2rpx #eff0f4;
 }
 .qj{
   width:250rpx;

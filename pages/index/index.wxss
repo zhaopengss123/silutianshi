@@ -313,12 +313,17 @@ font-weight: normal;
   color: #666;
 }
 .userinfo{
-  width: 300rpx;
+  width: 100rpx;
   margin: 0 auto;
   display: block;
   margin-top: 50rpx;
-  background: #2FB6FF;
+  background: none;
   color: #fff;
+  position: absolute;
+  top: 0;
+  right: 20rpx;
+  font-size: 20rpx;
+  border: solid 1px #fff;
 }
 .creatTime.creatTime.creatTime{
   width: 450rpx;

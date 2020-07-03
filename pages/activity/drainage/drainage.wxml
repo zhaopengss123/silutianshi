@@ -153,7 +153,7 @@
         <text style="line-height:20rpx;">0则表示不限制使用时间</text>
       </view>
       <view>
-        <input style="width:380rpx;" maxlength="20" bindinput="editEffectiveDays" value="{{ paramJson.effectiveDays }}" placeholder="请输入有效天数" />
+        <input style="width:350rpx;" maxlength="20" bindinput="editEffectiveDays" value="{{ paramJson.effectiveDays }}" placeholder="请输入有效天数" />
       </view>
     </view>
 
@@ -231,7 +231,7 @@
   <view wx:if="{{ ddlSwitch }}" class="mnue-list list-gift" wx:for="{{ paramJson.activityPrizes }}" wx:key="index">
       <view class="prizes-bg">
       <view>礼品{{ listName[index] }}</view>
-      <view bindtap="removeGift" data-index="{{ index }}">删除</view>
+      <view bindtap="removeGift" data-index="{{ index }}" wx:if="{{ paramJson.activityPrizes && paramJson.activityPrizes.length >1 }}" >删除</view>
     </view>
 
     <view>
@@ -303,12 +303,12 @@
 
       </view>
     </view>
-    <view class="bg-title">
+    <!-- <view class="bg-title">
       其它设置
-    </view>
+    </view> -->
 
   </view>
-
+<!-- 
   <view class="toggle-icon fsbtn">
     <view>智能防刷
       <text>打开后仅限距离15公里内的客户可参与，请谨慎使用</text>
@@ -316,7 +316,7 @@
     <view>
       <switch checked="{{ paramJson.locationLimit }}" bindchange="editlocationLimit" color="{{ switchColor }}" />
     </view>
-  </view>
+  </view> -->
 
   <view class="creat-active" bindtap="save">{{ id ? '保存' : '创建' }}活动</view>
 </view>

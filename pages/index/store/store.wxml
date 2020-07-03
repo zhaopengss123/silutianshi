@@ -18,12 +18,12 @@
         <view>预览店铺首页</view>
         <view></view>
     </view>
-    <view>
+    <!-- <view>
       <view>邀请好友开店</view>
       <view>奖励
         <text>657元</text>
       </view>
-    </view>
+    </view> -->
     <view bindtap="showFooter">
       <view>我的专属策划师</view>
       <view></view>
@@ -33,12 +33,12 @@
     <view class="vip_left">
       <view wx:if="{{ !storeDetail.shopShortName }}">
         <open-data type="userNickName"></open-data>的店铺
-        <text>旗舰版</text>
+        <!-- <text>旗舰版</text> -->
       </view>
       <view wx:else>{{ storeDetail.shopShortName }}的店铺
-        <text>旗舰版</text>
+        <!-- <text>旗舰版</text> -->
       </view>
-      <view>店铺未开通旗舰版</view>
+      <view>{{ status == 1 ? '云分店客流裂变系统 | ' + expireDate + '到期' : '店铺未开通云分店客流裂变系统' }}</view>
     </view>
   </view>
 </view>

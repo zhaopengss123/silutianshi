@@ -715,7 +715,7 @@ Page({
     this.setData({
       ddlSwitch: switchs
     })
-    if (switchs && !this.data.paramJson.activityPrizes.lenhth){
+    if (switchs && !this.data.paramJson.activityPrizes.length){
       this.setData({
         "paramJson.activityPrizes": [{}]
       })
